@@ -79,7 +79,7 @@ public class Level_01_Register_DRY {
 	
 	@Test
 	public void TC_04_Register_With_Exist_Email() {
-		// Go to register page and enter valid information
+		// Go to register page and enter email which was exist
 		driver.get("https://demo.nopcommerce.com/");
 		driver.findElement(By.xpath("//a[@class='ico-register']")).click();
 		driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys(firstName);
