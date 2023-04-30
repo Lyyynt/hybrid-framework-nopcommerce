@@ -19,6 +19,9 @@ public class BasePage {
 	private long longTimeout = 30;
 	private long shortTimeout = 5;
 	
+	static public BasePage getBasePageObject() {
+		return new BasePage();
+	}
 	public void openPageUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
