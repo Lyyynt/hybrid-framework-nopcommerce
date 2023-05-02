@@ -34,7 +34,6 @@ public class Level_03_Register_PageObjectModel {
 		driver.manage().window().maximize();
 		driver.get("https://demo.nopcommerce.com/");
 		homePage = new HomePageObject(driver);
-		registerPage = new RegisterPageObject(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -47,6 +46,7 @@ public class Level_03_Register_PageObjectModel {
 	public void Register_01_Empty_Data() {
 		System.out.println("Register 01 - Step 1: Click to register link");
 		homePage.clickToRegisterLink();
+		registerPage = new RegisterPageObject(driver);
 		
 		System.out.println("Register 01 - Step 2: Click to register button");
 		registerPage.clickToRegisterButton();
@@ -91,6 +91,7 @@ public class Level_03_Register_PageObjectModel {
 	public void Register_04_Exist_Email() {
 		System.out.println("Register 04 - Step 1: Click to register link");
 		homePage.clickToRegisterLink();
+		registerPage = new RegisterPageObject(driver);
 		
 		System.out.println("Register 04 - Step 2: Enter the valid information with existing email");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -152,7 +153,6 @@ public class Level_03_Register_PageObjectModel {
 		return randomNumber;
 	}
 
-	//note
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
