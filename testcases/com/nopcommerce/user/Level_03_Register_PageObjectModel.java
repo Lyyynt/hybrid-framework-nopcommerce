@@ -83,8 +83,12 @@ public class Level_03_Register_PageObjectModel {
 		System.out.println("Register 03 - Step 2: Click to Register button");
 		registerPage.clickToRegisterButton();
 		
-		System.out.println("Register 03 - Verify the register success message displays");
+		System.out.println("Register 03 - Step 3: Verify the register success message displays");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		
+		System.out.println("Register 03 - Step 4: Back to Home page");
+		registerPage.clickToContinueButton();
+		homePage = new HomePageObject(driver);
 	}
 	
 	@Test
