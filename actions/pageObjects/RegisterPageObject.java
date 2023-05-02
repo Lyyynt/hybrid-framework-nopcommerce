@@ -41,6 +41,11 @@ public class RegisterPageObject extends BasePage {
 		waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
+	
+	public void clickToContinueButton() {
+		waitForElementClickable(driver, RegisterPageUI.CONTINUE_BUTTON);
+		clickToElement(driver, RegisterPageUI.CONTINUE_BUTTON);
+	}
 
 	public String getFirstNameErrorMessage() {
 		waitForElementVisible(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
