@@ -62,7 +62,7 @@ public class Level_03_Register_PageObjectModel {
 	@Test
 	public void Register_02_Invalid_Email() {
 		System.out.println("Register 02 - Step 1: Enter the invalid email");
-		registerPage.inputEmail("@gmail.com");
+		registerPage.inputToEmailTextbox("@gmail.com");
 		
 		System.out.println("Register 02 - Step 2: Click to the register button");
 		registerPage.clickToRegisterButton();
@@ -74,11 +74,11 @@ public class Level_03_Register_PageObjectModel {
 	@Test
 	public void Register_03_Valid_Information() {
 		System.out.println("Register 03 - Step 1: Enter the valid information");
-		registerPage.inputFirstName(firstName);
-		registerPage.inputLastName(lastName);
-		registerPage.inputEmail(email);
-		registerPage.inputPassword(password);
-		registerPage.inputConfirmPassword(confirmPassword);
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
+		registerPage.inputToEmailTextbox(email);
+		registerPage.inputToPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
 		
 		System.out.println("Register 03 - Step 2: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -93,11 +93,11 @@ public class Level_03_Register_PageObjectModel {
 		homePage.clickToRegisterLink();
 		
 		System.out.println("Register 04 - Step 2: Enter the valid information with existing email");
-		registerPage.inputFirstName(firstName);
-		registerPage.inputLastName(lastName);
-		registerPage.inputEmail(email);
-		registerPage.inputPassword(password);
-		registerPage.inputConfirmPassword(confirmPassword);
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
+		registerPage.inputToEmailTextbox(email);
+		registerPage.inputToPasswordTextbox(password);
+		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
 		
 		System.out.println("Register 04 - Step 3: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -109,11 +109,11 @@ public class Level_03_Register_PageObjectModel {
 	@Test
 	public void Register_05_Password_Length_Less_6() {
 		System.out.println("Register 05 - Step 1: Enter the valid information with password length less 6 charactors");
-		registerPage.inputFirstName(firstName);
-		registerPage.inputLastName(lastName);
-		registerPage.inputEmail(email);
-		registerPage.inputPassword("abc12");
-		registerPage.inputConfirmPassword("abc12");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
+		registerPage.inputToEmailTextbox(email);
+		registerPage.inputToPasswordTextbox("abc12");
+		registerPage.inputToConfirmPasswordTextbox("abc12");
 		
 		System.out.println("Register 05 - Step 2: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -125,11 +125,11 @@ public class Level_03_Register_PageObjectModel {
 	@Test
 	public void Register_06_Confirm_Password_Not_Match_Password() {
 		System.out.println("Register 06 - Step 1: Enter the valid information with confirm password not match with password");
-		registerPage.inputFirstName(firstName);
-		registerPage.inputLastName(lastName);
-		registerPage.inputEmail(email);
-		registerPage.inputPassword("abc124");
-		registerPage.inputConfirmPassword("abc125");
+		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToLastNameTextbox(lastName);
+		registerPage.inputToEmailTextbox(email);
+		registerPage.inputToPasswordTextbox("abc124");
+		registerPage.inputToConfirmPasswordTextbox("abc125");
 		
 		System.out.println("Register 06 - Step 2: Click to Register button");
 		registerPage.clickToRegisterButton();
