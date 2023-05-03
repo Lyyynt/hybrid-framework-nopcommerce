@@ -100,7 +100,7 @@ public class CustomerInformationPageObject extends BasePage{
 
 	public String getValueDayOfBirthTextbox() {
 		waitForElementVisible(driver, CustomerInformationUI.DAY_OF_BIRTH_DROPDOWN);
-		return getSelectedItemDefaultDropdown(driver, CustomerInformationUI.COMPANY_NAME_TEXTBOX);
+		return getSelectedItemDefaultDropdown(driver, CustomerInformationUI.DAY_OF_BIRTH_DROPDOWN);
 	}
 
 	public String getValueMonthOfBirthTextbox() {

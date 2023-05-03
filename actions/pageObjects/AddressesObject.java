@@ -128,6 +128,11 @@ public class AddressesObject extends BasePage{
 		waitForElementClickable(driver, AddressesUI.CHANGE_PASSWORD_TAB);
 		clickToElement(driver, AddressesUI.CHANGE_PASSWORD_TAB);
 	}
+
+	public void clickSaveButton() {
+		waitForElementClickable(driver, AddressesUI.SAVE_BUTTON);
+		clickToElement(driver, AddressesUI.SAVE_BUTTON);
+	}
 	
 	
 	

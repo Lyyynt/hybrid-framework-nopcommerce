@@ -62,7 +62,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		companyName = "AutoFC";
 		gender = "Female";
 		dayOfBirth = "10";
-		monthOfBirth = "10";
+		monthOfBirth = "October";
 		yearOfBirth = "1996";
 		newPassword = "111111";
 		
@@ -144,6 +144,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		addressesPage.sendKeyToPortalCodeTextbox(portalCode);
 		addressesPage.sendKeyToPhoneNumberTextbox(phoneNumber);
 		addressesPage.sendKeyToFaxTextbox(faxNumber);
+		addressesPage.clickSaveButton();
 		
 		System.out.println("My Account 02 - Step 3: Verify add new address process successful");
 		Assert.assertEquals(addressesPage.getToastMessage(), "The new address has been added successfully.");
@@ -174,7 +175,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		changePasswordPage.clickToCloseToastMessageButton();
 		
 		System.out.println("My Account 03 - Step 4: Verify login successful with new account after log out");
-		changePasswordPage.clickLogOutButton();
+		changePasswordPage.clickLogOutLink();
 		homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(newEmail);
 		loginPage.inputToPasswordTextbox(newPassword);
