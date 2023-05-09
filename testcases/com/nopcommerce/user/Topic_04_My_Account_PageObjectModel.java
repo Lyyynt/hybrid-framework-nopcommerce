@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -175,6 +176,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		changePasswordPage.clickToCloseToastMessageButton();
 		
 		System.out.println("My Account 03 - Step 4: Verify login successful with new account after log out");
+		SleepInSecond(2);
 		changePasswordPage.clickLogOutLink();
 		homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(newEmail);
@@ -195,5 +197,10 @@ public class Topic_04_My_Account_PageObjectModel {
 		Random rand = new Random();
 		int randomNumber = rand.nextInt(99999);
 		return randomNumber;
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		driver.quit();
 	}
 }
