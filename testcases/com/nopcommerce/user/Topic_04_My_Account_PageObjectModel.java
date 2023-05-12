@@ -10,26 +10,36 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import pageObjects.AddProductReviewObject;
 import pageObjects.AddressesObject;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.CustomerInformationPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
+import pageObjects.MyAccountObject;
+import pageObjects.MyProductReviewObject;
+import pageObjects.ProductDetailObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.SearchResultObject;
 
 public class Topic_04_My_Account_PageObjectModel {
 	WebDriver driver;
 	HomePageObject homePage;
 	LoginPageObject loginPage;
 	RegisterPageObject registerPage;
+	MyAccountObject myaccountPage;
 	CustomerInformationPageObject customerInformationPage;
 	AddressesObject addressesPage;
 	ChangePasswordPageObject changePasswordPage;
-	
+	SearchResultObject searchResultPage;
+	ProductDetailObject productDetailPage;
+	AddProductReviewObject addProductReviewPage;
+	MyProductReviewObject myProductReviewPage;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
 	String firstName, lastName, email, password, confirmPassword, country, city, address1, address2, portalCode, phoneNumber, faxNumber;
 	String newFirstName, newLastName, newEmail, companyName, gender, dayOfBirth, monthOfBirth, yearOfBirth, newPassword;
+	String reviewTitle, reviewContent;
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
@@ -67,6 +77,10 @@ public class Topic_04_My_Account_PageObjectModel {
 		yearOfBirth = "1996";
 		newPassword = "111111";
 		
+		// for My_Account_04_Product_Review
+		reviewTitle = "Review Title " + getRandomNumber();
+		reviewContent = "Review content Review Content" + getRandomNumber();
+		
 		// Pre-condition
 		System.out.println("Pre-condition - Step 1: Enter the valid information");
 		homePage.clickToRegisterLink();
@@ -95,6 +109,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		System.out.println("Pre-condition - Step 9: Verify the email not found message displays");
 		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
 		homePage = new HomePageObject(driver);
+		System.out.println("=============================");
 	}
 	
 	@Test
@@ -122,7 +137,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		Assert.assertEquals(customerInformationPage.getValueYearOfBirthTextbox(), yearOfBirth);
 		Assert.assertEquals(customerInformationPage.getEmailTextboxValue(), newEmail);
 		Assert.assertEquals(customerInformationPage.getCompanyNameTextboxValue(), companyName);
-		
+		System.out.println("=============================");
 	}
 	
 	@Test
@@ -157,6 +172,7 @@ public class Topic_04_My_Account_PageObjectModel {
 		Assert.assertTrue(addressesPage.getCityAndStateZip().contains(city +", " + portalCode));
 		Assert.assertTrue(addressesPage.getCountry().contains(country));
 		addressesPage.clickToCloseToastMessageButton();
+		System.out.println("=============================");
 	}
 	
 	@Test
@@ -182,7 +198,44 @@ public class Topic_04_My_Account_PageObjectModel {
 		loginPage.inputToEmailTextbox(newEmail);
 		loginPage.inputToPasswordTextbox(newPassword);
 		loginPage.clickToLoginButton();
+		homePage = new HomePageObject(driver);
 		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
+		System.out.println("=============================");
+	}
+	
+	@Test
+	public void My_Account_04_Product_Review() {
+		System.out.println("My Account 04 - Step 1: Search Product By Product Title");
+		homePage.inputKeywordToSearchTextbox("apple");
+		homePage.clickToSearchButton();
+		searchResultPage = new SearchResultObject(driver);
+		
+		System.out.println("My Account 04 - Step 2: Open Product Detail Page");
+		searchResultPage.clickToProductTitle("Apple MacBook Pro 13-inch");
+		productDetailPage = new ProductDetailObject(driver);
+		
+		System.out.println("My Account 04 - Step 3: Click Add Your Review Link");
+		productDetailPage.clickToAddYourReviewLink();
+		addProductReviewPage = new AddProductReviewObject(driver);
+		
+		System.out.println("My Account 04 - Step 4: Enter the new review for the product");
+		addProductReviewPage.inputToReviewTitleTextBox(reviewTitle);
+		addProductReviewPage.inputToReviewTextTextBox(reviewContent);
+		addProductReviewPage.clickToSubmitButton();
+		
+		System.out.println("My Account 04 - Step 5: Verify add new review successfully");
+		Assert.assertTrue(addProductReviewPage.getAddReviewSuccessMessage().contains("Product review is successfully added."));
+		
+		System.out.println("My Account 04 - Step 6: Open My Product Review Page");
+		homePage.clickToMyAccountLink();
+		myaccountPage = new MyAccountObject(driver);
+		myaccountPage.clickToMyProductReview("My product reviews");
+		myProductReviewPage = new MyProductReviewObject(driver);
+		
+		System.out.println("My Account 04 - Step 7: Verify new review occurs in the list review");
+		Assert.assertEquals(myProductReviewPage.getReviewTitle(), reviewTitle);
+		Assert.assertEquals(myProductReviewPage.getReviewContent(), reviewContent);
+		System.out.println("=============================");
 	}
 
 	public void SleepInSecond(long second) {

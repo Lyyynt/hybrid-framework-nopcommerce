@@ -28,4 +28,14 @@ public class HomePageObject extends BasePage {
 	public boolean isMyAccountLinkDisplay() {
 		return isElementDisplayed(driver, HomePageUI.MYACCOUNT_LINK);
 	}
+
+	public void inputKeywordToSearchTextbox(String keyword) {
+		waitForElementVisible(driver, HomePageUI.SEARCH_TEXTBOX);
+		sendkeyToElement(driver, HomePageUI.SEARCH_TEXTBOX, keyword);
+	}
+
+	public void clickToSearchButton() {
+		waitForElementClickable(driver, HomePageUI.SEARCH_BUTTON);
+		clickToElement(driver, HomePageUI.SEARCH_BUTTON);
+	}
 }
