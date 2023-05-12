@@ -38,4 +38,11 @@ public class HomePageObject extends BasePage {
 		waitForElementClickable(driver, HomePageUI.SEARCH_BUTTON);
 		clickToElement(driver, HomePageUI.SEARCH_BUTTON);
 	}
+	
+	public void clickToFooterLink(String footerLink) {
+		String footerLinkLocator = HomePageUI.FOOTER_LINK.replace("****", footerLink);
+		scrollToBottomPage(driver);
+		waitForElementVisible(driver, footerLinkLocator);
+		clickToElement(driver, footerLinkLocator);
+	}
 }

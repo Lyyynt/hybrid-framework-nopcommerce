@@ -1,15 +1,15 @@
 package com.nopcommerce.user;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import commons.BaseTest;
 import pageObjects.AddProductReviewObject;
 import pageObjects.AddressesObject;
 import pageObjects.ChangePasswordPageObject;
@@ -22,7 +22,7 @@ import pageObjects.ProductDetailObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SearchResultObject;
 
-public class Topic_04_My_Account {
+public class Topic_03_My_Account extends BaseTest{
 	WebDriver driver;
 	HomePageObject homePage;
 	LoginPageObject loginPage;
@@ -40,17 +40,11 @@ public class Topic_04_My_Account {
 	String firstName, lastName, email, password, confirmPassword, country, city, address1, address2, portalCode, phoneNumber, faxNumber;
 	String newFirstName, newLastName, newEmail, companyName, gender, dayOfBirth, monthOfBirth, yearOfBirth, newPassword;
 	String reviewTitle, reviewContent;
+	
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		if (osName.contains("Windows")) {
-			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		} else {
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-		}
-
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
 		driver.get("https://demo.nopcommerce.com/");
 		
 		homePage = new HomePageObject(driver);
@@ -106,7 +100,7 @@ public class Topic_04_My_Account {
 		loginPage.inputToPasswordTextbox(password);
 		System.out.println("Pre-condition - Step 8: Click to Login button");
 		loginPage.clickToLoginButton();
-		System.out.println("Pre-condition - Step 9: Verify the email not found message displays");
+		System.out.println("Pre-condition - Step 9: Verify the home page displays");
 		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
 		homePage = new HomePageObject(driver);
 		System.out.println("=============================");
