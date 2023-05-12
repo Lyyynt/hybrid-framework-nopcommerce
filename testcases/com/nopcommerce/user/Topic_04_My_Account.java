@@ -22,7 +22,7 @@ import pageObjects.ProductDetailObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SearchResultObject;
 
-public class Topic_04_My_Account_PageObjectModel {
+public class Topic_04_My_Account {
 	WebDriver driver;
 	HomePageObject homePage;
 	LoginPageObject loginPage;

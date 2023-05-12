@@ -17,8 +17,6 @@ public class Level_04_Register_Multiple_Browser extends BaseTest{
 	WebDriver driver;
 	HomePageObject homePage;
 	RegisterPageObject registerPage;
-	String projectPath = System.getProperty("user.dir");
-	String osName = System.getProperty("os.name");
 	String firstName, lastName, email, password, confirmPassword;
 	
 	@Parameters("browser")

@@ -15,7 +15,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
-public class Topic_03_Login_PageObjectModel {
+public class Topic_03_Login {
 	WebDriver driver;
 	HomePageObject homePage;
 	LoginPageObject loginPage;
