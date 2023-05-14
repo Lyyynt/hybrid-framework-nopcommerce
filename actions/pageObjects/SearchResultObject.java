@@ -12,10 +12,11 @@ public class SearchResultObject extends BasePage{
 		this.driver = driver;
 	}
 
-	public void clickToProductTitle(String productTitle) {
+	public ProductDetailObject clickToProductTitle(String productTitle) {
 		String productTitleLocator = SearchResultUI.PRODUCT_TITLE.replace("****", productTitle);
 		waitForElementClickable(driver, productTitleLocator);
 		clickToElement(driver, productTitleLocator);
+		return PageGeneratorManager.getProductDetailPage(driver);
 	}
 	
 }

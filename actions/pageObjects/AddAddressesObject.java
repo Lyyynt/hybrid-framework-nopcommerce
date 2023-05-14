@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import commons.BasePage;
 import nopcommerce.AddressesUI;
 
-public class AddressesObject extends BasePage{
+public class AddAddressesObject extends BasePage{
 	WebDriver driver;
 
-	public AddressesObject(WebDriver driver) {
+	public AddAddressesObject(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -122,11 +122,6 @@ public class AddressesObject extends BasePage{
 	public String getFaxText() {
 		waitForElementVisible(driver, AddressesUI.FAX_NUMBER_TEXT);
 		return getElementText(driver, AddressesUI.FAX_NUMBER_TEXT);
-	}
-
-	public void clickToChangePasswordTab() {
-		waitForElementClickable(driver, AddressesUI.CHANGE_PASSWORD_TAB);
-		clickToElement(driver, AddressesUI.CHANGE_PASSWORD_TAB);
 	}
 
 	public void clickSaveButton() {

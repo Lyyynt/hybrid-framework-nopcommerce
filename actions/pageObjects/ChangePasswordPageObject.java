@@ -42,9 +42,10 @@ public class ChangePasswordPageObject extends BasePage{
 		clickToElement(driver, ChangePasswordUI.CLOSE_TOAST_MESSAGE_BUTTON);
 	}
 
-	public void clickLogOutLink() {
+	public HomePageObject clickLogOutLink() {
 		waitForElementClickable(driver, ChangePasswordUI.LOGOUT_LINK);
 		clickToElement(driver, ChangePasswordUI.LOGOUT_LINK);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 	
 }

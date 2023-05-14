@@ -93,11 +93,6 @@ public class CustomerInformationPageObject extends BasePage{
 		return getElementAttribute(driver, CustomerInformationUI.COMPANY_NAME_TEXTBOX, "value");
 	}
 
-	public void clickToAddressesTab() {
-		waitForElementVisible(driver, CustomerInformationUI.ADDRESSES_TAB);
-		clickToElement(driver, CustomerInformationUI.ADDRESSES_TAB);
-	}
-
 	public String getValueDayOfBirthTextbox() {
 		waitForElementVisible(driver, CustomerInformationUI.DAY_OF_BIRTH_DROPDOWN);
 		return getSelectedItemDefaultDropdown(driver, CustomerInformationUI.DAY_OF_BIRTH_DROPDOWN);

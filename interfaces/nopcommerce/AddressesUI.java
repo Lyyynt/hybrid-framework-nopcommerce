@@ -24,5 +24,4 @@ public class AddressesUI {
 	public static final String ADDRESS1_TEXT = "//li[@class='address1']";
 	public static final String CITY_STATE_ZIP_TEXT = "//li[@class='city-state-zip']";
 	public static final String COUNTRY_TEXT = "//li[@class='country']";
-	public static final String CHANGE_PASSWORD_TAB = "//a[text()='Change password']";
 }

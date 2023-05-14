@@ -12,9 +12,10 @@ public class ProductDetailObject extends BasePage{
 		this.driver = driver;
 	}
 
-	public void clickToAddYourReviewLink() {
+	public AddProductReviewObject clickToAddYourReviewLink() {
 		waitForElementVisible(driver, ProductDetailUI.ADD_YOUR_REVIEWS_LINK);
 		clickToElement(driver, ProductDetailUI.ADD_YOUR_REVIEWS_LINK);
+		return PageGeneratorManager.getAddProductReviewPage(driver);
 	}
 	
 }

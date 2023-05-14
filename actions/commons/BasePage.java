@@ -22,6 +22,7 @@ public class BasePage {
 	static public BasePage getBasePageObject() {
 		return new BasePage();
 	}
+	
 	public void openPageUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}

@@ -1,5 +1,6 @@
 package pageObjects;
 import org.openqa.selenium.WebDriver;
+
 import commons.BasePage;
 import nopcommerce.HomePageUI;
 
@@ -10,19 +11,22 @@ public class HomePageObject extends BasePage {
 		this.driver = driver;
 	}
 	
-	public void clickToRegisterLink() {
+	public RegisterPageObject clickToRegisterLink() {
 		waitForElementVisible(driver, HomePageUI.REGISTER_LINK);
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
+		return PageGeneratorManager.getRegisterPage(driver);
 	}
 	
-	public void clickToLoginLink() {
+	public LoginPageObject clickToLoginLink() {
 		waitForElementVisible(driver, HomePageUI.LOGIN_LINK);
 		clickToElement(driver, HomePageUI.LOGIN_LINK);
+		return PageGeneratorManager.getLoginPage(driver);
 	}
 	
-	public void clickToMyAccountLink() {
+	public MyAccountObject clickToMyAccountLink() {
 		waitForElementVisible(driver, HomePageUI.MYACCOUNT_LINK);
 		clickToElement(driver, HomePageUI.MYACCOUNT_LINK);
+		return PageGeneratorManager.getMyAccountPage(driver);
 	}
 	
 	public boolean isMyAccountLinkDisplay() {
@@ -34,15 +38,21 @@ public class HomePageObject extends BasePage {
 		sendkeyToElement(driver, HomePageUI.SEARCH_TEXTBOX, keyword);
 	}
 
-	public void clickToSearchButton() {
+	public SearchResultObject clickToSearchButton() {
 		waitForElementClickable(driver, HomePageUI.SEARCH_BUTTON);
 		clickToElement(driver, HomePageUI.SEARCH_BUTTON);
+		return PageGeneratorManager.getSearchResultPage(driver);
 	}
 	
-	public void clickToFooterLink(String footerLink) {
+	private void clickToFooterLink(String footerLink) {
 		String footerLinkLocator = HomePageUI.FOOTER_LINK.replace("****", footerLink);
 		scrollToBottomPage(driver);
 		waitForElementVisible(driver, footerLinkLocator);
 		clickToElement(driver, footerLinkLocator);
+	}
+
+	public SearchPageObject clickToSearchFooterLink() {
+		clickToFooterLink("Search");
+		return PageGeneratorManager.getSearchPage(driver);
 	}
 }

@@ -12,5 +12,4 @@ public class CustomerInformationUI {
 	public static final String SAVE_BUTTON = "//button[@id='save-info-button']";
 	public static final String TOAST_MESSAGE = "//div[@id='bar-notification']//p";
 	public static final String CLOSE_TOAST_MESSAGE_BUTTON = "//div[@id='bar-notification']//span[@class='close']";
-	public static final String ADDRESSES_TAB = "//a[text()='Addresses']";
 }

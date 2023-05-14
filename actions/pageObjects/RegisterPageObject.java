@@ -42,9 +42,10 @@ public class RegisterPageObject extends BasePage {
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
 	
-	public void clickToContinueButton() {
+	public HomePageObject clickToContinueButton() {
 		waitForElementClickable(driver, RegisterPageUI.CONTINUE_BUTTON);
 		clickToElement(driver, RegisterPageUI.CONTINUE_BUTTON);
+		return PageGeneratorManager.getHomePage(driver);
 	}
 
 	public String getFirstNameErrorMessage() {

@@ -1,5 +1,6 @@
 package commons;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -69,4 +70,19 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		return driver;
 	}
+	
+	protected int getRandomNumber() {
+		Random rand = new Random();
+		int randomNumber = rand.nextInt(99999);
+		return randomNumber;
+	}
+	
+	protected void SleepInSecond(long second) {
+		try {
+			Thread.sleep(second * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
