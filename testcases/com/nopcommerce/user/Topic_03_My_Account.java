@@ -1,7 +1,5 @@
 package com.nopcommerce.user;
 
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -11,13 +9,14 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import pageObjects.AddProductReviewObject;
-import pageObjects.AddressesObject;
+import pageObjects.AddAddressesObject;
 import pageObjects.ChangePasswordPageObject;
 import pageObjects.CustomerInformationPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.MyAccountObject;
 import pageObjects.MyProductReviewObject;
+import pageObjects.PageGeneratorManager;
 import pageObjects.ProductDetailObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.SearchResultObject;
@@ -29,7 +28,7 @@ public class Topic_03_My_Account extends BaseTest{
 	RegisterPageObject registerPage;
 	MyAccountObject myaccountPage;
 	CustomerInformationPageObject customerInformationPage;
-	AddressesObject addressesPage;
+	AddAddressesObject addressesPage;
 	ChangePasswordPageObject changePasswordPage;
 	SearchResultObject searchResultPage;
 	ProductDetailObject productDetailPage;
@@ -46,8 +45,8 @@ public class Topic_03_My_Account extends BaseTest{
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		driver.get("https://demo.nopcommerce.com/");
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
-		homePage = new HomePageObject(driver);
 		firstName = "Elon";
 		lastName = "Musk";
 		email = "elonmusk" + getRandomNumber() + "@gmail.com";
@@ -77,8 +76,7 @@ public class Topic_03_My_Account extends BaseTest{
 		
 		// Pre-condition
 		System.out.println("Pre-condition - Step 1: Enter the valid information");
-		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		registerPage = homePage.clickToRegisterLink();
 		System.out.println("Pre-condition - Step 2: Enter the valid information");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -90,27 +88,24 @@ public class Topic_03_My_Account extends BaseTest{
 		System.out.println("Pre-condition - Step 4: Verify the register success message displays");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		System.out.println("Pre-condition - Step 5: Back to Home page");
-		registerPage.clickToContinueButton();
-		homePage = new HomePageObject(driver);
+		homePage = registerPage.clickToContinueButton();
 		System.out.println("Pre-condition - Step 6: Click to Login link to clear data");
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		System.out.println("Pre-condition - Step 7: Input correct email and correct password");
 		loginPage.inputToEmailTextbox(email);
 		loginPage.inputToPasswordTextbox(password);
 		System.out.println("Pre-condition - Step 8: Click to Login button");
-		loginPage.clickToLoginButton();
+		homePage = loginPage.clickToLoginButton();
 		System.out.println("Pre-condition - Step 9: Verify the home page displays");
 		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
-		homePage = new HomePageObject(driver);
 		System.out.println("=============================");
 	}
 	
 	@Test
 	public void My_Account_01_Customer_Information() {
 		System.out.println("My Account 01 - Step 1: Click to My Account link");
-		homePage.clickToMyAccountLink();
-		customerInformationPage = new CustomerInformationPageObject(driver);
+		myaccountPage = homePage.clickToMyAccountLink();
+		customerInformationPage = myaccountPage.clickToCustomerInfoTab();
 		
 		System.out.println("My Account 01 - Step 2: Change the customer information and click save button");
 		customerInformationPage.clickToGenderRadio();
@@ -137,8 +132,8 @@ public class Topic_03_My_Account extends BaseTest{
 	@Test
 	public void My_Account_02_Add_New_Addresses() {
 		System.out.println("My Account 02 - Step 1: Click to Addresses tab");
-		customerInformationPage.clickToAddressesTab();
-		addressesPage = new AddressesObject(driver);
+		// myaccountPage = homePage.clickToMyAccountLink();
+		addressesPage = myaccountPage.clickToAddAddressesTab();
 		addressesPage.clickAddNewButton();
 		
 		System.out.println("My Account 02 - Step 2: Enter the customer address");
@@ -172,8 +167,8 @@ public class Topic_03_My_Account extends BaseTest{
 	@Test
 	public void My_Account_03_Change_Password() {
 		System.out.println("My Account 03 - Step 1: Click to Change password tab");
-		addressesPage.clickToChangePasswordTab();
-		changePasswordPage = new ChangePasswordPageObject(driver);
+		// myaccountPage = homePage.clickToMyAccountLink();
+		changePasswordPage = myaccountPage.clickToChangePasswordTab();
 		
 		System.out.println("My Account 03 - Step 2: Enter the old password and new password");
 		changePasswordPage.sendKeyToOldPasswordTextbox(password);
@@ -187,12 +182,11 @@ public class Topic_03_My_Account extends BaseTest{
 		
 		System.out.println("My Account 03 - Step 4: Verify login successful with new account after log out");
 		SleepInSecond(2);
-		changePasswordPage.clickLogOutLink();
-		homePage.clickToLoginLink();
+		homePage = changePasswordPage.clickLogOutLink();
+		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(newEmail);
 		loginPage.inputToPasswordTextbox(newPassword);
-		loginPage.clickToLoginButton();
-		homePage = new HomePageObject(driver);
+		homePage = loginPage.clickToLoginButton();
 		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
 		System.out.println("=============================");
 	}
@@ -201,16 +195,13 @@ public class Topic_03_My_Account extends BaseTest{
 	public void My_Account_04_Product_Review() {
 		System.out.println("My Account 04 - Step 1: Search Product By Product Title");
 		homePage.inputKeywordToSearchTextbox("apple");
-		homePage.clickToSearchButton();
-		searchResultPage = new SearchResultObject(driver);
+		searchResultPage = homePage.clickToSearchButton();
 		
 		System.out.println("My Account 04 - Step 2: Open Product Detail Page");
-		searchResultPage.clickToProductTitle("Apple MacBook Pro 13-inch");
-		productDetailPage = new ProductDetailObject(driver);
+		productDetailPage = searchResultPage.clickToProductTitle("Apple MacBook Pro 13-inch");
 		
 		System.out.println("My Account 04 - Step 3: Click Add Your Review Link");
-		productDetailPage.clickToAddYourReviewLink();
-		addProductReviewPage = new AddProductReviewObject(driver);
+		addProductReviewPage = productDetailPage.clickToAddYourReviewLink();
 		
 		System.out.println("My Account 04 - Step 4: Enter the new review for the product");
 		addProductReviewPage.inputToReviewTitleTextBox(reviewTitle);
@@ -221,10 +212,8 @@ public class Topic_03_My_Account extends BaseTest{
 		Assert.assertTrue(addProductReviewPage.getAddReviewSuccessMessage().contains("Product review is successfully added."));
 		
 		System.out.println("My Account 04 - Step 6: Open My Product Review Page");
-		homePage.clickToMyAccountLink();
-		myaccountPage = new MyAccountObject(driver);
-		myaccountPage.clickToMyProductReview("My product reviews");
-		myProductReviewPage = new MyProductReviewObject(driver);
+		myaccountPage = homePage.clickToMyAccountLink();
+		myProductReviewPage = myaccountPage.clickToMyProductReviewTab();
 		
 		System.out.println("My Account 04 - Step 7: Verify new review occurs in the list review");
 		Assert.assertEquals(myProductReviewPage.getReviewTitle(), reviewTitle);
@@ -238,12 +227,6 @@ public class Topic_03_My_Account extends BaseTest{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public int getRandomNumber() {
-		Random rand = new Random();
-		int randomNumber = rand.nextInt(99999);
-		return randomNumber;
 	}
 	
 	@AfterClass

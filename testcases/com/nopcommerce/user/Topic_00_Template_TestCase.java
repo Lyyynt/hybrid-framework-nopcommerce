@@ -1,7 +1,5 @@
 package com.nopcommerce.user;
 
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -26,12 +24,6 @@ public class Topic_00_Template_TestCase extends BaseTest{
 	@Test
 	public void TC_01() {
 		
-	}
-	
-	public int getRandomNumber() {
-		Random rand = new Random();
-		int randomNumber = rand.nextInt(99999);
-		return randomNumber;
 	}
 
 	@AfterClass

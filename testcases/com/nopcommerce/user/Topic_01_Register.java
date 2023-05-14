@@ -1,7 +1,5 @@
 package com.nopcommerce.user;
 
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -11,6 +9,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import pageObjects.HomePageObject;
+import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 
 public class Topic_01_Register extends BaseTest{
@@ -24,7 +23,7 @@ public class Topic_01_Register extends BaseTest{
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -36,8 +35,7 @@ public class Topic_01_Register extends BaseTest{
 	@Test
 	public void Register_01_Empty_Data() {
 		System.out.println("Register 01 - Step 1: Click to register link");
-		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		registerPage = homePage.clickToRegisterLink();
 		
 		System.out.println("Register 01 - Step 2: Click to register button");
 		registerPage.clickToRegisterButton();
@@ -78,15 +76,13 @@ public class Topic_01_Register extends BaseTest{
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		
 		System.out.println("Register 03 - Step 4: Back to Home page");
-		registerPage.clickToContinueButton();
-		homePage = new HomePageObject(driver);
+		homePage = registerPage.clickToContinueButton();
 	}
 	
 	@Test
 	public void Register_04_Exist_Email() {
 		System.out.println("Register 04 - Step 1: Click to register link");
-		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		registerPage =  homePage.clickToRegisterLink();
 		
 		System.out.println("Register 04 - Step 2: Enter the valid information with existing email");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -134,20 +130,6 @@ public class Topic_01_Register extends BaseTest{
 		Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(), "The password and confirmation password do not match.");
 	}
 	
-	public void SleepInSecond(long second) {
-		try {
-			Thread.sleep(second * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public int getRandomNumber() {
-		Random rand = new Random();
-		int randomNumber = rand.nextInt(99999);
-		return randomNumber;
-	}
-
 	@AfterClass
 	public void afterClass() {
 		driver.quit();

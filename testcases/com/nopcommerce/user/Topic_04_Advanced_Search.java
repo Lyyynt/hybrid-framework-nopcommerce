@@ -1,7 +1,5 @@
 package com.nopcommerce.user;
 
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -12,6 +10,7 @@ import org.testng.annotations.Parameters;
 import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
+import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 import pageObjects.SearchPageObject;
 
@@ -48,13 +47,11 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		
 		//precondtion
 		registerNewAccountAndLogin();
-		homePage.clickToFooterLink("Search");
+		searchPage = homePage.clickToSearchFooterLink();
 	}
 	
 	@Test
 	public void Search_01_Empty_Data() {
-		searchPage = new SearchPageObject(driver);
-		
 		System.out.println("Search 01 - Step 1: Click To Search button");
 		searchPage.clickToSearchButton();
 		
@@ -202,12 +199,6 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		System.out.println("=============================");
 	}
 
-	public int getRandomNumber() {
-		Random rand = new Random();
-		int randomNumber = rand.nextInt(99999);
-		return randomNumber;
-	}
-
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
@@ -216,9 +207,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	public void registerNewAccountAndLogin() {
 		// Pre-condition
 		System.out.println("Pre-condition - Step 1: Enter the valid information");
-		homePage = new HomePageObject(driver);
-		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		homePage = PageGeneratorManager.getHomePage(driver);
+		registerPage = homePage.clickToRegisterLink();
 		System.out.println("Pre-condition - Step 2: Enter the valid information");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -230,19 +220,16 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		System.out.println("Pre-condition - Step 4: Verify the register success message displays");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		System.out.println("Pre-condition - Step 5: Back to Home page");
-		registerPage.clickToContinueButton();
-		homePage = new HomePageObject(driver);
+		homePage = registerPage.clickToContinueButton();
 		System.out.println("Pre-condition - Step 6: Click to Login link to clear data");
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage = homePage.clickToLoginLink();
 		System.out.println("Pre-condition - Step 7: Input correct email and correct password");
 		loginPage.inputToEmailTextbox(email);
 		loginPage.inputToPasswordTextbox(password);
 		System.out.println("Pre-condition - Step 8: Click to Login button");
-		loginPage.clickToLoginButton();
+		homePage = loginPage.clickToLoginButton();
 		System.out.println("Pre-condition - Step 9: Verify the home page displays");
 		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
-		homePage = new HomePageObject(driver);
 		System.out.println("=============================");
 	}
 }
