@@ -41,11 +41,5 @@ public class ChangePasswordPageObject extends BasePage{
 		waitForElementClickable(driver, ChangePasswordUI.CLOSE_TOAST_MESSAGE_BUTTON);
 		clickToElement(driver, ChangePasswordUI.CLOSE_TOAST_MESSAGE_BUTTON);
 	}
-
-	public HomePageObject clickLogOutLink() {
-		waitForElementClickable(driver, ChangePasswordUI.LOGOUT_LINK);
-		clickToElement(driver, ChangePasswordUI.LOGOUT_LINK);
-		return PageGeneratorManager.getHomePage(driver);
-	}
 	
 }

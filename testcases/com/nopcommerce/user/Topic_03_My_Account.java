@@ -182,7 +182,7 @@ public class Topic_03_My_Account extends BaseTest{
 		
 		System.out.println("My Account 03 - Step 4: Verify login successful with new account after log out");
 		SleepInSecond(2);
-		homePage = changePasswordPage.clickLogOutLink();
+		homePage = changePasswordPage.clickToLogOutLink(driver);
 		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(newEmail);
 		loginPage.inputToPasswordTextbox(newPassword);
