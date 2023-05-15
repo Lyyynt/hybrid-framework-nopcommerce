@@ -47,7 +47,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		
 		//precondtion
 		registerNewAccountAndLogin();
-		searchPage = homePage.clickToSearchFooterLink();
+		searchPage = homePage.clickToSearchFooterLink(driver);
 	}
 	
 	@Test

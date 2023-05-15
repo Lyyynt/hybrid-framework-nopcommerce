@@ -44,15 +44,4 @@ public class HomePageObject extends BasePage {
 		return PageGeneratorManager.getSearchResultPage(driver);
 	}
 	
-	private void clickToFooterLink(String footerLink) {
-		String footerLinkLocator = HomePageUI.FOOTER_LINK.replace("****", footerLink);
-		scrollToBottomPage(driver);
-		waitForElementVisible(driver, footerLinkLocator);
-		clickToElement(driver, footerLinkLocator);
-	}
-
-	public SearchPageObject clickToSearchFooterLink() {
-		clickToFooterLink("Search");
-		return PageGeneratorManager.getSearchPage(driver);
-	}
 }

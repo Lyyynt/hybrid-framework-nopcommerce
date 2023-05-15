@@ -15,6 +15,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import nopcommerce.AbstractPageUI;
+import nopcommerce.HomePageUI;
+import pageObjects.AddAddressesObject;
+import pageObjects.ChangePasswordPageObject;
+import pageObjects.CustomerInformationPageObject;
+import pageObjects.MyProductReviewObject;
+import pageObjects.PageGeneratorManager;
+import pageObjects.SearchPageObject;
+
 public class BasePage {
 	private long longTimeout = 30;
 	private long shortTimeout = 5;
@@ -333,5 +342,43 @@ public class BasePage {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void clickToLeftMenuTab(WebDriver driver, String leftMenuName) {
+		String leftMenuLocator = String.format(AbstractPageUI.LEFT_MENU_LINK, leftMenuName);
+		waitForElementVisible(driver, leftMenuLocator);
+		clickToElement(driver, leftMenuLocator);
+	}
+	
+	public CustomerInformationPageObject clickToCustomerInfoTab(WebDriver driver) {
+		clickToLeftMenuTab(driver, "Customer info");
+		return PageGeneratorManager.getCustomerInformationPage(driver);
+	}
+
+	public AddAddressesObject clickToAddAddressesTab(WebDriver driver) {
+		clickToLeftMenuTab(driver, "Addresses");
+		return PageGeneratorManager.getAddAddressPage(driver);
+	}
+
+	public ChangePasswordPageObject clickToChangePasswordTab(WebDriver driver) {
+		clickToLeftMenuTab(driver, "Change password");
+		return PageGeneratorManager.getChangePasswordPage(driver);
+	}
+
+	public MyProductReviewObject clickToMyProductReviewTab(WebDriver driver) {
+		clickToLeftMenuTab(driver, "My product reviews");
+		return PageGeneratorManager.getMyProductReviewPage(driver);
+	}
+	
+	private void clickToFooterLink(WebDriver driver, String footerLink) {
+		String footerLinkLocator = String.format(AbstractPageUI.FOOTER_LINK, footerLink);
+		scrollToBottomPage(driver);
+		waitForElementVisible(driver, footerLinkLocator);
+		clickToElement(driver, footerLinkLocator);
+	}
+
+	public SearchPageObject clickToSearchFooterLink(WebDriver driver) {
+		clickToFooterLink(driver, "Search");
+		return PageGeneratorManager.getSearchPage(driver);
 	}
 }

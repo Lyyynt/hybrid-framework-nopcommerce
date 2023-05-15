@@ -105,7 +105,7 @@ public class Topic_03_My_Account extends BaseTest{
 	public void My_Account_01_Customer_Information() {
 		System.out.println("My Account 01 - Step 1: Click to My Account link");
 		myaccountPage = homePage.clickToMyAccountLink();
-		customerInformationPage = myaccountPage.clickToCustomerInfoTab();
+		customerInformationPage = myaccountPage.clickToCustomerInfoTab(driver);
 		
 		System.out.println("My Account 01 - Step 2: Change the customer information and click save button");
 		customerInformationPage.clickToGenderRadio();
@@ -133,7 +133,7 @@ public class Topic_03_My_Account extends BaseTest{
 	public void My_Account_02_Add_New_Addresses() {
 		System.out.println("My Account 02 - Step 1: Click to Addresses tab");
 		// myaccountPage = homePage.clickToMyAccountLink();
-		addressesPage = myaccountPage.clickToAddAddressesTab();
+		addressesPage = myaccountPage.clickToAddAddressesTab(driver);
 		addressesPage.clickAddNewButton();
 		
 		System.out.println("My Account 02 - Step 2: Enter the customer address");
@@ -168,7 +168,7 @@ public class Topic_03_My_Account extends BaseTest{
 	public void My_Account_03_Change_Password() {
 		System.out.println("My Account 03 - Step 1: Click to Change password tab");
 		// myaccountPage = homePage.clickToMyAccountLink();
-		changePasswordPage = myaccountPage.clickToChangePasswordTab();
+		changePasswordPage = myaccountPage.clickToChangePasswordTab(driver);
 		
 		System.out.println("My Account 03 - Step 2: Enter the old password and new password");
 		changePasswordPage.sendKeyToOldPasswordTextbox(password);
@@ -213,7 +213,7 @@ public class Topic_03_My_Account extends BaseTest{
 		
 		System.out.println("My Account 04 - Step 6: Open My Product Review Page");
 		myaccountPage = homePage.clickToMyAccountLink();
-		myProductReviewPage = myaccountPage.clickToMyProductReviewTab();
+		myProductReviewPage = myaccountPage.clickToMyProductReviewTab(driver);
 		
 		System.out.println("My Account 04 - Step 7: Verify new review occurs in the list review");
 		Assert.assertEquals(myProductReviewPage.getReviewTitle(), reviewTitle);
