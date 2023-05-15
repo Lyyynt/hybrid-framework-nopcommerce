@@ -10,24 +10,23 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.user.UserHomePageObject;
+import pageObjects.user.UserRegisterPageObject;
 
 public class Level_06_Register_Generator_Manager_2 extends BaseTest{
 	// Level 2: đã tạo đc sự liên kết với các page, và việc che giấu khởi tạo page đã diễn ra
 	// Tuy nhiên quá nhiều chỗ khởi tạo page -> khi sửa hàm khởi tạo -> phải sửa ở nhiều chỗ -> vi phạm DRY
 	
 	WebDriver driver;
-	HomePageObject homePage;
-	RegisterPageObject registerPage;
+	UserHomePageObject homePage;
+	UserRegisterPageObject registerPage;
 	String firstName, lastName, email, password, confirmPassword;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";

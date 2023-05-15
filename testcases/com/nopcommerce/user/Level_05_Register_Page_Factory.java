@@ -23,7 +23,6 @@ public class Level_05_Register_Page_Factory extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("https://demo.nopcommerce.com/");
 		homePage = new HomePageObject(driver);
 		
 		firstName = "Elon";

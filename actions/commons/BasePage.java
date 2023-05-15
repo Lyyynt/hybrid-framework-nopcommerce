@@ -15,15 +15,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import nopcommerce.AbstractPageUI;
-import nopcommerce.HomePageUI;
-import pageObjects.AddAddressesObject;
-import pageObjects.ChangePasswordPageObject;
-import pageObjects.CustomerInformationPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.MyProductReviewObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.SearchPageObject;
+import nopcommerce.user.UserAbstractPageUI;
+import nopcommerce.user.UserHomePageUI;
+import pageObjects.user.UserAddAddressesObject;
+import pageObjects.user.UserChangePasswordPageObject;
+import pageObjects.user.UserCustomerInformationPageObject;
+import pageObjects.user.UserHomePageObject;
+import pageObjects.user.UserMyProductReviewObject;
+import pageObjects.user.UserSearchPageObject;
 
 public class BasePage {
 	private long longTimeout = 30;
@@ -360,46 +359,46 @@ public class BasePage {
 	}
 	
 	private void clickToLeftMenuTab(WebDriver driver, String leftMenuName) {
-		String leftMenuLocator = String.format(AbstractPageUI.LEFT_MENU_LINK, leftMenuName);
+		String leftMenuLocator = String.format(UserAbstractPageUI.LEFT_MENU_LINK, leftMenuName);
 		waitForElementVisible(driver, leftMenuLocator);
 		clickToElement(driver, leftMenuLocator);
 	}
 	
-	public CustomerInformationPageObject clickToCustomerInfoTab(WebDriver driver) {
+	public UserCustomerInformationPageObject clickToCustomerInfoTab(WebDriver driver) {
 		clickToLeftMenuTab(driver, "Customer info");
-		return PageGeneratorManager.getCustomerInformationPage(driver);
+		return PageGeneratorManager.getUserCustomerInformationPage(driver);
 	}
 
-	public AddAddressesObject clickToAddAddressesTab(WebDriver driver) {
+	public UserAddAddressesObject clickToAddAddressesTab(WebDriver driver) {
 		clickToLeftMenuTab(driver, "Addresses");
-		return PageGeneratorManager.getAddAddressPage(driver);
+		return PageGeneratorManager.getUserAddAddressPage(driver);
 	}
 
-	public ChangePasswordPageObject clickToChangePasswordTab(WebDriver driver) {
+	public UserChangePasswordPageObject clickToChangePasswordTab(WebDriver driver) {
 		clickToLeftMenuTab(driver, "Change password");
-		return PageGeneratorManager.getChangePasswordPage(driver);
+		return PageGeneratorManager.getUserChangePasswordPage(driver);
 	}
 
-	public MyProductReviewObject clickToMyProductReviewTab(WebDriver driver) {
+	public UserMyProductReviewObject clickToMyProductReviewTab(WebDriver driver) {
 		clickToLeftMenuTab(driver, "My product reviews");
-		return PageGeneratorManager.getMyProductReviewPage(driver);
+		return PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
 	
 	private void clickToFooterLink(WebDriver driver, String footerLink) {
-		String footerLinkLocator = String.format(AbstractPageUI.FOOTER_LINK, footerLink);
+		String footerLinkLocator = String.format(UserAbstractPageUI.FOOTER_LINK, footerLink);
 		scrollToBottomPage(driver);
 		waitForElementVisible(driver, footerLinkLocator);
 		clickToElement(driver, footerLinkLocator);
 	}
 
-	public SearchPageObject clickToSearchFooterLink(WebDriver driver) {
+	public UserSearchPageObject clickToSearchFooterLink(WebDriver driver) {
 		clickToFooterLink(driver, "Search");
-		return PageGeneratorManager.getSearchPage(driver);
+		return PageGeneratorManager.getUserSearchPage(driver);
 	}
 	
-	public HomePageObject clickToLogOutLink(WebDriver driver) {
-		waitForElementClickable(driver, AbstractPageUI.LOGOUT_LINK);
-		clickToElement(driver, AbstractPageUI.LOGOUT_LINK);
-		return PageGeneratorManager.getHomePage(driver);
+	public UserHomePageObject clickToLogOutLink(WebDriver driver) {
+		waitForElementClickable(driver, UserAbstractPageUI.LOGOUT_LINK);
+		clickToElement(driver, UserAbstractPageUI.LOGOUT_LINK);
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 }

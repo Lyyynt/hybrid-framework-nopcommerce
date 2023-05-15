@@ -1,6 +1,6 @@
-package nopcommerce;
+package nopcommerce.user;
 
-public class AddressesUI {
+public class UserAddressesUI {
 	public static final String ADD_NEW_BUTTON = "xpath=//button[contains(@class, 'add-address-button')]";
 	public static final String FIRSTNAME_TEXTBOX = "xpath=//input[@id='Address_FirstName']";
 	public static final String LASTNAME_TEXTBOX = "xpath=//input[@id='Address_LastName']";

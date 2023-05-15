@@ -8,19 +8,19 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
-import pageObjects.SearchPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.user.UserHomePageObject;
+import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.UserRegisterPageObject;
+import pageObjects.user.UserSearchPageObject;
 
 
 public class Topic_04_Advanced_Search extends BaseTest{
 	WebDriver driver;
-	HomePageObject homePage;
-	LoginPageObject loginPage;
-	RegisterPageObject registerPage;
-	SearchPageObject searchPage;
+	UserHomePageObject homePage;
+	UserLoginPageObject loginPage;
+	UserRegisterPageObject registerPage;
+	UserSearchPageObject searchPage;
 	
 	String firstName, lastName, email, password, confirmPassword, country, city, address1, address2, portalCode, phoneNumber, faxNumber;
 	String projectPath = System.getProperty("user.dir");
@@ -30,7 +30,6 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("https://demo.nopcommerce.com/");
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -207,7 +206,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	public void registerNewAccountAndLogin() {
 		// Pre-condition
 		System.out.println("Pre-condition - Step 1: Enter the valid information");
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 		registerPage = homePage.clickToRegisterLink();
 		System.out.println("Pre-condition - Step 2: Enter the valid information");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -229,7 +228,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		System.out.println("Pre-condition - Step 8: Click to Login button");
 		homePage = loginPage.clickToLoginButton();
 		System.out.println("Pre-condition - Step 9: Verify the home page displays");
-		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
+		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		System.out.println("=============================");
 	}
 }

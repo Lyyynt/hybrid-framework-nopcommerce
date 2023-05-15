@@ -8,24 +8,24 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.ChangePasswordPageObject;
-import pageObjects.CustomerInformationPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.MyAccountObject;
-import pageObjects.MyProductReviewObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.user.UserChangePasswordPageObject;
+import pageObjects.user.UserCustomerInformationPageObject;
+import pageObjects.user.UserHomePageObject;
+import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.UserMyAccountObject;
+import pageObjects.user.UserMyProductReviewObject;
+import pageObjects.user.UserRegisterPageObject;
 
 public class Level_07_Switch_Page extends BaseTest{
 	WebDriver driver;
-	HomePageObject homePage;
-	RegisterPageObject registerPage;
-	LoginPageObject loginPage;
-	MyAccountObject myAccountPage;
-	CustomerInformationPageObject customerInforPage;
-	MyProductReviewObject myProductReviewPage;
-	ChangePasswordPageObject changePasswordPage;
+	UserHomePageObject homePage;
+	UserRegisterPageObject registerPage;
+	UserLoginPageObject loginPage;
+	UserMyAccountObject myAccountPage;
+	UserCustomerInformationPageObject customerInforPage;
+	UserMyProductReviewObject myProductReviewPage;
+	UserChangePasswordPageObject changePasswordPage;
 	
 	String firstName, lastName, email, password, confirmPassword;
 	
@@ -34,7 +34,7 @@ public class Level_07_Switch_Page extends BaseTest{
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		driver.get("https://demo.nopcommerce.com/");
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -77,8 +77,8 @@ public class Level_07_Switch_Page extends BaseTest{
 		System.out.println("Login - Step 3: Click to Login button");
 		loginPage.clickToLoginButton();
 		
-		System.out.println("Login - Step 4: Verify the email not found message displays");
-		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
+		System.out.println("Login - Step 4: Verify the my account page is displayed");
+		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
 	
 	@Test

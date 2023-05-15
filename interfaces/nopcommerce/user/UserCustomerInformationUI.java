@@ -1,6 +1,6 @@
-package nopcommerce;
+package nopcommerce.user;
 
-public class CustomerInformationUI {
+public class UserCustomerInformationUI {
 	public static final String FEMALE_GENDER_RADIO_BUTTON = "xpath=//input[@id='gender-female']";
 	public static final String FIRSTNAME_TEXTBOX = "xpath=//input[@id='FirstName']";
 	public static final String LASTNAME_TEXTBOX = "xpath=//input[@id='LastName']";

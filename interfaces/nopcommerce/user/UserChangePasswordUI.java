@@ -1,6 +1,6 @@
-package nopcommerce;
+package nopcommerce.user;
 
-public class ChangePasswordUI {
+public class UserChangePasswordUI {
 	public static final String OLD_PASSWORD_TEXTBOX = "xpath=//input[@id='OldPassword']";
 	public static final String NEW_PASSWORD_TEXTBOX = "xpath=//input[@id='NewPassword']";
 	public static final String CONFIRM_NEW_PASSWORD_TEXTBOX = "xpath=//input[@id='ConfirmNewPassword']";

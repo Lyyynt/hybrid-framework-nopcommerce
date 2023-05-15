@@ -10,9 +10,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.user.UserHomePageObject;
+import pageObjects.user.UserRegisterPageObject;
 
 public class Level_06_Register_Generator_Manager_3 extends BaseTest{
 	// Leve 3: về mặt test case ko khác gì level 2, tuy nhiên trong từng hàm thay vì khởi tạo page bởi câu lệnh new Object
@@ -22,16 +22,15 @@ public class Level_06_Register_Generator_Manager_3 extends BaseTest{
 	// -> dễ maintain nếu có thay đổi
 	
 	WebDriver driver;
-	HomePageObject homePage;
-	RegisterPageObject registerPage;
+	UserHomePageObject homePage;
+	UserRegisterPageObject registerPage;
 	String firstName, lastName, email, password, confirmPassword;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";

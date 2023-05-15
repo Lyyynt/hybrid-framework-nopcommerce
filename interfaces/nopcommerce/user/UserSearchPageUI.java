@@ -1,6 +1,6 @@
-package nopcommerce;
+package nopcommerce.user;
 
-public class SearchPageUI {
+public class UserSearchPageUI {
 	public static final String SEARCH_TEXTBOX = "xpath=//input[@class='search-text']";
 	public static final String SEARCH_ADVANCED_CHECKBOX = "xpath=//input[@id='advs']";
 	public static final String SEARCH_BUTTON = "xpath=//button[contains(@class, 'search-button')]";

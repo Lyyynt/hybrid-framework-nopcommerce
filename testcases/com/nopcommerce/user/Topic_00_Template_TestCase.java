@@ -18,7 +18,6 @@ public class Topic_00_Template_TestCase extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("");
 	}
 	
 	@Test

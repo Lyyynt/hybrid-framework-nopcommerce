@@ -8,32 +8,32 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.AddProductReviewObject;
-import pageObjects.AddAddressesObject;
-import pageObjects.ChangePasswordPageObject;
-import pageObjects.CustomerInformationPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.MyAccountObject;
-import pageObjects.MyProductReviewObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.ProductDetailObject;
-import pageObjects.RegisterPageObject;
-import pageObjects.SearchResultObject;
+import commons.PageGeneratorManager;
+import pageObjects.user.UserAddAddressesObject;
+import pageObjects.user.UserAddProductReviewObject;
+import pageObjects.user.UserChangePasswordPageObject;
+import pageObjects.user.UserCustomerInformationPageObject;
+import pageObjects.user.UserHomePageObject;
+import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.UserMyAccountObject;
+import pageObjects.user.UserMyProductReviewObject;
+import pageObjects.user.UserProductDetailObject;
+import pageObjects.user.UserRegisterPageObject;
+import pageObjects.user.UserSearchResultObject;
 
 public class Topic_03_My_Account extends BaseTest{
 	WebDriver driver;
-	HomePageObject homePage;
-	LoginPageObject loginPage;
-	RegisterPageObject registerPage;
-	MyAccountObject myaccountPage;
-	CustomerInformationPageObject customerInformationPage;
-	AddAddressesObject addressesPage;
-	ChangePasswordPageObject changePasswordPage;
-	SearchResultObject searchResultPage;
-	ProductDetailObject productDetailPage;
-	AddProductReviewObject addProductReviewPage;
-	MyProductReviewObject myProductReviewPage;
+	UserHomePageObject homePage;
+	UserLoginPageObject loginPage;
+	UserRegisterPageObject registerPage;
+	UserMyAccountObject myaccountPage;
+	UserCustomerInformationPageObject customerInformationPage;
+	UserAddAddressesObject addressesPage;
+	UserChangePasswordPageObject changePasswordPage;
+	UserSearchResultObject searchResultPage;
+	UserProductDetailObject productDetailPage;
+	UserAddProductReviewObject addProductReviewPage;
+	UserMyProductReviewObject myProductReviewPage;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
 	String firstName, lastName, email, password, confirmPassword, country, city, address1, address2, portalCode, phoneNumber, faxNumber;
@@ -44,8 +44,7 @@ public class Topic_03_My_Account extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -97,7 +96,7 @@ public class Topic_03_My_Account extends BaseTest{
 		System.out.println("Pre-condition - Step 8: Click to Login button");
 		homePage = loginPage.clickToLoginButton();
 		System.out.println("Pre-condition - Step 9: Verify the home page displays");
-		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
+		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		System.out.println("=============================");
 	}
 	
@@ -187,7 +186,7 @@ public class Topic_03_My_Account extends BaseTest{
 		loginPage.inputToEmailTextbox(newEmail);
 		loginPage.inputToPasswordTextbox(newPassword);
 		homePage = loginPage.clickToLoginButton();
-		Assert.assertTrue(homePage.isMyAccountLinkDisplay());
+		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		System.out.println("=============================");
 	}
 	
