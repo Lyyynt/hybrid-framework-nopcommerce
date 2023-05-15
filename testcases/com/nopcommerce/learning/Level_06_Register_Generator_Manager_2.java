@@ -1,4 +1,4 @@
-package com.nopcommerce.user;
+package com.nopcommerce.learning;
 
 import java.util.Random;
 

@@ -1,36 +1,39 @@
-package com.nopcommerce.user;
+package com.nopcommerce.learning;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BaseTest;
-import commons.PageGeneratorManager;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserRegisterPageObject;
 
-public class Level_06_Register_Generator_Manager_3 extends BaseTest{
-	// Leve 3: về mặt test case ko khác gì level 2, tuy nhiên trong từng hàm thay vì khởi tạo page bởi câu lệnh new Object
-	// tất cả các object đc khởi tạo trong PageGeneratorManager -> và khi cần khởi tạo thì gọi đến hàm getPageObject trong này
-	// -> che giấu đc việc khởi tạo
-	// -> tránh lặp code
-	// -> dễ maintain nếu có thay đổi
-	
+public class Level_03_Register_PageObjectModel {
 	WebDriver driver;
 	UserHomePageObject homePage;
 	UserRegisterPageObject registerPage;
+	String projectPath = System.getProperty("user.dir");
+	String osName = System.getProperty("os.name");
 	String firstName, lastName, email, password, confirmPassword;
 	
-	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+	public void beforeClass() {
+		if (osName.contains("Windows")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		} else {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		}
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get("https://demo.nopcommerce.com/");
+		homePage = new UserHomePageObject(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -42,7 +45,8 @@ public class Level_06_Register_Generator_Manager_3 extends BaseTest{
 	@Test
 	public void Register_01_Empty_Data() {
 		System.out.println("Register 01 - Step 1: Click to register link");
-		registerPage = homePage.clickToRegisterLink();
+		homePage.clickToRegisterLink();
+		registerPage = new UserRegisterPageObject(driver);
 		
 		System.out.println("Register 01 - Step 2: Click to register button");
 		registerPage.clickToRegisterButton();
@@ -83,13 +87,15 @@ public class Level_06_Register_Generator_Manager_3 extends BaseTest{
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		
 		System.out.println("Register 03 - Step 4: Back to Home page");
-		homePage = registerPage.clickToContinueButton();
+		registerPage.clickToContinueButton();
+		homePage = new UserHomePageObject(driver);
 	}
 	
 	@Test
 	public void Register_04_Exist_Email() {
 		System.out.println("Register 04 - Step 1: Click to register link");
-		registerPage =  homePage.clickToRegisterLink();
+		homePage.clickToRegisterLink();
+		registerPage = new UserRegisterPageObject(driver);
 		
 		System.out.println("Register 04 - Step 2: Enter the valid information with existing email");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -137,6 +143,20 @@ public class Level_06_Register_Generator_Manager_3 extends BaseTest{
 		Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(), "The password and confirmation password do not match.");
 	}
 	
+	public void SleepInSecond(long second) {
+		try {
+			Thread.sleep(second * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int getRandomNumber() {
+		Random rand = new Random();
+		int randomNumber = rand.nextInt(99999);
+		return randomNumber;
+	}
+
 	@AfterClass
 	public void afterClass() {
 		driver.quit();

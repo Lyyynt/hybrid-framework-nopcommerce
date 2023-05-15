@@ -1,4 +1,4 @@
-package com.nopcommerce.user;
+package com.nopcommerce.learning;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

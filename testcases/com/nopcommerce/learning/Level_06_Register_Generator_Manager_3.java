@@ -1,4 +1,4 @@
-package com.nopcommerce.user;
+package com.nopcommerce.learning;
 
 import java.util.Random;
 
@@ -10,10 +10,17 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import commons.PageGeneratorManager;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserRegisterPageObject;
 
-public class Level_04_Register_Multiple_Browser extends BaseTest{
+public class Level_06_Register_Generator_Manager_3 extends BaseTest{
+	// Leve 3: về mặt test case ko khác gì level 2, tuy nhiên trong từng hàm thay vì khởi tạo page bởi câu lệnh new Object
+	// tất cả các object đc khởi tạo trong PageGeneratorManager -> và khi cần khởi tạo thì gọi đến hàm getPageObject trong này
+	// -> che giấu đc việc khởi tạo
+	// -> tránh lặp code
+	// -> dễ maintain nếu có thay đổi
+	
 	WebDriver driver;
 	UserHomePageObject homePage;
 	UserRegisterPageObject registerPage;
@@ -23,7 +30,7 @@ public class Level_04_Register_Multiple_Browser extends BaseTest{
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = new UserHomePageObject(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -35,8 +42,7 @@ public class Level_04_Register_Multiple_Browser extends BaseTest{
 	@Test
 	public void Register_01_Empty_Data() {
 		System.out.println("Register 01 - Step 1: Click to register link");
-		homePage.clickToRegisterLink();
-		registerPage = new UserRegisterPageObject(driver);
+		registerPage = homePage.clickToRegisterLink();
 		
 		System.out.println("Register 01 - Step 2: Click to register button");
 		registerPage.clickToRegisterButton();
@@ -77,15 +83,13 @@ public class Level_04_Register_Multiple_Browser extends BaseTest{
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		
 		System.out.println("Register 03 - Step 4: Back to Home page");
-		registerPage.clickToContinueButton();
-		homePage = new UserHomePageObject(driver);
+		homePage = registerPage.clickToContinueButton();
 	}
 	
 	@Test
 	public void Register_04_Exist_Email() {
 		System.out.println("Register 04 - Step 1: Click to register link");
-		homePage.clickToRegisterLink();
-		registerPage = new UserRegisterPageObject(driver);
+		registerPage =  homePage.clickToRegisterLink();
 		
 		System.out.println("Register 04 - Step 2: Enter the valid information with existing email");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -133,20 +137,6 @@ public class Level_04_Register_Multiple_Browser extends BaseTest{
 		Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(), "The password and confirmation password do not match.");
 	}
 	
-	public void SleepInSecond(long second) {
-		try {
-			Thread.sleep(second * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public int getRandomNumber() {
-		Random rand = new Random();
-		int randomNumber = rand.nextInt(99999);
-		return randomNumber;
-	}
-
 	@AfterClass
 	public void afterClass() {
 		driver.quit();

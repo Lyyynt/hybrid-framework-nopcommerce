@@ -1,39 +1,29 @@
-package com.nopcommerce.user;
+package com.nopcommerce.learning;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserRegisterPageObject;
+import commons.BaseTest;
+import pageFactories.HomePageObject;
+import pageFactories.RegisterPageObject;
 
-public class Level_03_Register_PageObjectModel {
+public class Level_05_Register_Page_Factory extends BaseTest{
 	WebDriver driver;
-	UserHomePageObject homePage;
-	UserRegisterPageObject registerPage;
-	String projectPath = System.getProperty("user.dir");
-	String osName = System.getProperty("os.name");
+	HomePageObject homePage;
+	RegisterPageObject registerPage;
 	String firstName, lastName, email, password, confirmPassword;
 	
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		if (osName.contains("Windows")) {
-			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		} else {
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-		}
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = new UserHomePageObject(driver);
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
+		homePage = new HomePageObject(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
@@ -46,7 +36,7 @@ public class Level_03_Register_PageObjectModel {
 	public void Register_01_Empty_Data() {
 		System.out.println("Register 01 - Step 1: Click to register link");
 		homePage.clickToRegisterLink();
-		registerPage = new UserRegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driver);
 		
 		System.out.println("Register 01 - Step 2: Click to register button");
 		registerPage.clickToRegisterButton();
@@ -88,14 +78,14 @@ public class Level_03_Register_PageObjectModel {
 		
 		System.out.println("Register 03 - Step 4: Back to Home page");
 		registerPage.clickToContinueButton();
-		homePage = new UserHomePageObject(driver);
+		homePage = new HomePageObject(driver);
 	}
 	
 	@Test
 	public void Register_04_Exist_Email() {
 		System.out.println("Register 04 - Step 1: Click to register link");
 		homePage.clickToRegisterLink();
-		registerPage = new UserRegisterPageObject(driver);
+		registerPage = new RegisterPageObject(driver);
 		
 		System.out.println("Register 04 - Step 2: Enter the valid information with existing email");
 		registerPage.inputToFirstNameTextbox(firstName);
