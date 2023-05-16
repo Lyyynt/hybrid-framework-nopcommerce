@@ -429,34 +429,46 @@ public class BasePage {
 		}
 	}
 	
-	private void clickToLeftMenuTab(WebDriver driver, String leftMenuName) {
-		String leftMenuLocator = String.format(UserAbstractPageUI.LEFT_MENU_LINK, leftMenuName);
+	public BasePage openPageInMyAccountArea(WebDriver driver, String pageName) {
+		String leftMenuLocator = String.format(UserAbstractPageUI.DYNAMIC_PAGE_IN_MY_ACCOUNT_AREA, pageName);
 		waitForElementVisible(driver, leftMenuLocator);
 		clickToElement(driver, leftMenuLocator);
+		switch (pageName) {
+		case "Customer info":
+			return PageGeneratorManager.getUserCustomerInformationPage(driver);
+		case "Addresses":
+			return PageGeneratorManager.getUserAddAddressPage(driver);
+		case "Change password":
+			return PageGeneratorManager.getUserChangePasswordPage(driver);
+		case "My product reviews":
+			return PageGeneratorManager.getUserMyProductReviewPage(driver);
+		default:
+			return null;
+		}
 	}
 	
 	public UserCustomerInformationPageObject clickToCustomerInfoTab(WebDriver driver) {
-		clickToLeftMenuTab(driver, "Customer info");
+		openPageInMyAccountArea(driver, "Customer info");
 		return PageGeneratorManager.getUserCustomerInformationPage(driver);
 	}
 
 	public UserAddAddressesObject clickToAddAddressesTab(WebDriver driver) {
-		clickToLeftMenuTab(driver, "Addresses");
+		openPageInMyAccountArea(driver, "Addresses");
 		return PageGeneratorManager.getUserAddAddressPage(driver);
 	}
 
 	public UserChangePasswordPageObject clickToChangePasswordTab(WebDriver driver) {
-		clickToLeftMenuTab(driver, "Change password");
+		openPageInMyAccountArea(driver, "Change password");
 		return PageGeneratorManager.getUserChangePasswordPage(driver);
 	}
 
 	public UserMyProductReviewObject clickToMyProductReviewTab(WebDriver driver) {
-		clickToLeftMenuTab(driver, "My product reviews");
+		openPageInMyAccountArea(driver, "My product reviews");
 		return PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
 	
-	private void clickToFooterLink(WebDriver driver, String footerLink) {
-		String footerLinkLocator = String.format(UserAbstractPageUI.FOOTER_LINK, footerLink);
+	private void clickToFooterLink(WebDriver driver, String pageName) {
+		String footerLinkLocator = String.format(UserAbstractPageUI.DYNAMIC_FOOTER_LINK, pageName);
 		scrollToBottomPage(driver);
 		waitForElementVisible(driver, footerLinkLocator);
 		clickToElement(driver, footerLinkLocator);

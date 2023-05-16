@@ -17,7 +17,7 @@ import pageObjects.user.UserMyAccountObject;
 import pageObjects.user.UserMyProductReviewObject;
 import pageObjects.user.UserRegisterPageObject;
 
-public class Level_07_Switch_Page extends BaseTest{
+public class Level_09_Dynamic_Locator extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
 	UserRegisterPageObject registerPage;
@@ -82,7 +82,7 @@ public class Level_07_Switch_Page extends BaseTest{
 	}
 	
 	@Test
-	public void TC_03_Switch_Page() {
+	public void TC_03_Switch_Page_Before_Apply_Dynamic_Xpath() {
 		System.out.println("Switch Page - Step 1: Go to my account page");
 		myAccountPage = homePage.clickToMyAccountLink();
 		
@@ -96,6 +96,40 @@ public class Level_07_Switch_Page extends BaseTest{
 		customerInforPage = changePasswordPage.clickToCustomerInfoTab(driver);
 	}
 	
+	@Test
+	public void TC_04_Switch_Page_After_Apply_Dynamic_Xpath_1() {
+		System.out.println("Switch Page - Step 1: Customer Infor -> My product review");
+		myProductReviewPage = (UserMyProductReviewObject) customerInforPage.openPageInMyAccountArea(driver, "My product reviews");
+		
+		System.out.println("Switch Page - Step 2: My product review -> Change Password");
+		changePasswordPage = (UserChangePasswordPageObject) myProductReviewPage.openPageInMyAccountArea(driver, "Change password");
+		
+		System.out.println("Switch Page - Step 3: Change Password -> Customer Infor");
+		customerInforPage = (UserCustomerInformationPageObject) changePasswordPage.openPageInMyAccountArea(driver, "Customer info");
+		
+		System.out.println("Switch Page - Step 3: Customer Infor -> My product review");
+		myProductReviewPage = (UserMyProductReviewObject) customerInforPage.openPageInMyAccountArea(driver, "My product reviews");
+	}
+	
+	@Test
+	public void TC_05_Switch_Page_After_Apply_Dynamic_Xpath_2() {
+		// With many page -> can not using switch case to return page -> init page object in test case level
+		System.out.println("Switch Page - Step 1: Customer Infor -> My product review");
+		customerInforPage.openPageInMyAccountArea(driver, "My product reviews");
+		myProductReviewPage = PageGeneratorManager.getUserMyProductReviewPage(driver);
+		
+		System.out.println("Switch Page - Step 2: My product review -> Change Password");
+		myProductReviewPage.openPageInMyAccountArea(driver, "Change password");
+		changePasswordPage = PageGeneratorManager.getUserChangePasswordPage(driver);
+		
+		System.out.println("Switch Page - Step 3: Change Password -> Customer Infor");
+		changePasswordPage.openPageInMyAccountArea(driver, "Customer info");
+		customerInforPage = PageGeneratorManager.getUserCustomerInformationPage(driver);
+		
+		System.out.println("Switch Page - Step 3: Customer Infor -> My product review");
+		customerInforPage.openPageInMyAccountArea(driver, "My product reviews");
+		myProductReviewPage = PageGeneratorManager.getUserMyProductReviewPage(driver);
+	}
 	
 	@AfterClass
 	public void afterClass() {

@@ -42,7 +42,7 @@ public class Level_08_Switch_Role extends BaseTest{
 	}
 
 	@Test
-	public void TC01_Register_With_Valid_Information() {
+	public void TC_01_Register_With_Valid_Information() {
 		System.out.println("Register - Step 1: Click to register link");
 		userRegisterPage = userHomePage.clickToRegisterLink();
 		
