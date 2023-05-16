@@ -82,7 +82,7 @@ public class Level_08_Switch_Role extends BaseTest{
 	@Test
 	public void TC_03_Switch_Admin_Page_With_Admin_Role() {
 		System.out.println("Swith To Admin Page - Step 1: Open admin page");
-		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_PAGE_URL);
+		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
 		System.out.println("Swith To Admin Page - Step 2: Login with admin account"); 

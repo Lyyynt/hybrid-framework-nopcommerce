@@ -9,15 +9,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-//import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.opera.OperaOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	WebDriver driver;
-	String projectPath = System.getProperty("user.dir");
 	
 	protected WebDriver getBrowserDriver(String browserName) {
 		switch (browserName) {
@@ -68,7 +65,7 @@ public class BaseTest {
 		}
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get(GlobalConstants.USER_PAGE_URL);
+		driver.get(GlobalConstants.PORTAL_DEV_URL);
 		return driver;
 	}
 	
