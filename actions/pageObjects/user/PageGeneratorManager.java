@@ -1,21 +1,10 @@
-package commons;
+package pageObjects.user;
 
 import org.openqa.selenium.WebDriver;
 
+import pageObjects.admin.AdminCustomerPageObject;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.UserAddAddressesObject;
-import pageObjects.user.UserAddProductReviewObject;
-import pageObjects.user.UserChangePasswordPageObject;
-import pageObjects.user.UserCustomerInformationPageObject;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserMyAccountObject;
-import pageObjects.user.UserMyProductReviewObject;
-import pageObjects.user.UserProductDetailObject;
-import pageObjects.user.UserRegisterPageObject;
-import pageObjects.user.UserSearchPageObject;
-import pageObjects.user.UserSearchResultObject;
 
 public class PageGeneratorManager {
 	WebDriver driver;
@@ -74,6 +63,10 @@ public class PageGeneratorManager {
 	
 	static public AdminDashboardPageObject getAdminDashboardPage(WebDriver driver) {
 		return new AdminDashboardPageObject(driver);
+	}
+	
+	static public AdminCustomerPageObject getAdminCustomerPage(WebDriver driver) {
+		return new AdminCustomerPageObject(driver);
 	}
 	
 }

@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.user.PageGeneratorManager;
 import pageObjects.user.UserAddAddressesObject;
 import pageObjects.user.UserAddProductReviewObject;
 import pageObjects.user.UserChangePasswordPageObject;

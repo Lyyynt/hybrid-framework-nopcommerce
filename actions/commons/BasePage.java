@@ -6,6 +6,7 @@ import java.util.Set;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nopcommerce.user.UserAbstractPageUI;
 import nopcommerce.user.UserHomePageUI;
+import pageObjects.user.PageGeneratorManager;
 import pageObjects.user.UserAddAddressesObject;
 import pageObjects.user.UserChangePasswordPageObject;
 import pageObjects.user.UserCustomerInformationPageObject;
@@ -248,9 +250,23 @@ public class BasePage {
 		}
 	}
 	
+	public void checkToDefaultCheckboxRadio(WebDriver driver, String locator, String...dynamicValues) {
+		WebElement element = getWebElement(driver, getDynamicXpath(locator, dynamicValues));
+		if(!isElementSelected(driver, getDynamicXpath(locator, dynamicValues))) {
+			element.click();
+		}
+	}
+	
 	public void uncheckToDefaultCheckbox(WebDriver driver, String locator) {
 		WebElement element = getWebElement(driver, locator);
 		if(isElementSelected(driver, locator)) {
+			element.click();
+		}
+	}
+	
+	public void uncheckToDefaultCheckbox(WebDriver driver, String locator, String...dynamicValues) {
+		WebElement element = getWebElement(driver, getDynamicXpath(locator, dynamicValues));
+		if(isElementSelected(driver, getDynamicXpath(locator, dynamicValues))) {
 			element.click();
 		}
 	}
@@ -271,6 +287,10 @@ public class BasePage {
 		return getWebElement(driver, locator).isSelected();
 	}
 	
+	public boolean isElementSelected(WebDriver driver, String locator, String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locator, dynamicValues)).isSelected();
+	}
+	
 	public void switchToFrameIFrame(WebDriver driver, String locator) {
 		driver.switchTo().frame(getWebElement(driver, locator));
 	}
@@ -281,6 +301,14 @@ public class BasePage {
 	
 	public void hoverMouseToElement(WebDriver driver, String locator) {
 		new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
+	}
+	
+	public void pressKeyToElement(WebDriver driver, String locator, Keys key) {
+		new Actions(driver).sendKeys(getWebElement(driver, locator), key).perform();
+	}
+	
+	public void pressKeyToElement(WebDriver driver, String locator, Keys key, String... dynamicValues) {
+		new Actions(driver).sendKeys(getWebElement(driver, getDynamicXpath(locator, dynamicValues)), key).perform();
 	}
 	
 	public void doubleClickToElement(WebDriver driver, String locator) {

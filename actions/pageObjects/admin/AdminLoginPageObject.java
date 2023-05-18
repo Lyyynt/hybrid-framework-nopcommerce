@@ -3,8 +3,8 @@ package pageObjects.admin;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import commons.PageGeneratorManager;
 import nomcommerce.admin.AdminLoginPageUI;
+import pageObjects.user.PageGeneratorManager;
 
 public class AdminLoginPageObject extends BasePage{
 	WebDriver driver;
