@@ -58,6 +58,31 @@ public class HomePageObject extends BasePage{
 		waitForElementVisible(driver, HomePageUI.DYNAMIC_CELL_BY_LABEL_AND_ROW, rowNumber, columnIndex);
 		return isElementSelected(driver, HomePageUI.DYNAMIC_CELL_BY_LABEL_AND_ROW, rowNumber, columnIndex);
 	}
+
+	public void uploadFileInWebPage(String... fileNames) {
+		waitForElementPresence(driver, HomePageUI.ADD_FILE_BUTTON);
+		uploadMultipleFiles(driver, HomePageUI.ADD_FILE_BUTTON, fileNames);
+	}
+
+	public boolean isImageLoadSuccessful(String fileName) {
+		waitForElementVisible(driver, HomePageUI.DYNAMIC_FILE_NAME_TEXT, fileName);
+		return isElementDisplayed(driver, HomePageUI.DYNAMIC_FILE_NAME_TEXT, fileName);
+	}
+
+	public void clickToStartUploadByFileName(String fileName) {
+		waitForElementClickable(driver, HomePageUI.DYNAMIC_START_UPLOAD_FILE_BUTTON, fileName);
+		clickToElement(driver, HomePageUI.DYNAMIC_START_UPLOAD_FILE_BUTTON, fileName);
+	}
+
+	public boolean isLoadedFileNameDisplay(String fileName) {
+		waitForElementVisible(driver, HomePageUI.DYNAMIC_FILE_NAME_UPLOADED_TEXT, fileName);
+		return isElementDisplayed(driver, HomePageUI.DYNAMIC_FILE_NAME_UPLOADED_TEXT, fileName);
+	}
+
+	public boolean isImageLoadedSuccessByFileName(String fileName) {
+		waitForElementVisible(driver, HomePageUI.DYNAMIC_UPLOADED_FILE, fileName);
+		return isImageLoaded(driver, HomePageUI.DYNAMIC_UPLOADED_FILE, fileName);
+	}
 	
 
 }
