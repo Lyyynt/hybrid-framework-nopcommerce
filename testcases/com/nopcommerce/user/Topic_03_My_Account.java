@@ -1,7 +1,6 @@
 package com.nopcommerce.user;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -85,7 +84,7 @@ public class Topic_03_My_Account extends BaseTest{
 		System.out.println("Pre-condition - Step 3: Click to Register button");
 		registerPage.clickToRegisterButton();
 		System.out.println("Pre-condition - Step 4: Verify the register success message displays");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		System.out.println("Pre-condition - Step 5: Back to Home page");
 		homePage = registerPage.clickToContinueButton();
 		System.out.println("Pre-condition - Step 6: Click to Login link to clear data");
@@ -96,7 +95,7 @@ public class Topic_03_My_Account extends BaseTest{
 		System.out.println("Pre-condition - Step 8: Click to Login button");
 		homePage = loginPage.clickToLoginButton();
 		System.out.println("Pre-condition - Step 9: Verify the home page displays");
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 		System.out.println("=============================");
 	}
 	
@@ -116,15 +115,15 @@ public class Topic_03_My_Account extends BaseTest{
 		customerInformationPage.clickToSaveButton();
 		
 		System.out.println("My Account 01 - Step 3: Verify changing the customer information successful");
-		Assert.assertEquals(customerInformationPage.getToastMessage(), "The customer info has been updated successfully.");
-		Assert.assertTrue(customerInformationPage.isFemaleGender());
-		Assert.assertEquals(customerInformationPage.getFirstNameTextboxValue(), newFirstName);
-		Assert.assertEquals(customerInformationPage.getLastNameTextboxValue(), newLastName);
-		Assert.assertEquals(customerInformationPage.getValueDayOfBirthTextbox(), dayOfBirth);
-		Assert.assertEquals(customerInformationPage.getValueMonthOfBirthTextbox(), monthOfBirth);
-		Assert.assertEquals(customerInformationPage.getValueYearOfBirthTextbox(), yearOfBirth);
-		Assert.assertEquals(customerInformationPage.getEmailTextboxValue(), newEmail);
-		Assert.assertEquals(customerInformationPage.getCompanyNameTextboxValue(), companyName);
+		verifyEquals(customerInformationPage.getToastMessage(), "The customer info has been updated successfully.");
+		verifyTrue(customerInformationPage.isFemaleGender());
+		verifyEquals(customerInformationPage.getFirstNameTextboxValue(), newFirstName);
+		verifyEquals(customerInformationPage.getLastNameTextboxValue(), newLastName);
+		verifyEquals(customerInformationPage.getValueDayOfBirthTextbox(), dayOfBirth);
+		verifyEquals(customerInformationPage.getValueMonthOfBirthTextbox(), monthOfBirth);
+		verifyEquals(customerInformationPage.getValueYearOfBirthTextbox(), yearOfBirth);
+		verifyEquals(customerInformationPage.getEmailTextboxValue(), newEmail);
+		verifyEquals(customerInformationPage.getCompanyNameTextboxValue(), companyName);
 		System.out.println("=============================");
 	}
 	
@@ -151,14 +150,14 @@ public class Topic_03_My_Account extends BaseTest{
 		addressesPage.clickSaveButton();
 		
 		System.out.println("My Account 02 - Step 3: Verify add new address process successful");
-		Assert.assertEquals(addressesPage.getToastMessage(), "The new address has been added successfully.");
-		Assert.assertTrue(addressesPage.getNameTitle().contains(newFirstName + " " + newLastName));
-		Assert.assertTrue(addressesPage.getEmailText().contains(newEmail));
-		Assert.assertTrue(addressesPage.getPhoneNumberText().contains(phoneNumber));
-		Assert.assertTrue(addressesPage.getFaxText().contains(faxNumber));
-		Assert.assertTrue(addressesPage.getAddress1Text().contains(address1));
-		Assert.assertTrue(addressesPage.getCityAndStateZip().contains(city +", " + portalCode));
-		Assert.assertTrue(addressesPage.getCountry().contains(country));
+		verifyEquals(addressesPage.getToastMessage(), "The new address has been added successfully.");
+		verifyTrue(addressesPage.getNameTitle().contains(newFirstName + " " + newLastName));
+		verifyTrue(addressesPage.getEmailText().contains(newEmail));
+		verifyTrue(addressesPage.getPhoneNumberText().contains(phoneNumber));
+		verifyTrue(addressesPage.getFaxText().contains(faxNumber));
+		verifyTrue(addressesPage.getAddress1Text().contains(address1));
+		verifyTrue(addressesPage.getCityAndStateZip().contains(city +", " + portalCode));
+		verifyTrue(addressesPage.getCountry().contains(country));
 		addressesPage.clickToCloseToastMessageButton();
 		System.out.println("=============================");
 	}
@@ -176,7 +175,7 @@ public class Topic_03_My_Account extends BaseTest{
 		changePasswordPage.clickToChangePasswordButton();
 		
 		System.out.println("My Account 03 - Step 3: Verify the changing password process successful");
-		Assert.assertEquals(changePasswordPage.getToastMessage(), "Password was changed");
+		verifyEquals(changePasswordPage.getToastMessage(), "Password was changed");
 		changePasswordPage.clickToCloseToastMessageButton();
 		
 		System.out.println("My Account 03 - Step 4: Verify login successful with new account after log out");
@@ -186,7 +185,7 @@ public class Topic_03_My_Account extends BaseTest{
 		loginPage.inputToEmailTextbox(newEmail);
 		loginPage.inputToPasswordTextbox(newPassword);
 		homePage = loginPage.clickToLoginButton();
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 		System.out.println("=============================");
 	}
 	
@@ -208,15 +207,15 @@ public class Topic_03_My_Account extends BaseTest{
 		addProductReviewPage.clickToSubmitButton();
 		
 		System.out.println("My Account 04 - Step 5: Verify add new review successfully");
-		Assert.assertTrue(addProductReviewPage.getAddReviewSuccessMessage().contains("Product review is successfully added."));
+		verifyTrue(addProductReviewPage.getAddReviewSuccessMessage().contains("Product review is successfully added."));
 		
 		System.out.println("My Account 04 - Step 6: Open My Product Review Page");
 		myaccountPage = homePage.clickToMyAccountLink();
 		myProductReviewPage = myaccountPage.clickToMyProductReviewTab(driver);
 		
 		System.out.println("My Account 04 - Step 7: Verify new review occurs in the list review");
-		Assert.assertEquals(myProductReviewPage.getReviewTitle(), reviewTitle);
-		Assert.assertEquals(myProductReviewPage.getReviewContent(), reviewContent);
+		verifyEquals(myProductReviewPage.getReviewTitle(), reviewTitle);
+		verifyEquals(myProductReviewPage.getReviewContent(), reviewContent);
 		System.out.println("=============================");
 	}
 

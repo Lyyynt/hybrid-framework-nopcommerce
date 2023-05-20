@@ -1,7 +1,6 @@
 package com.nopcommerce.user;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -40,11 +39,11 @@ public class Topic_01_Register extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register 01 - Step 3: Verify error message displays");
-		Assert.assertEquals(registerPage.getFirstNameErrorMessage(), "First name is required.");
-		Assert.assertEquals(registerPage.getLastNameErrorMessage(), "Last name is required.");
-		Assert.assertEquals(registerPage.getEmailErrorMessage(), "Email is required.");
-		Assert.assertEquals(registerPage.getPasswordErrorMessage(), "Password is required.");
-		Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(), "Password is required.");
+		verifyEquals(registerPage.getFirstNameErrorMessage(), "First name is required.");
+		verifyEquals(registerPage.getLastNameErrorMessage(), "Last name is required.");
+		verifyEquals(registerPage.getEmailErrorMessage(), "Email is required.");
+		verifyEquals(registerPage.getPasswordErrorMessage(), "Password is required.");
+		verifyEquals(registerPage.getConfirmPasswordErrorMessage(), "Password is required.");
 	}
 
 	@Test
@@ -56,7 +55,7 @@ public class Topic_01_Register extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register 02 - Step 3: Verify the error message is \"Wrong email");
-		Assert.assertEquals(registerPage.getEmailErrorMessage(), "Wrong email");
+		verifyEquals(registerPage.getEmailErrorMessage(), "Wrong email");
 	}
 	
 	@Test
@@ -72,7 +71,7 @@ public class Topic_01_Register extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register 03 - Step 3: Verify the register success message displays");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		
 		System.out.println("Register 03 - Step 4: Back to Home page");
 		homePage = registerPage.clickToContinueButton();
@@ -94,7 +93,7 @@ public class Topic_01_Register extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register 04 - Step 4: Verify The specified email already exists message display");
-		Assert.assertEquals(registerPage.getExistEmailMessage(), "The specified email already exists");
+		verifyEquals(registerPage.getExistEmailMessage(), "The specified email already exists");
 	}
 	
 	@Test
@@ -110,7 +109,7 @@ public class Topic_01_Register extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register 05 - Step 3: Verify existing email message display");
-		Assert.assertEquals(registerPage.getPasswordErrorMessage(), "Password must meet the following rules:\nmust have at least 6 characters");
+		verifyEquals(registerPage.getPasswordErrorMessage(), "Password must meet the following rules:\nmust have at least 6 characters");
 	}
 	
 	@Test
@@ -126,7 +125,7 @@ public class Topic_01_Register extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register 06 - Step 3: Verify confirm password error message display");
-		Assert.assertEquals(registerPage.getConfirmPasswordErrorMessage(), "The password and confirmation password do not match.");
+		verifyEquals(registerPage.getConfirmPasswordErrorMessage(), "The password and confirmation password do not match.");
 	}
 	
 	@AfterClass

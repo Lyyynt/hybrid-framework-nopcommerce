@@ -1,7 +1,6 @@
 package com.nopcommerce.user;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -55,7 +54,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 01 - Step 2: Verify the warning message displays");
-		Assert.assertEquals(searchPage.getWarningMessage(), "Search term minimum length is 3 characters");
+		verifyEquals(searchPage.getWarningMessage(), "Search term minimum length is 3 characters");
 		System.out.println("=============================");
 	}
 	
@@ -68,7 +67,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 02 - Step 3: Verify the warning message displays");
-		Assert.assertEquals(searchPage.getWarningMessage(), "No products were found that matched your criteria.");
+		verifyEquals(searchPage.getWarningMessage(), "No products were found that matched your criteria.");
 		System.out.println("=============================");
 	}
 	
@@ -82,9 +81,9 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 03 - Step 3: Verify the result product is 2 and the name of product is correct");
-		Assert.assertEquals(searchPage.getResultItemCount(), (int) 2);
-		Assert.assertTrue(searchPage.isProductNameDisplay("Lenovo IdeaCentre 600 All-in-One PC"));
-		Assert.assertTrue(searchPage.isProductNameDisplay("Lenovo Thinkpad X1 Carbon Laptop"));
+		verifyEquals(searchPage.getResultItemCount(), (int) 2);
+		verifyTrue(searchPage.isProductNameDisplay("Lenovo IdeaCentre 600 All-in-One PC"));
+		verifyTrue(searchPage.isProductNameDisplay("Lenovo Thinkpad X1 Carbon Laptop"));
 		System.out.println("=============================");
 	}
 	
@@ -97,8 +96,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 04 - Step 3: Verify the result product is 1 and the name of product is correct");
-		Assert.assertEquals(searchPage.getResultItemCount(), (int) 1);
-		Assert.assertTrue(searchPage.isProductNameDisplay("Lenovo Thinkpad X1 Carbon Laptop"));
+		verifyEquals(searchPage.getResultItemCount(), (int) 1);
+		verifyTrue(searchPage.isProductNameDisplay("Lenovo Thinkpad X1 Carbon Laptop"));
 		System.out.println("=============================");
 	}
 	
@@ -120,7 +119,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 05 - Step 6: Verify the warning message displays");
-		Assert.assertEquals(searchPage.getWarningMessage(), "No products were found that matched your criteria.");
+		verifyEquals(searchPage.getWarningMessage(), "No products were found that matched your criteria.");
 		System.out.println("=============================");
 	}
 	
@@ -142,8 +141,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 06 - Step 6: Verify the result product is 1 and the name of product is correct");
-		Assert.assertEquals(searchPage.getResultItemCount(), (int) 1);
-		Assert.assertTrue(searchPage.isProductNameDisplay("Apple MacBook Pro 13-inch"));
+		verifyEquals(searchPage.getResultItemCount(), (int) 1);
+		verifyTrue(searchPage.isProductNameDisplay("Apple MacBook Pro 13-inch"));
 		System.out.println("=============================");
 	}
 	
@@ -168,7 +167,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 07 - Step 7: Verify the warning message displays");
-		Assert.assertEquals(searchPage.getWarningMessage(), "No products were found that matched your criteria.");
+		verifyEquals(searchPage.getWarningMessage(), "No products were found that matched your criteria.");
 		System.out.println("=============================");
 	}
 	
@@ -193,8 +192,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		System.out.println("Search 08 - Step 7: Verify the result product is 1 and the name of product is correct");
-		Assert.assertEquals(searchPage.getResultItemCount(), (int) 1);
-		Assert.assertTrue(searchPage.isProductNameDisplay("Apple MacBook Pro 13-inch"));
+		verifyEquals(searchPage.getResultItemCount(), (int) 1);
+		verifyTrue(searchPage.isProductNameDisplay("Apple MacBook Pro 13-inch"));
 		System.out.println("=============================");
 	}
 
@@ -217,7 +216,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		System.out.println("Pre-condition - Step 3: Click to Register button");
 		registerPage.clickToRegisterButton();
 		System.out.println("Pre-condition - Step 4: Verify the register success message displays");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		System.out.println("Pre-condition - Step 5: Back to Home page");
 		homePage = registerPage.clickToContinueButton();
 		System.out.println("Pre-condition - Step 6: Click to Login link to clear data");
@@ -228,7 +227,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		System.out.println("Pre-condition - Step 8: Click to Login button");
 		homePage = loginPage.clickToLoginButton();
 		System.out.println("Pre-condition - Step 9: Verify the home page displays");
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 		System.out.println("=============================");
 	}
 }

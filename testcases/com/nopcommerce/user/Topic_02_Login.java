@@ -45,7 +45,7 @@ public class Topic_02_Login extends BaseTest {
 		System.out.println("Pre-condition - Step 3: Click to Register button");
 		registerPage.clickToRegisterButton();
 		System.out.println("Pre-condition - Step 4: Verify the register success message displays");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		System.out.println("Pre-condition - Step 5: Back to Home page");
 		homePage = registerPage.clickToContinueButton();
 	}
@@ -59,7 +59,7 @@ public class Topic_02_Login extends BaseTest {
 		loginPage.clickToLoginButton();
 		
 		System.out.println("Login 01 - Step 3: Verify the email error message displays");
-		Assert.assertEquals(loginPage.getEmailErrorMessage(), "Please enter your email");
+		verifyEquals(loginPage.getEmailErrorMessage(), "Please enter your email");
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class Topic_02_Login extends BaseTest {
 		loginPage.clickToLoginButton();
 		
 		System.out.println("Login 02 - Step 4: Verify the email error message displays");
-		Assert.assertEquals(loginPage.getEmailErrorMessage(), "Wrong email");
+		verifyEquals(loginPage.getEmailErrorMessage(), "Wrong email");
 		
 	}
 	
@@ -91,7 +91,7 @@ public class Topic_02_Login extends BaseTest {
 		loginPage.clickToLoginButton();
 		
 		System.out.println("Login 03 - Step 4: Verify the email not found message displays");
-		Assert.assertEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
+		verifyEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ public class Topic_02_Login extends BaseTest {
 		loginPage.clickToLoginButton();
 		
 		System.out.println("Login 04 - Step 4: Verify the email not found message displays");
-		Assert.assertEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+		verifyEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 	}
 	
 	@Test
@@ -122,7 +122,7 @@ public class Topic_02_Login extends BaseTest {
 		loginPage.clickToLoginButton();
 		
 		System.out.println("Login 05 - Step 4: Verify the email not found message displays");
-		Assert.assertEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+		verifyEquals(loginPage.getEmailNotFoundMessage(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 	}
 	
 	@Test
@@ -138,7 +138,7 @@ public class Topic_02_Login extends BaseTest {
 		loginPage.clickToLoginButton();
 		
 		System.out.println("Login 06 - Step 4: Verify the email not found message displays");
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		verifyTrue(homePage.isMyAccountLinkDisplayed());
 	}
 
 	@AfterClass

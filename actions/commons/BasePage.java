@@ -160,7 +160,7 @@ public class BasePage {
 	
 	public void sendkeyToElement(WebDriver driver, String locator, String textValue) {
 		WebElement element = getWebElement(driver, locator);
-//		element.clear();
+		element.clear();
 		element.sendKeys(textValue);
 	}
 	
