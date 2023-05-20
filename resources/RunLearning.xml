@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="false" name="Suite">
-<parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/"/>
+<listeners>
+<listener class-name="commons.MethodListener"/>
+</listeners>
+<parameter name="url" value="https://www.facebook.com/"/>
 <test name="Run on Chrome">
   	<parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.learning.Level_11_Upload_Mutiple_Files"/>
+      <class name="com.nopcommerce.learning.Level_12_Assert_And_Verify"/>
     </classes>
   </test> 
   
