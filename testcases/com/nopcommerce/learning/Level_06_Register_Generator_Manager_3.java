@@ -1,7 +1,5 @@
 package com.nopcommerce.learning;
 
-import java.util.Random;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;

@@ -65,7 +65,7 @@ public class BaseTest {
 		default:
 			throw new RuntimeException("Browser Name Invalid");
 		}
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get(GlobalConstants.PORTAL_DEV_URL);
 		return driver;
@@ -118,7 +118,7 @@ public class BaseTest {
 		default:
 			throw new RuntimeException("Browser Name Invalid");
 		}
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get(url);
 		return driver;
