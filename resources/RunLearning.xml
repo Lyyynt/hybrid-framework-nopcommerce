@@ -7,7 +7,7 @@
 <test name="Run on Chrome">
   	<parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.learning.Level_13_Element_Undisplayed"/>
+      <class name="com.nopcommerce.learning.Level_12_Assert_And_Verify"/>
     </classes>
   </test> 
   

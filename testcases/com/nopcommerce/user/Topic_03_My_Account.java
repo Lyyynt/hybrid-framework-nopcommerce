@@ -73,39 +73,39 @@ public class Topic_03_My_Account extends BaseTest{
 		reviewContent = "Review content Review Content" + getRandomNumber();
 		
 		// Pre-condition
-		System.out.println("Pre-condition - Step 1: Enter the valid information");
+		log.info("Pre-condition - Step 1: Enter the valid information");
 		registerPage = homePage.clickToRegisterLink();
-		System.out.println("Pre-condition - Step 2: Enter the valid information");
+		log.info("Pre-condition - Step 2: Enter the valid information");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(email);
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
-		System.out.println("Pre-condition - Step 3: Click to Register button");
+		log.info("Pre-condition - Step 3: Click to Register button");
 		registerPage.clickToRegisterButton();
-		System.out.println("Pre-condition - Step 4: Verify the register success message displays");
+		log.info("Pre-condition - Step 4: Verify the register success message displays");
 		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-		System.out.println("Pre-condition - Step 5: Back to Home page");
+		log.info("Pre-condition - Step 5: Back to Home page");
 		homePage = registerPage.clickToContinueButton();
-		System.out.println("Pre-condition - Step 6: Click to Login link to clear data");
+		log.info("Pre-condition - Step 6: Click to Login link to clear data");
 		loginPage = homePage.clickToLoginLink();
-		System.out.println("Pre-condition - Step 7: Input correct email and correct password");
+		log.info("Pre-condition - Step 7: Input correct email and correct password");
 		loginPage.inputToEmailTextbox(email);
 		loginPage.inputToPasswordTextbox(password);
-		System.out.println("Pre-condition - Step 8: Click to Login button");
+		log.info("Pre-condition - Step 8: Click to Login button");
 		homePage = loginPage.clickToLoginButton();
-		System.out.println("Pre-condition - Step 9: Verify the home page displays");
+		log.info("Pre-condition - Step 9: Verify the home page displays");
 		verifyTrue(homePage.isMyAccountLinkDisplayed());
-		System.out.println("=============================");
+		log.info("=============================");
 	}
 	
 	@Test
 	public void My_Account_01_Customer_Information() {
-		System.out.println("My Account 01 - Step 1: Click to My Account link");
+		log.info("My Account 01 - Step 1: Click to My Account link");
 		myaccountPage = homePage.clickToMyAccountLink();
 		customerInformationPage = myaccountPage.clickToCustomerInfoTab(driver);
 		
-		System.out.println("My Account 01 - Step 2: Change the customer information and click save button");
+		log.info("My Account 01 - Step 2: Change the customer information and click save button");
 		customerInformationPage.clickToGenderRadio();
 		customerInformationPage.sendKeyToFirstNameTextbox(newFirstName);
 		customerInformationPage.sendKeyToLastNameTextbox(newLastName);
@@ -114,7 +114,7 @@ public class Topic_03_My_Account extends BaseTest{
 		customerInformationPage.sendKeyToCompanyNameTextbox(companyName);
 		customerInformationPage.clickToSaveButton();
 		
-		System.out.println("My Account 01 - Step 3: Verify changing the customer information successful");
+		log.info("My Account 01 - Step 3: Verify changing the customer information successful");
 		verifyEquals(customerInformationPage.getToastMessage(), "The customer info has been updated successfully.");
 		verifyTrue(customerInformationPage.isFemaleGender());
 		verifyEquals(customerInformationPage.getFirstNameTextboxValue(), newFirstName);
@@ -124,17 +124,17 @@ public class Topic_03_My_Account extends BaseTest{
 		verifyEquals(customerInformationPage.getValueYearOfBirthTextbox(), yearOfBirth);
 		verifyEquals(customerInformationPage.getEmailTextboxValue(), newEmail);
 		verifyEquals(customerInformationPage.getCompanyNameTextboxValue(), companyName);
-		System.out.println("=============================");
+		log.info("=============================");
 	}
 	
 	@Test
 	public void My_Account_02_Add_New_Addresses() {
-		System.out.println("My Account 02 - Step 1: Click to Addresses tab");
+		log.info("My Account 02 - Step 1: Click to Addresses tab");
 		// myaccountPage = homePage.clickToMyAccountLink();
 		addressesPage = myaccountPage.clickToAddAddressesTab(driver);
 		addressesPage.clickAddNewButton();
 		
-		System.out.println("My Account 02 - Step 2: Enter the customer address");
+		log.info("My Account 02 - Step 2: Enter the customer address");
 		addressesPage.sendKeyToFirstNameTextbox(newFirstName);
 		addressesPage.sendKeyToLastNameTextbox(newLastName);
 		addressesPage.sendKeyToEmailTextbox(newEmail);
@@ -149,7 +149,7 @@ public class Topic_03_My_Account extends BaseTest{
 		addressesPage.sendKeyToFaxTextbox(faxNumber);
 		addressesPage.clickSaveButton();
 		
-		System.out.println("My Account 02 - Step 3: Verify add new address process successful");
+		log.info("My Account 02 - Step 3: Verify add new address process successful");
 		verifyEquals(addressesPage.getToastMessage(), "The new address has been added successfully.");
 		verifyTrue(addressesPage.getNameTitle().contains(newFirstName + " " + newLastName));
 		verifyTrue(addressesPage.getEmailText().contains(newEmail));
@@ -159,26 +159,26 @@ public class Topic_03_My_Account extends BaseTest{
 		verifyTrue(addressesPage.getCityAndStateZip().contains(city +", " + portalCode));
 		verifyTrue(addressesPage.getCountry().contains(country));
 		addressesPage.clickToCloseToastMessageButton();
-		System.out.println("=============================");
+		log.info("=============================");
 	}
 	
 	@Test
 	public void My_Account_03_Change_Password() {
-		System.out.println("My Account 03 - Step 1: Click to Change password tab");
+		log.info("My Account 03 - Step 1: Click to Change password tab");
 		// myaccountPage = homePage.clickToMyAccountLink();
 		changePasswordPage = myaccountPage.clickToChangePasswordTab(driver);
 		
-		System.out.println("My Account 03 - Step 2: Enter the old password and new password");
+		log.info("My Account 03 - Step 2: Enter the old password and new password");
 		changePasswordPage.sendKeyToOldPasswordTextbox(password);
 		changePasswordPage.sendKeyToNewPasswordTextbox(newPassword);
 		changePasswordPage.sendKeyToConfirmNewPasswordTextbox(newPassword);
 		changePasswordPage.clickToChangePasswordButton();
 		
-		System.out.println("My Account 03 - Step 3: Verify the changing password process successful");
+		log.info("My Account 03 - Step 3: Verify the changing password process successful");
 		verifyEquals(changePasswordPage.getToastMessage(), "Password was changed");
 		changePasswordPage.clickToCloseToastMessageButton();
 		
-		System.out.println("My Account 03 - Step 4: Verify login successful with new account after log out");
+		log.info("My Account 03 - Step 4: Verify login successful with new account after log out");
 		SleepInSecond(2);
 		homePage = changePasswordPage.clickToLogOutLink(driver);
 		loginPage = homePage.clickToLoginLink();
@@ -186,37 +186,37 @@ public class Topic_03_My_Account extends BaseTest{
 		loginPage.inputToPasswordTextbox(newPassword);
 		homePage = loginPage.clickToLoginButton();
 		verifyTrue(homePage.isMyAccountLinkDisplayed());
-		System.out.println("=============================");
+		log.info("=============================");
 	}
 	
 	@Test
 	public void My_Account_04_Product_Review() {
-		System.out.println("My Account 04 - Step 1: Search Product By Product Title");
+		log.info("My Account 04 - Step 1: Search Product By Product Title");
 		homePage.inputKeywordToSearchTextbox("apple");
 		searchResultPage = homePage.clickToSearchButton();
 		
-		System.out.println("My Account 04 - Step 2: Open Product Detail Page");
+		log.info("My Account 04 - Step 2: Open Product Detail Page");
 		productDetailPage = searchResultPage.clickToProductTitle("Apple MacBook Pro 13-inch");
 		
-		System.out.println("My Account 04 - Step 3: Click Add Your Review Link");
+		log.info("My Account 04 - Step 3: Click Add Your Review Link");
 		addProductReviewPage = productDetailPage.clickToAddYourReviewLink();
 		
-		System.out.println("My Account 04 - Step 4: Enter the new review for the product");
+		log.info("My Account 04 - Step 4: Enter the new review for the product");
 		addProductReviewPage.inputToReviewTitleTextBox(reviewTitle);
 		addProductReviewPage.inputToReviewTextTextBox(reviewContent);
 		addProductReviewPage.clickToSubmitButton();
 		
-		System.out.println("My Account 04 - Step 5: Verify add new review successfully");
+		log.info("My Account 04 - Step 5: Verify add new review successfully");
 		verifyTrue(addProductReviewPage.getAddReviewSuccessMessage().contains("Product review is successfully added."));
 		
-		System.out.println("My Account 04 - Step 6: Open My Product Review Page");
+		log.info("My Account 04 - Step 6: Open My Product Review Page");
 		myaccountPage = homePage.clickToMyAccountLink();
 		myProductReviewPage = myaccountPage.clickToMyProductReviewTab(driver);
 		
-		System.out.println("My Account 04 - Step 7: Verify new review occurs in the list review");
+		log.info("My Account 04 - Step 7: Verify new review occurs in the list review");
 		verifyEquals(myProductReviewPage.getReviewTitle(), reviewTitle);
 		verifyEquals(myProductReviewPage.getReviewContent(), reviewContent);
-		System.out.println("=============================");
+		log.info("=============================");
 	}
 
 	public void SleepInSecond(long second) {
