@@ -2,6 +2,7 @@ package com.nopcommerce.learning;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -26,7 +27,7 @@ public class Level_12_Assert_And_Verify extends BaseTest {
 	public void TC_01_ValidateCurrentUrl() {
 		verifyEquals(driver.getCurrentUrl(), "https://www.facebook.com/");
 		verifyEquals(driver.getTitle(), "Facebook – log in or sign up");
-		verifyTrue(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
+		Assert.assertFalse(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
 	}
 
 	@AfterClass
