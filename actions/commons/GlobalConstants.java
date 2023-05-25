@@ -21,6 +21,7 @@ public class GlobalConstants {
 	public static final String DB_TEST_URL = "32.18.195.23:9860";
 	public static final String DB_TEST_USER = "ntlinh";
 	public static final String DB_TEST_PASSWORD = "Abc123!@#";
+	public static final String JAVA_VERSION = System.getProperty("java.version");
 	public static final long SHORT_TIMEOUT = 10;
 	public static final long LONG_TIMEOUT = 30;
 	public static final long RETRY_TEST_FAIL = 3;
