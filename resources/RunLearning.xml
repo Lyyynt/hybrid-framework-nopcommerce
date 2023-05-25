@@ -3,7 +3,7 @@
 
 <listeners>
 	<listener class-name="commons.MethodListener"/>
-	<listener class-name="reportConfig.ExtentReportListenerV3"/>
+	<listener class-name="reportConfig.ExtentReportListenerV4"/>
 	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
 	<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
 </listeners>

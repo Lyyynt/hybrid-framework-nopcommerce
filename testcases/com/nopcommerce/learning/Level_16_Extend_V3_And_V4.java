@@ -15,7 +15,7 @@ import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserRegisterPageObject;
 
-public class Level_16_ExtendV3 extends BaseTest{
+public class Level_16_Extend_V3_And_V4 extends BaseTest{
 
 	WebDriver driver;
 	UserHomePageObject homePage;
