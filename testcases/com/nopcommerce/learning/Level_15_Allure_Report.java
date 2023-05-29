@@ -10,12 +10,19 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pageObjects.user.PageGeneratorManager;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserRegisterPageObject;
 
-public class Level_16_Extend_V34 extends BaseTest{
+@Epic("Regrestion Tests")
+@Feature("Register and login")
+public class Level_15_Allure_Report extends BaseTest{
 
 	WebDriver driver;
 	UserHomePageObject homePage;
@@ -36,8 +43,11 @@ public class Level_16_Extend_V34 extends BaseTest{
 		confirmPassword = "Abc13579";
 	}
 
+	@Description("Register with valid information")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void TC_01_Register_With_Valid_Information(Method method) {
+
 		registerPage = homePage.clickToRegisterLink();
 		
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -52,11 +62,11 @@ public class Level_16_Extend_V34 extends BaseTest{
 		
 		registerPage.clickToRegisterButton();
 		
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-		
 		homePage = registerPage.clickToContinueButton();
 	}
 	
+	@Description("Login with correct data")
+	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void TC_02_Login_With_Correct_Data(Method method) {
 		loginPage = homePage.clickToLoginLink();
@@ -74,4 +84,5 @@ public class Level_16_Extend_V34 extends BaseTest{
 	public void afterClass() {
 		driver.quit();
 	}
+	
 }

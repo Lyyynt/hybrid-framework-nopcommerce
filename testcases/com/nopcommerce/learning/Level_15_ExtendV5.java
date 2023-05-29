@@ -18,7 +18,7 @@ import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserRegisterPageObject;
 import reportConfig.ExtentTestManagerV5;
 
-public class Level_16_ExtendV5 extends BaseTest{
+public class Level_15_ExtendV5 extends BaseTest{
 
 	WebDriver driver;
 	UserHomePageObject homePage;
