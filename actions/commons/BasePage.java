@@ -19,7 +19,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nopcommerce.user.UserAbstractPageUI;
-import nopcommerce.user.UserHomePageUI;
 import pageObjects.user.PageGeneratorManager;
 import pageObjects.user.UserAddAddressesObject;
 import pageObjects.user.UserChangePasswordPageObject;
@@ -523,6 +522,7 @@ public class BasePage {
 		}
 	}
 	
+	// Apply in level dynamic locator
 	public BasePage openPageInMyAccountArea(WebDriver driver, String pageName) {
 		String leftMenuLocator = String.format(UserAbstractPageUI.DYNAMIC_PAGE_IN_MY_ACCOUNT_AREA, pageName);
 		waitForElementVisible(driver, leftMenuLocator);
@@ -541,21 +541,25 @@ public class BasePage {
 		}
 	}
 	
+	// Apply only Level_07_Switch_Page
 	public UserCustomerInformationPageObject clickToCustomerInfoTab(WebDriver driver) {
 		openPageInMyAccountArea(driver, "Customer info");
 		return PageGeneratorManager.getUserCustomerInformationPage(driver);
 	}
-
+	
+	// Apply only Level_07_Switch_Page
 	public UserAddAddressesObject clickToAddAddressesTab(WebDriver driver) {
 		openPageInMyAccountArea(driver, "Addresses");
 		return PageGeneratorManager.getUserAddAddressPage(driver);
 	}
 
+	// Apply only Level_07_Switch_Page
 	public UserChangePasswordPageObject clickToChangePasswordTab(WebDriver driver) {
 		openPageInMyAccountArea(driver, "Change password");
 		return PageGeneratorManager.getUserChangePasswordPage(driver);
 	}
 
+	// Apply only Level_07_Switch_Page
 	public UserMyProductReviewObject clickToMyProductReviewTab(WebDriver driver) {
 		openPageInMyAccountArea(driver, "My product reviews");
 		return PageGeneratorManager.getUserMyProductReviewPage(driver);
@@ -577,5 +581,53 @@ public class BasePage {
 		waitForElementClickable(driver, UserAbstractPageUI.LOGOUT_LINK);
 		clickToElement(driver, UserAbstractPageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getUserHomePage(driver);
+	}
+	
+	// Apply Pattern Object
+	/**
+	 * Input value to textbox by id of textbox
+	 * @param driver
+	 * @param value
+	 * @param textboxId
+	 * @author ntlinh8
+	 */
+	public void inputToTextboxById(WebDriver driver, String value, String textboxId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, textboxId);
+		sendkeyToElement(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxId);
+	}
+	
+	/**
+	 * Get Value attribute from textbox by id
+	 * @param driver
+	 * @param textboxId
+	 * @author ntlinh8
+	 */
+	public String getValueAttributFromTextboxByID(WebDriver driver, String textboxId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, textboxId);
+		return getElementAttribute(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxId);
+	}
+	
+	/**
+	 * Select option from dropdown by id of textbox
+	 * @param driver
+	 * @param option
+	 * @param dropdownId
+	 * @author ntlinh8
+	 */
+	public void selectDropdownById(WebDriver driver, String option, String dropdownId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
+		selectItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, option, dropdownId);
+	}
+	
+	/**
+	 * Get selected item from dropdown by id
+	 * @param driver
+	 * @param dropdownId
+	 * @author ntlinh8
+	 * @return 
+	 */
+	public String getSelectedItemFromDropdownById(WebDriver driver,String dropdownId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
+		return getSelectedItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
 	}
 }
