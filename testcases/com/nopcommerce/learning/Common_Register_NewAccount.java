@@ -1,7 +1,11 @@
 package com.nopcommerce.learning;
 
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
@@ -17,6 +21,7 @@ public class Common_Register_NewAccount extends BaseTest{
 	private UserRegisterPageObject registerPage;
 	private String firstName, lastName, confirmPassword;
 	public static String EMAIL, PASSWORD;
+	public static Set<Cookie> ALLCookies;
 	@Parameters("browser")
 	@BeforeTest
 	public void beforeClass(String browserName) {
@@ -54,6 +59,14 @@ public class Common_Register_NewAccount extends BaseTest{
 		
 		log.info("Pre-condtion - Step 9: Back to Home page");
 		homePage = registerPage.clickToContinueButton();
+		
+		ALLCookies = homePage.getCookies(driver);
+		log.info(ALLCookies);
+	}
+	
+	@AfterTest
+	public void afterClass() {
+		driver.quit();
 	}
 
 }
