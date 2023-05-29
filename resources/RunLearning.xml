@@ -3,16 +3,17 @@
 
 <listeners>
 	<listener class-name="commons.MethodListener"/>
-	<listener class-name="reportConfig.AllureTestListener"/>
-	<!-- <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-	<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>-->
+	<!-- <listener class-name="reportConfig.AllureTestListener"/> -->
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+	<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/> -->
 </listeners>
 
 <parameter name="url" value="https://demo.nopcommerce.com/"/>
 <test name="Run on Firefox">
   	<parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.learning.Level_16_Allure_Report"/>
+      <class name="com.nopcommerce.learning.Common_Register_NewAccount"/>
+      <class name="com.nopcommerce.learning.Level_16_Share_Cookie"/>
     </classes>
   </test> 
   
