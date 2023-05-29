@@ -56,9 +56,4 @@ public class Common_Register_NewAccount extends BaseTest{
 		homePage = registerPage.clickToContinueButton();
 	}
 
-
-	@AfterTest
-	public void afterClass() {
-		driver.quit();
-	}
 }

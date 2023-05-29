@@ -13,7 +13,7 @@
   	<parameter name="browser" value="firefox"/>
     <classes>
       <class name="com.nopcommerce.learning.Common_Register_NewAccount"/>
-      <class name="com.nopcommerce.learning.Level_16_Share_Cookie"/>
+      <class name="com.nopcommerce.learning.Level_17_Custom_Close_Browser"/>
     </classes>
   </test> 
   
