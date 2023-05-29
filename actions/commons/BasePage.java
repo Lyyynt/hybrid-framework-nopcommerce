@@ -147,11 +147,11 @@ public class BasePage {
 		return xpathLocator;
 	}
 	
-	private WebElement getWebElement(WebDriver driver, String locator) {
+	public WebElement getWebElement(WebDriver driver, String locator) {
 		return driver.findElement(getByLocator(getDynamicXpath(locator)));
 	}
 	
-	private List<WebElement> getWebElements(WebDriver driver, String locator){
+	public List<WebElement> getWebElements(WebDriver driver, String locator){
 		return driver.findElements(getByLocator(locator));
 	}
 	

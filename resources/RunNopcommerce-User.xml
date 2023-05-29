@@ -3,7 +3,7 @@
 <test name="Run on Firefox">
   	<parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.user.Topic_01_Register"/>
+      <class name="com.nopcommerce.user.Topic_05_Sort_Display_Paging"/>
     </classes>
   </test> 
   

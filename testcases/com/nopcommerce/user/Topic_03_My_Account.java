@@ -18,7 +18,7 @@ import pageObjects.user.UserMyAccountObject;
 import pageObjects.user.UserMyProductReviewObject;
 import pageObjects.user.UserProductDetailObject;
 import pageObjects.user.UserRegisterPageObject;
-import pageObjects.user.UserSearchResultObject;
+import pageObjects.user.UserProductListPageObject;
 
 public class Topic_03_My_Account extends BaseTest{
 	WebDriver driver;
@@ -29,7 +29,7 @@ public class Topic_03_My_Account extends BaseTest{
 	UserCustomerInformationPageObject customerInformationPage;
 	UserAddAddressesObject addressesPage;
 	UserChangePasswordPageObject changePasswordPage;
-	UserSearchResultObject searchResultPage;
+	UserProductListPageObject productListPage;
 	UserProductDetailObject productDetailPage;
 	UserAddProductReviewObject addProductReviewPage;
 	UserMyProductReviewObject myProductReviewPage;
@@ -193,10 +193,10 @@ public class Topic_03_My_Account extends BaseTest{
 	public void My_Account_04_Product_Review() {
 		log.info("My Account 04 - Step 1: Search Product By Product Title");
 		homePage.inputKeywordToSearchTextbox("apple");
-		searchResultPage = homePage.clickToSearchButton();
+		productListPage = homePage.clickToSearchButton();
 		
 		log.info("My Account 04 - Step 2: Open Product Detail Page");
-		productDetailPage = searchResultPage.clickToProductTitle("Apple MacBook Pro 13-inch");
+		productDetailPage = productListPage.clickToProductTitle("Apple MacBook Pro 13-inch");
 		
 		log.info("My Account 04 - Step 3: Click Add Your Review Link");
 		addProductReviewPage = productDetailPage.clickToAddYourReviewLink();

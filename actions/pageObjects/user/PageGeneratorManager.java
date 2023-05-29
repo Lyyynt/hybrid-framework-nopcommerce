@@ -53,8 +53,8 @@ public class PageGeneratorManager {
 		return new UserSearchPageObject(driver);
 	}
 	
-	static public UserSearchResultObject getUserSearchResultPage(WebDriver driver) {
-		return new UserSearchResultObject(driver);
+	static public UserProductListPageObject getUserProductListPage(WebDriver driver) {
+		return new UserProductListPageObject(driver);
 	}
 	
 	static public AdminLoginPageObject getAdminLoginPage(WebDriver driver) {
