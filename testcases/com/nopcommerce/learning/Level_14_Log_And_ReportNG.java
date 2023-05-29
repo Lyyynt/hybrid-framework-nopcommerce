@@ -13,7 +13,7 @@ import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserRegisterPageObject;
 
-public class Level_15_Log_And_ReportNG extends BaseTest{
+public class Level_14_Log_And_ReportNG extends BaseTest{
 
 	WebDriver driver;
 	UserHomePageObject homePage;
