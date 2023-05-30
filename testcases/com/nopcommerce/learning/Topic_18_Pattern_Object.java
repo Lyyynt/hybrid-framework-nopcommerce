@@ -88,9 +88,9 @@ public class Topic_18_Pattern_Object extends BaseTest{
 		customerInformationPage.clickToGenderRadio();
 		customerInformationPage.inputToTextboxById(driver, newFirstName, "FirstName");
 		customerInformationPage.inputToTextboxById(driver, newLastName, "LastName");
-		customerInformationPage.selectDropdownById(driver, dayOfBirth, "DateOfBirthDay");
-		customerInformationPage.selectDropdownById(driver, monthOfBirth, "DateOfBirthMonth");
-		customerInformationPage.selectDropdownById(driver, yearOfBirth, "DateOfBirthYear");
+		customerInformationPage.selectDropdownByName(driver, dayOfBirth, "DateOfBirthDay");
+		customerInformationPage.selectDropdownByName(driver, monthOfBirth, "DateOfBirthMonth");
+		customerInformationPage.selectDropdownByName(driver, yearOfBirth, "DateOfBirthYear");
 		customerInformationPage.inputToTextboxById(driver, newEmail, "Email");
 		customerInformationPage.inputToTextboxById(driver, companyName, "Company");
 		customerInformationPage.clickToSaveButton();
@@ -102,9 +102,9 @@ public class Topic_18_Pattern_Object extends BaseTest{
 		verifyEquals(customerInformationPage.getValueAttributFromTextboxByID(driver, "LastName"), newLastName);
 		verifyEquals(customerInformationPage.getValueAttributFromTextboxByID(driver, "Email"), newEmail);
 		verifyEquals(customerInformationPage.getValueAttributFromTextboxByID(driver, "Company"), companyName);
-		verifyEquals(customerInformationPage.getSelectedItemFromDropdownById(driver, "DateOfBirthDay"), dayOfBirth);
-		verifyEquals(customerInformationPage.getSelectedItemFromDropdownById(driver, "DateOfBirthMonth"), monthOfBirth);
-		verifyEquals(customerInformationPage.getSelectedItemFromDropdownById(driver, "DateOfBirthYear"), yearOfBirth);
+		verifyEquals(customerInformationPage.getSelectedItemFromDropdownByName(driver, "DateOfBirthDay"), dayOfBirth);
+		verifyEquals(customerInformationPage.getSelectedItemFromDropdownByName(driver, "DateOfBirthMonth"), monthOfBirth);
+		verifyEquals(customerInformationPage.getSelectedItemFromDropdownByName(driver, "DateOfBirthYear"), yearOfBirth);
 		verifyEquals(customerInformationPage.getValueAttributFromTextboxByID(driver, "Email"), newEmail);
 		verifyEquals(customerInformationPage.getValueAttributFromTextboxByID(driver, "Company"), companyName);
 	}

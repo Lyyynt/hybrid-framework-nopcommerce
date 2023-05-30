@@ -346,6 +346,10 @@ public class BasePage {
 		new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
 	}
 	
+	public void hoverMouseToElement(WebDriver driver, String locator,  String... dynamicValues) {
+		new Actions(driver).moveToElement(getWebElement(driver, getDynamicXpath(locator, dynamicValues))).perform();
+	}
+	
 	public void pressKeyToElement(WebDriver driver, String locator, Keys key) {
 		new Actions(driver).sendKeys(getWebElement(driver, locator), key).perform();
 	}
@@ -608,26 +612,26 @@ public class BasePage {
 	}
 	
 	/**
-	 * Select option from dropdown by id of textbox
+	 * Select option from dropdown by name of textbox
 	 * @param driver
 	 * @param option
-	 * @param dropdownId
+	 * @param dropdownName
 	 * @author ntlinh8
 	 */
-	public void selectDropdownById(WebDriver driver, String option, String dropdownId) {
-		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
-		selectItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, option, dropdownId);
+	public void selectDropdownByName(WebDriver driver, String option, String dropdownName) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
+		selectItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, option, dropdownName);
 	}
 	
 	/**
-	 * Get selected item from dropdown by id
+	 * Get selected item from dropdownName by id
 	 * @param driver
 	 * @param dropdownId
 	 * @author ntlinh8
 	 * @return 
 	 */
-	public String getSelectedItemFromDropdownById(WebDriver driver,String dropdownId) {
-		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
-		return getSelectedItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_ID, dropdownId);
+	public String getSelectedItemFromDropdownByName(WebDriver driver,String dropdownName) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
+		return getSelectedItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
 	}
 }

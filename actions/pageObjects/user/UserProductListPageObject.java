@@ -35,6 +35,8 @@ public class UserProductListPageObject extends BasePage{
 	}
 
 	public boolean isProductNameWasSortedByLabel(String optionLabel) throws Exception {
+		waitForElementVisible(driver, UserProductListUI.ALL_PRODUCT_TITLE);
+		SleepInSecond(3);
 		List<WebElement> productElementList = getWebElements(driver, UserProductListUI.ALL_PRODUCT_TITLE);
 		List<String> productNameList = new ArrayList<>();
 		for (WebElement productElement : productElementList) {
@@ -44,6 +46,24 @@ public class UserProductListPageObject extends BasePage{
 		case "Name: A to Z":
 			return isSortFromAToZ(productNameList);
 		case "Name: Z to A":
+			return isSortFromZToA(productNameList);
+		default:
+			throw new Exception("You entered the invalid option");
+		}
+	}
+	
+	public boolean isProductNameWasSortedByPrice(String optionLabel) throws Exception {
+		waitForElementVisible(driver, UserProductListUI.ALL_PRODUCT_PRICE);
+		SleepInSecond(3);
+		List<WebElement> productElementList = getWebElements(driver, UserProductListUI.ALL_PRODUCT_PRICE);
+		List<String> productNameList = new ArrayList<>();
+		for (WebElement productElement : productElementList) {
+			productNameList.add(productElement.getText());
+		}
+		switch (optionLabel) {
+		case "Price: Low to High":
+			return isSortFromAToZ(productNameList);
+		case "Price: High to Low":
 			return isSortFromZToA(productNameList);
 		default:
 			throw new Exception("You entered the invalid option");
@@ -82,5 +102,31 @@ public class UserProductListPageObject extends BasePage{
 	        previous = current;
 	    }
 	    return true;
+	}
+
+	public int getDisplayedProductNumber() {
+		waitForElementVisible(driver, UserProductListUI.ALL_PRODUCT_TITLE);
+		return getElementSize(driver, UserProductListUI.ALL_PRODUCT_TITLE);
+	}
+
+
+	public String getCurrentPagingNumber() {
+		waitForElementVisible(driver, UserProductListUI.DYNAMIC_PAGING_BY_CLASS, "current-page");
+		return getElementText(driver, UserProductListUI.DYNAMIC_PAGING_BY_CLASS, "current-page");
+	}
+
+	public boolean isPagingButtonDisplayByClass(String className) {
+		waitForElementVisible(driver, UserProductListUI.DYNAMIC_PAGING_BY_CLASS, className);
+		return isElementDisplayed(driver, UserProductListUI.DYNAMIC_PAGING_BY_CLASS, className);
+	}
+
+	public void clickToPagingButtonByID(String className) {
+		waitForElementClickable(driver, UserProductListUI.DYNAMIC_PAGING_BY_CLASS, className);
+		clickToElement(driver, UserProductListUI.DYNAMIC_PAGING_BY_CLASS, className);
+	}
+
+	public boolean isPagingButtonUndisplayed() {
+		waitForElementInvisible(driver, UserProductListUI.PAGING_BUTTON);
+		return isElementUndisplayed(driver, UserProductListUI.PAGING_BUTTON);
 	}
 }

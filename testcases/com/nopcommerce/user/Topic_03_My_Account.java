@@ -229,6 +229,6 @@ public class Topic_03_My_Account extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		closeBrowserDriver();
 	}
 }

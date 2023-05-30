@@ -130,6 +130,6 @@ public class Topic_01_Register extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		closeBrowserDriver();
 	}
 }
