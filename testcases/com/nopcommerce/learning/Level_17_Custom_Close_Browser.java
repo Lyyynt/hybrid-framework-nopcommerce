@@ -9,20 +9,14 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserCustomerInformationPageObject;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserMyAccountObject;
-import pageObjects.user.UserRegisterPageObject;
 
 public class Level_17_Custom_Close_Browser extends BaseTest{
 	// When run with cookie the class Common Register New Account always run in the first
 	WebDriver driver;
 	UserHomePageObject homePage;
 	UserLoginPageObject loginPage;
-	UserRegisterPageObject registerPage;
-	UserMyAccountObject myaccountPage;
-	UserCustomerInformationPageObject customerInformationPage;
 	
 	@Parameters("browser")
 	@BeforeClass

@@ -630,8 +630,20 @@ public class BasePage {
 	 * @author ntlinh8
 	 * @return 
 	 */
-	public String getSelectedItemFromDropdownByName(WebDriver driver,String dropdownName) {
+	public String getSelectedItemFromDropdownByName(WebDriver driver, String dropdownName) {
 		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
 		return getSelectedItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
 	}
+	
+	public String getSuccessMessage(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.SUCCESS_MESSAGE);
+		return getElementText(driver, UserAbstractPageUI.SUCCESS_MESSAGE);
+	}
+	
+	public void clickToCloseSuccessMessageButton(WebDriver driver) {
+		waitForElementClickable(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
+		clickToElement(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
+	}
+	
+	
 }

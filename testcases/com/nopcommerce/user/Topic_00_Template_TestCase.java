@@ -11,7 +11,7 @@ import commons.BaseTest;
 
 public class Topic_00_Template_TestCase extends BaseTest{
 	// This template is always up-to-date according to the latest knowledge
-	// Now is OOP and Mutiple Browser
+	// Now is custom close browser
 	WebDriver driver;
 	
 	@Parameters("browser")
@@ -27,6 +27,6 @@ public class Topic_00_Template_TestCase extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		closeBrowserDriver();
 	}
 }

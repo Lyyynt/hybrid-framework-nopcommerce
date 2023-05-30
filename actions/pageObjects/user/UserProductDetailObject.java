@@ -17,5 +17,10 @@ public class UserProductDetailObject extends BasePage{
 		clickToElement(driver, UserProductDetailUI.ADD_YOUR_REVIEWS_LINK);
 		return PageGeneratorManager.getUserAddProductReviewPage(driver);
 	}
-	
+
+	public void clickToButtonByTextAndProductName(String labelText) {
+		waitForElementVisible(driver, UserProductDetailUI.DYNAMIC_BUTTON_BY_LABEL, labelText);
+		clickToElement(driver, UserProductDetailUI.DYNAMIC_BUTTON_BY_LABEL, labelText);
+	}
+
 }
