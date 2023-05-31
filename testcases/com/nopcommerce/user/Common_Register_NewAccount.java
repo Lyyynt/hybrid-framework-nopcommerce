@@ -17,8 +17,8 @@ public class Common_Register_NewAccount extends BaseTest{
 	private WebDriver driver;
 	private UserHomePageObject homePage;
 	private UserRegisterPageObject registerPage;
-	private String firstName, lastName, confirmPassword;
-	public static String EMAIL, PASSWORD;
+	private String confirmPassword;
+	public static String EMAIL, PASSWORD, FIRSTNAME, LASTNAME;
 	public static Set<Cookie> ALLCookies;
 	@Parameters("browser")
 	@BeforeTest
@@ -26,8 +26,8 @@ public class Common_Register_NewAccount extends BaseTest{
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 		
-		firstName = "Elon";
-		lastName = "Musk";
+		FIRSTNAME = "Elon";
+		LASTNAME = "Musk";
 		EMAIL = "elonmusk" + getRandomNumber() + "@gmail.com";
 		PASSWORD = "Abc13579";
 		confirmPassword = "Abc13579";
@@ -35,10 +35,10 @@ public class Common_Register_NewAccount extends BaseTest{
 		registerPage = homePage.clickToRegisterLink();
 		
 		log.info("Pre-condtion - Step 2: Enter the first name");
-		registerPage.inputToFirstNameTextbox(firstName);
+		registerPage.inputToFirstNameTextbox(FIRSTNAME);
 		
 		log.info("Pre-condtion - Step 3: Enter the last name");
-		registerPage.inputToLastNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(LASTNAME);
 		
 		log.info("Pre-condtion - Step 4: Enter the email");
 		registerPage.inputToEmailTextbox(EMAIL);
@@ -60,6 +60,8 @@ public class Common_Register_NewAccount extends BaseTest{
 		
 		ALLCookies = homePage.getCookies(driver);
 		log.info(ALLCookies);
+		
+		closeBrowserDriver();
 	}
-
+	
 }

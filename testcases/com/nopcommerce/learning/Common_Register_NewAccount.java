@@ -60,6 +60,8 @@ public class Common_Register_NewAccount extends BaseTest{
 		
 		ALLCookies = homePage.getCookies(driver);
 		log.info(ALLCookies);
+		
+		closeBrowserDriver();
 	}
 
 }

@@ -24,11 +24,6 @@ public class UserProductListPageObject extends BasePage{
 		return PageGeneratorManager.getUserProductDetailPage(driver);
 	}
 
-	public Object getCurrentPageTitle() {
-		waitForElementVisible(driver, UserProductListUI.PRODUCT_TITLE_PAGE);
-		return getElementText(driver, UserProductListUI.PRODUCT_TITLE_PAGE);
-	}
-
 	public void selectSortByLabel(String optionLabel) {
 		waitForElementVisible(driver, UserProductListUI.PRODUCT_SORT_DROPDOWN);
 		selectItemDefaultDropdown(driver, UserProductListUI.PRODUCT_SORT_DROPDOWN, optionLabel);
@@ -129,4 +124,5 @@ public class UserProductListPageObject extends BasePage{
 		waitForElementInvisible(driver, UserProductListUI.PAGING_BUTTON);
 		return isElementUndisplayed(driver, UserProductListUI.PAGING_BUTTON);
 	}
+
 }

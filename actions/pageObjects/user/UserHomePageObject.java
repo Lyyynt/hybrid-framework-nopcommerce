@@ -47,16 +47,4 @@ public class UserHomePageObject extends BasePage {
 		return PageGeneratorManager.getUserProductListPage(driver);
 	}
 
-	public void hoverToMenuItemByLabel(String menuLabel) {
-		waitForElementClickable(driver, UserHomePageUI.HEADER_MENU_BUTTON, menuLabel);
-		hoverMouseToElement(driver, UserHomePageUI.HEADER_MENU_BUTTON, menuLabel);
-//		clickToElement(driver, UserHomePageUI.HEADER_MENU_BUTTON, menuLabel);
-	}
-
-	public UserProductListPageObject clickToSubmenuInHeaderMenuByLabel(String menuLabel, String submenuLabel) {
-		waitForElementClickable(driver, UserHomePageUI.SUBMENU_BUTTON, menuLabel, submenuLabel);
-		clickToElement(driver, UserHomePageUI.SUBMENU_BUTTON, menuLabel, submenuLabel);
-		return PageGeneratorManager.getUserProductListPage(driver);
-	}
-	
 }

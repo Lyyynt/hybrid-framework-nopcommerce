@@ -19,13 +19,15 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nopcommerce.user.UserAbstractPageUI;
+import nopcommerce.user.UserProductListUI;
+import nopcommerce.user.UserWishlistUI;
 import pageObjects.user.PageGeneratorManager;
 import pageObjects.user.UserAddAddressesObject;
 import pageObjects.user.UserChangePasswordPageObject;
 import pageObjects.user.UserCustomerInformationPageObject;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserMyProductReviewObject;
-import pageObjects.user.UserSearchPageObject;
+import pageObjects.user.UserProductListPageObject;
 
 public class BasePage {
 	private long longTimeout = 30;
@@ -569,22 +571,20 @@ public class BasePage {
 		return PageGeneratorManager.getUserMyProductReviewPage(driver);
 	}
 	
-	private void clickToFooterLink(WebDriver driver, String pageName) {
-		String footerLinkLocator = String.format(UserAbstractPageUI.DYNAMIC_FOOTER_LINK, pageName);
+	public void clickToFooterLink(WebDriver driver, String footerLabel) {
 		scrollToBottomPage(driver);
-		waitForElementVisible(driver, footerLinkLocator);
-		clickToElement(driver, footerLinkLocator);
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_FOOTER_LINK, footerLabel);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_FOOTER_LINK, footerLabel);
 	}
 
-	public UserSearchPageObject clickToSearchFooterLink(WebDriver driver) {
-		clickToFooterLink(driver, "Search");
-		return PageGeneratorManager.getUserSearchPage(driver);
+	public UserHomePageObject clickToLogOutLink(WebDriver driver) {
+		clickToHeaderLinkByClass(driver, "ico-logout");
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 	
-	public UserHomePageObject clickToLogOutLink(WebDriver driver) {
-		waitForElementClickable(driver, UserAbstractPageUI.LOGOUT_LINK);
-		clickToElement(driver, UserAbstractPageUI.LOGOUT_LINK);
-		return PageGeneratorManager.getUserHomePage(driver);
+	public void clickToHeaderLinkByClass(WebDriver driver, String className) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
 	}
 	
 	// Apply Pattern Object
@@ -635,6 +635,11 @@ public class BasePage {
 		return getSelectedItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
 	}
 	
+	public String getCurrentPageTitle(WebDriver driver) {
+		waitForElementVisible(driver, UserProductListUI.PRODUCT_TITLE_PAGE);
+		return getElementText(driver, UserProductListUI.PRODUCT_TITLE_PAGE);
+	}
+	
 	public String getSuccessMessage(WebDriver driver) {
 		waitForElementVisible(driver, UserAbstractPageUI.SUCCESS_MESSAGE);
 		return getElementText(driver, UserAbstractPageUI.SUCCESS_MESSAGE);
@@ -643,7 +648,43 @@ public class BasePage {
 	public void clickToCloseSuccessMessageButton(WebDriver driver) {
 		waitForElementClickable(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
 		clickToElement(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
+		waitForElementInvisible(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
 	}
 	
+	public void clickButtonByLabel(WebDriver driver, String buttonLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_BUTTON_BY_LABEL, buttonLabel);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_BUTTON_BY_LABEL, buttonLabel);
+	}
+	
+	public boolean isProductExistInTableByProductName(WebDriver driver, String productName) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_TABLE, productName);
+		return isElementDisplayed(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_TABLE, productName);
+	}
+	
+	public boolean isProductNotExistInTableByProductName(WebDriver driver, String productName) {
+		waitForElementInvisible(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_TABLE, productName);
+		return isElementUndisplayed(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_TABLE, productName);
+	}
+	
+	public void hoverToMenuItemByLabel(WebDriver driver, String menuLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.HEADER_MENU_BUTTON, menuLabel);
+		hoverMouseToElement(driver, UserAbstractPageUI.HEADER_MENU_BUTTON, menuLabel);
+	}
+
+	public UserProductListPageObject clickToSubmenuInHeaderMenuByLabel(WebDriver driver, String menuLabel, String submenuLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.SUBMENU_BUTTON, menuLabel, submenuLabel);
+		clickToElement(driver, UserAbstractPageUI.SUBMENU_BUTTON, menuLabel, submenuLabel);
+		return PageGeneratorManager.getUserProductListPage(driver);
+	}
+	
+	public void clickToButtonInProductItemByProductName(WebDriver driver, String productName, String buttonLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_BUTTON_IN_PRODUCT_ITEM_BY_PRODUCT_NAME, productName, buttonLabel);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_BUTTON_IN_PRODUCT_ITEM_BY_PRODUCT_NAME, productName, buttonLabel);
+	}
+	
+	public String getBodyTableData(WebDriver driver, String className) {
+		waitForElementVisible(driver, UserAbstractPageUI.TABLE_BODY_DATA, className);
+		return getElementText(driver, UserAbstractPageUI.TABLE_BODY_DATA, className);
+	}
 	
 }
