@@ -23,4 +23,13 @@ public class UserProductDetailObject extends BasePage{
 		clickToElement(driver, UserProductDetailUI.DYNAMIC_BUTTON_BY_LABEL, labelText);
 	}
 
+
+	
+
+
+
+
+
+	
+
 }

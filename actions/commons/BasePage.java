@@ -20,13 +20,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import nopcommerce.user.UserAbstractPageUI;
 import nopcommerce.user.UserProductListUI;
-import nopcommerce.user.UserWishlistUI;
 import pageObjects.user.PageGeneratorManager;
 import pageObjects.user.UserAddAddressesObject;
 import pageObjects.user.UserChangePasswordPageObject;
 import pageObjects.user.UserCustomerInformationPageObject;
 import pageObjects.user.UserHomePageObject;
 import pageObjects.user.UserMyProductReviewObject;
+import pageObjects.user.UserProductDetailObject;
 import pageObjects.user.UserProductListPageObject;
 
 public class BasePage {
@@ -379,7 +379,7 @@ public class BasePage {
 	public void scrollToBottomPage(WebDriver driver) {
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
-
+	
 	public void hightlightElement(WebDriver driver, String locator) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		WebElement element = getWebElement(driver, locator);
@@ -409,9 +409,17 @@ public class BasePage {
 	public void scrollToElementOnTop(WebDriver driver, String locator) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getWebElement(driver, locator));
 	}
-
+	
+	public void scrollToElementOnTop(WebDriver driver, String locator, String... dynamicValues) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getWebElement(driver, getDynamicXpath(locator, dynamicValues)));
+	}
+	
 	public void scrollToElementOnDown(WebDriver driver, String locator) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", getWebElement(driver, locator));
+	}
+	
+	public void scrollToElementOnDown(WebDriver driver, String locator, String... dynamicValues) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", getWebElement(driver, getDynamicXpath(locator, dynamicValues)));
 	}
 
 	public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove) {
@@ -583,8 +591,15 @@ public class BasePage {
 	}
 	
 	public void clickToHeaderLinkByClass(WebDriver driver, String className) {
+		scrollToElementOnTop(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
 		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
 		clickToElement(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
+	}
+	
+	public void hoverToHeaderLinkByClass(WebDriver driver, String className) {
+		scrollToElementOnTop(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
+		hoverMouseToElement(driver, UserAbstractPageUI.DYNAMIC_HEADER_LINK_BY_CLASS, className);
 	}
 	
 	// Apply Pattern Object
@@ -618,7 +633,7 @@ public class BasePage {
 	 * @param dropdownName
 	 * @author ntlinh8
 	 */
-	public void selectDropdownByName(WebDriver driver, String option, String dropdownName) {
+	public void selectDropdownByName(WebDriver driver, String dropdownName, String option) {
 		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
 		selectItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, option, dropdownName);
 	}
@@ -685,6 +700,61 @@ public class BasePage {
 	public String getBodyTableData(WebDriver driver, String className) {
 		waitForElementVisible(driver, UserAbstractPageUI.TABLE_BODY_DATA, className);
 		return getElementText(driver, UserAbstractPageUI.TABLE_BODY_DATA, className);
+	}
+	
+	public UserProductDetailObject clickToProductTitle(WebDriver driver, String productTitle) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_TITLE, productTitle);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_TITLE, productTitle);
+		return PageGeneratorManager.getUserProductDetailPage(driver);
+	}
+	
+	public boolean isProductDisplayByProductName(WebDriver driver, String productTitle) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_TITLE, productTitle);
+		return isElementDisplayed(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_TITLE, productTitle);
+	}
+	
+	public void checkToCheckboxRadioButtonByLabel(WebDriver driver, String optionLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+		checkToDefaultCheckboxRadio(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+	}
+	public void uncheckToCheckboxButtonByLabel(WebDriver driver, String optionLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+		uncheckToDefaultCheckbox(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+	}
+	
+	public boolean isMiniShoppingCartDisplay(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.MINI_SHOPPING_CART);
+		return isElementDisplayed(driver, UserAbstractPageUI.MINI_SHOPPING_CART);
+	}
+	
+	public String getAddProductMessageDisplay(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_MINI_CART);
+		return getElementText(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_MINI_CART);
+	}
+	
+	public String getProductNameInMiniCart(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.ADD_PRODUCT_MESSAGE);
+		return getElementText(driver, UserAbstractPageUI.ADD_PRODUCT_MESSAGE);
+	}
+	
+	public String getAttributeOfProduct(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.PRODUCT_ATTRIBUTE);
+		return getElementText(driver, UserAbstractPageUI.PRODUCT_ATTRIBUTE);
+	}
+	
+	public String getProductUnitPrice(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.PRODUCT_UNIT_PRICE);
+		return getElementText(driver, UserAbstractPageUI.PRODUCT_UNIT_PRICE);
+	}
+	
+	public String getProductQuantity(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.PRODUCT_QUANTITY);
+		return getElementText(driver, UserAbstractPageUI.PRODUCT_QUANTITY);
+	}
+	
+	public String getSubPrice(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.PRODUCT_SUB_TOTAL);
+		return getElementText(driver, UserAbstractPageUI.PRODUCT_SUB_TOTAL);
 	}
 	
 }

@@ -4,7 +4,7 @@
   	<parameter name="browser" value="firefox"/>
     <classes>
       <class name="com.nopcommerce.user.Common_Register_NewAccount"/>
-      <class name="com.nopcommerce.user.Topic_06_Wishlist_Compare_RecentView"/>
+      <class name="com.nopcommerce.user.Topic_07_Order"/>
     </classes>
   </test> 
   

@@ -196,7 +196,7 @@ public class Topic_03_My_Account extends BaseTest{
 		productListPage = homePage.clickToSearchButton();
 		
 		log.info("My Account 04 - Step 2: Open Product Detail Page");
-		productDetailPage = productListPage.clickToProductTitle("Apple MacBook Pro 13-inch");
+		productDetailPage = productListPage.clickToProductTitle(driver, "Apple MacBook Pro 13-inch");
 		
 		log.info("My Account 04 - Step 3: Click Add Your Review Link");
 		addProductReviewPage = productDetailPage.clickToAddYourReviewLink();

@@ -12,7 +12,16 @@ public class UserAbstractPageUI {
 	public static final String DYNAMIC_PRODUCT_NAME_IN_TABLE = "xpath=//a[@class='product-name' and text()='%s']";
 	public static final String HEADER_MENU_BUTTON = "xpath=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]";
 	public static final String SUBMENU_BUTTON = "xpath=//ul[@class='top-menu notmobile']//a[contains(text(),'%s')]/following-sibling::ul[@class='sublist first-level']//a[contains(text(),'%s')]";
-	public static final String DYNAMIC_BUTTON_IN_PRODUCT_ITEM_BY_PRODUCT_NAME = "xpath=//div[@class='page category-page']//a[text()='%s']/ancestor-or-self::div[@class='product-item']//button[text()='%s']";
+	public static final String DYNAMIC_PRODUCT_TITLE = "xpath=//a[text()='%s']/ancestor-or-self::div[@class='product-item']";
+	public static final String DYNAMIC_BUTTON_IN_PRODUCT_ITEM_BY_PRODUCT_NAME = DYNAMIC_PRODUCT_TITLE + "//button[text()='%s']";
 	public static final String TABLE_BODY_DATA = "xpath=//div[@class='%s']//div[@class='page-body']";
+	public static final String DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL = "xpath=//label[text()='%s']/preceding-sibling::input";
+	public static final String MINI_SHOPPING_CART = "xpath=//div[@class='mini-shopping-cart']";
+	public static final String DYNAMIC_PRODUCT_NAME_IN_MINI_CART = MINI_SHOPPING_CART + "//div[@class='name']/a";
+	public static final String ADD_PRODUCT_MESSAGE = MINI_SHOPPING_CART + "//div[@class='count']";
+	public static final String PRODUCT_ATTRIBUTE = MINI_SHOPPING_CART + "//div[@class='attributes']";
+	public static final String PRODUCT_UNIT_PRICE = MINI_SHOPPING_CART + "//div[@class='price']/span";
+	public static final String PRODUCT_QUANTITY = MINI_SHOPPING_CART + "//div[@class='quantity']/span";
+	public static final String PRODUCT_SUB_TOTAL = MINI_SHOPPING_CART + "//div[@class='totals']/strong";
 	
 }

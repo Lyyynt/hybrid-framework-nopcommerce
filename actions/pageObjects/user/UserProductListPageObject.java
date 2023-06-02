@@ -17,13 +17,6 @@ public class UserProductListPageObject extends BasePage{
 		this.driver = driver;
 	}
 
-	public UserProductDetailObject clickToProductTitle(String productTitle) {
-		String productTitleLocator = UserProductListUI.PRODUCT_TITLE.replace("****", productTitle);
-		waitForElementClickable(driver, productTitleLocator);
-		clickToElement(driver, productTitleLocator);
-		return PageGeneratorManager.getUserProductDetailPage(driver);
-	}
-
 	public void selectSortByLabel(String optionLabel) {
 		waitForElementVisible(driver, UserProductListUI.PRODUCT_SORT_DROPDOWN);
 		selectItemDefaultDropdown(driver, UserProductListUI.PRODUCT_SORT_DROPDOWN, optionLabel);
