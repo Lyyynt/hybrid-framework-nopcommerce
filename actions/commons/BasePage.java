@@ -671,6 +671,16 @@ public class BasePage {
 		clickToElement(driver, UserAbstractPageUI.DYNAMIC_BUTTON_BY_LABEL, buttonLabel);
 	}
 	
+	public void clickButtonByClass(WebDriver driver, String buttonClassName) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_BUTTON_BY_CLASS, buttonClassName);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_BUTTON_BY_CLASS, buttonClassName);
+	}
+	
+	public void clickButtonLinkByLabel(WebDriver driver, String linkLabel) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_BUTTON_LINK_BY_LABEL, linkLabel);
+		clickToElement(driver, UserAbstractPageUI.DYNAMIC_BUTTON_LINK_BY_LABEL, linkLabel);
+	}
+	
 	public boolean isProductExistInTableByProductName(WebDriver driver, String productName) {
 		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_TABLE, productName);
 		return isElementDisplayed(driver, UserAbstractPageUI.DYNAMIC_PRODUCT_NAME_IN_TABLE, productName);

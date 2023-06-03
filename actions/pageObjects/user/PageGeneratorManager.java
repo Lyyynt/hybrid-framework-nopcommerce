@@ -73,6 +73,18 @@ public class PageGeneratorManager {
 		return new UserRecentlyViewedProductPageObject(driver);
 	}
 	
+	static public UserCheckoutPageObject getCheckoutPage(WebDriver driver) {
+		return new UserCheckoutPageObject(driver);
+	}
+	
+	static public UserConfirmOrderDetailPageObject getConfirmOrderDetailPage(WebDriver driver) {
+		return new UserConfirmOrderDetailPageObject(driver);
+	}
+	
+	static public UserOrderPageObject getOrderPageObject(WebDriver driver) {
+		return new UserOrderPageObject(driver);
+	}
+	
 	static public AdminLoginPageObject getAdminLoginPage(WebDriver driver) {
 		return new AdminLoginPageObject(driver);
 	}

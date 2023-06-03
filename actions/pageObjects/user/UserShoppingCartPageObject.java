@@ -33,4 +33,14 @@ public class UserShoppingCartPageObject extends BasePage {
 		return getElementText(driver, UserShoppingCartUI.DYNAMIC_SUBTOTAL_BY_PRODUCT_NAME, lenovoPCName);
 	}
 
+	public boolean isShippingMethodDisplay() {
+		waitForElementVisible(driver, UserShoppingCartUI.SHIPPING_METHOD_IN_ESTIMATE_SHIPPING_POPUP);
+		return isElementDisplayed(driver, UserShoppingCartUI.SHIPPING_METHOD_IN_ESTIMATE_SHIPPING_POPUP);
+	}
+
+	public boolean isShippingMethodUndisplay() {
+		waitForElementInvisible(driver, UserShoppingCartUI.SHIPPING_METHOD_IN_ESTIMATE_SHIPPING_POPUP);
+		return isElementUndisplayed(driver, UserShoppingCartUI.SHIPPING_METHOD_IN_ESTIMATE_SHIPPING_POPUP);
+	}
+
 }
