@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import nomcommerce.admin.AdminAbstractPageUI;
 import nopcommerce.user.UserAbstractPageUI;
 import nopcommerce.user.UserProductListUI;
 import pageObjects.user.PageGeneratorManager;
@@ -364,6 +365,10 @@ public class BasePage {
 		new Actions(driver).doubleClick(getWebElement(driver, locator)).perform();
 	}
 	
+	public void doubleClickToElement(WebDriver driver, String locator, String... dynamicValues) {
+		new Actions(driver).doubleClick(getWebElement(driver, getDynamicXpath(locator, dynamicValues))).perform();
+	}
+	
 	public void rightClickToElement(WebDriver driver, String locator) {
 		new Actions(driver).contextClick(getWebElement(driver, locator)).perform();
 	}
@@ -476,6 +481,11 @@ public class BasePage {
 	public void waitForAllElementVisible(WebDriver driver, String locator) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(locator)));
+	}
+	
+	public void waitForAllElementVisible(WebDriver driver, String locator, String... dynamicValues) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
+		explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(getDynamicXpath(locator, dynamicValues))));
 	}
 	
 	public void waitForElementInvisible(WebDriver driver, String locator) {
@@ -727,9 +737,19 @@ public class BasePage {
 		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
 		checkToDefaultCheckboxRadio(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
 	}
+	
 	public void uncheckToCheckboxButtonByLabel(WebDriver driver, String optionLabel) {
 		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
 		uncheckToDefaultCheckbox(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+	}
+	public void checkToCheckboxRadioButtonById(WebDriver driver, String optionId) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
+		checkToDefaultCheckboxRadio(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
+	}
+	
+	public void uncheckToCheckboxButtonById(WebDriver driver, String optionId) {
+		waitForElementClickable(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
+		uncheckToDefaultCheckbox(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
 	}
 	
 	public boolean isMiniShoppingCartDisplay(WebDriver driver) {
@@ -765,6 +785,22 @@ public class BasePage {
 	public String getSubPrice(WebDriver driver) {
 		waitForElementVisible(driver, UserAbstractPageUI.PRODUCT_SUB_TOTAL);
 		return getElementText(driver, UserAbstractPageUI.PRODUCT_SUB_TOTAL);
+	}
+	
+	// Admin
+	public void clickToLeftMenuByLabel(WebDriver driver, String label) {
+		waitForElementClickable(driver, AdminAbstractPageUI.DYNAMIC_LEFT_MENU_LINK_BY_LABEL, label);
+		doubleClickToElement(driver, AdminAbstractPageUI.DYNAMIC_LEFT_MENU_LINK_BY_LABEL, label);
+	}
+
+	public boolean isSelectedLeftMenuByLabel(WebDriver driver, String label) {
+		waitForElementVisible(driver, AdminAbstractPageUI.DYNAMIC_SELECTED_LEFT_MENU_LINK_BY_LABEL, label);
+		return isElementDisplayed(driver, AdminAbstractPageUI.DYNAMIC_SELECTED_LEFT_MENU_LINK_BY_LABEL, label);
+	}
+
+	public void clickToSubLeftMenuByLabel(WebDriver driver, String label) {
+		waitForElementClickable(driver, AdminAbstractPageUI.DYNAMIC_SUB_MENU_LINK_BY_LABEL, label);
+		doubleClickToElement(driver, AdminAbstractPageUI.DYNAMIC_SUB_MENU_LINK_BY_LABEL, label);
 	}
 	
 }

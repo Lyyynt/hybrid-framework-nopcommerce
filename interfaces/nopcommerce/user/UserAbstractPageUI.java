@@ -18,6 +18,7 @@ public class UserAbstractPageUI {
 	public static final String DYNAMIC_BUTTON_IN_PRODUCT_ITEM_BY_PRODUCT_NAME = DYNAMIC_PRODUCT_TITLE + "//button[text()='%s']";
 	public static final String TABLE_BODY_DATA = "xpath=//div[@class='%s']//div[@class='page-body']";
 	public static final String DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL = "xpath=//label[text()='%s']/preceding-sibling::input";
+	public static final String DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID = "xpath=//input[@id='%s']";
 	public static final String MINI_SHOPPING_CART = "xpath=//div[@class='mini-shopping-cart']";
 	public static final String DYNAMIC_PRODUCT_NAME_IN_MINI_CART = MINI_SHOPPING_CART + "//div[@class='name']/a";
 	public static final String ADD_PRODUCT_MESSAGE = MINI_SHOPPING_CART + "//div[@class='count']";

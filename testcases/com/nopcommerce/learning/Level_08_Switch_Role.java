@@ -27,10 +27,10 @@ public class Level_08_Switch_Role extends BaseTest{
 	private String userFirstName, userLastName, userEmail, userPassword, userConfirmPassword;
 	private String adminEmail, adminPassword;
 	
-	@Parameters("browser")
+	@Parameters({"browser", "url"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
+	public void beforeClass(String browserName, String url) {
+		driver = getBrowserDriver(browserName, url);
 		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 		userFirstName = "Elon";
 		userLastName = "Musk";
@@ -83,7 +83,7 @@ public class Level_08_Switch_Role extends BaseTest{
 	public void TC_03_Switch_Admin_Page_With_Admin_Role() {
 		System.out.println("Swith To Admin Page - Step 1: Open admin page");
 		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL);
-		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
+		adminLoginPage = pageObjects.admin.PageGeneratorManager.getAdminLoginPage(driver);
 		
 		System.out.println("Swith To Admin Page - Step 2: Login with admin account"); 
 		adminDashboardPage = adminLoginPage.loginWithAdminAccount(adminEmail, adminPassword);

@@ -67,7 +67,7 @@ public class Level_10_Data_Table_2 extends BaseTest{
 	public void DataTable_02_Customer_Displays_In_Customer_List() {
 		System.out.println("Swith To Admin Page - Step 1: Open admin page");
 		homePage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL);
-		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
+		adminLoginPage = pageObjects.admin.PageGeneratorManager.getAdminLoginPage(driver);
 		
 		System.out.println("Swith To Admin Page - Step 2: Login with admin account"); 
 		adminDashboardPage = adminLoginPage.loginWithAdminAccount(adminEmail, adminPassword);
@@ -75,11 +75,11 @@ public class Level_10_Data_Table_2 extends BaseTest{
 		System.out.println("Swith To Admin Page - Step 3: Verify the dashboard page is displayed");
 		Assert.assertTrue(adminDashboardPage.isDashboardHeaderDisplayed());
 		
-		adminDashboardPage.clickToLeftMenuByLabel("Customers");
-		Assert.assertTrue(adminDashboardPage.isSelectedLeftMenuByLabel("Customers"));
+		adminDashboardPage.clickToLeftMenuByLabel(driver, "Customers");
+		Assert.assertTrue(adminDashboardPage.isSelectedLeftMenuByLabel(driver, "Customers"));
 		
-		adminDashboardPage.clickToSubLeftMenuByLabel("Customers");
-		adminCustomerPage = PageGeneratorManager.getAdminCustomerPage(driver);
+		adminDashboardPage.clickToSubLeftMenuByLabel(driver, "Customers");
+		adminCustomerPage = pageObjects.admin.PageGeneratorManager.getAdminCustomerPage(driver);
 		adminCustomerPage.inputToEmailTextbox(email);
 		SleepInSecond(2);
 		adminCustomerPage.clickToSearchButton();
