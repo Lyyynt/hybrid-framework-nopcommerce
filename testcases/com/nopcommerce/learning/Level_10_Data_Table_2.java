@@ -80,7 +80,7 @@ public class Level_10_Data_Table_2 extends BaseTest{
 		
 		adminDashboardPage.clickToSubLeftMenuByLabel(driver, "Customers");
 		adminCustomerPage = pageObjects.admin.PageGeneratorManager.getAdminCustomerPage(driver);
-		adminCustomerPage.inputToEmailTextbox(email);
+		adminCustomerPage.inputToTextboxById(driver, email, "SearchEmail");
 		SleepInSecond(2);
 		adminCustomerPage.clickToSearchButton();
 		adminCustomerPage.scrollToBottomPage(driver);

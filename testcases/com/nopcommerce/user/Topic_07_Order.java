@@ -118,10 +118,10 @@ public class Topic_07_Order extends BaseTest{
 		productDetailPage.clickButtonByLabel(driver, "Add to cart");
 		
 		log.info("Order 01 - Step 7: Verify the add to cart success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your shopping cart");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your shopping cart");
 		
 		log.info("Order 01 - Step 8: Click to close button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("Order 01 - Step 9: Hover the Shopping Cart header menu");
 		productDetailPage.hoverToHeaderLinkByClass(driver, "ico-cart");
@@ -161,10 +161,10 @@ public class Topic_07_Order extends BaseTest{
 		productDetailPage.clickButtonByLabel(driver, "Update");
 		
 		log.info("Order 02 - Step 6: Verify the add to cart success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your shopping cart");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your shopping cart");
 		
 		log.info("Order 01 - Step 7: Click to close button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("Order 02 - Step 8: Hover the Shopping Cart header menu");
 		productDetailPage.hoverToHeaderLinkByClass(driver, "ico-cart");
@@ -216,10 +216,10 @@ public class Topic_07_Order extends BaseTest{
 		productDetailPage.clickButtonByLabel(driver, "Add to cart");
 		
 		log.info("Order 04 - Step 6: Verify the add to cart success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your shopping cart");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your shopping cart");
 		
 		log.info("Order 04 - Step 7: Click to close button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("Order 04 - Step 8: Click to Shopping cart header link");
 		productDetailPage.clickToHeaderLinkByClass(driver, "ico-cart");
@@ -256,10 +256,10 @@ public class Topic_07_Order extends BaseTest{
 		productDetailPage.clickButtonByLabel(driver, "Add to cart");
 		
 		log.info("Order 05 - Step 6: Verify the add to cart success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your shopping cart");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your shopping cart");
 		
 		log.info("Order 05 - Step 7: Click to close button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("Order 05 - Step 8: Click to Shopping cart header link");
 		productDetailPage.clickToHeaderLinkByClass(driver, "ico-cart");
@@ -418,10 +418,10 @@ public class Topic_07_Order extends BaseTest{
 		productDetailPage.clickButtonByLabel(driver, "Add to cart");
 		
 		log.info("Order 06 - Step 6: Verify the add to cart success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your shopping cart");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your shopping cart");
 		
 		log.info("Order 06 - Step 7: Click to close button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("Order 06 - Step 8: Click to Shopping cart header link");
 		productDetailPage.clickToHeaderLinkByClass(driver, "ico-cart");

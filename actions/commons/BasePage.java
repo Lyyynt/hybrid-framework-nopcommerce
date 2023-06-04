@@ -200,6 +200,18 @@ public class BasePage {
 		select.selectByVisibleText(textItem);
 	}
 	
+	public void SelectCustomDropDown(WebDriver driver, String parentLocator, String childLocator, String expectedItem) {
+		clickToElement(driver, parentLocator);
+		waitForAllElementPresence(driver, childLocator);
+		List<WebElement> speedDropdownItems = getWebElements(driver, childLocator);
+		for (WebElement item : speedDropdownItems) {
+			if(item.getText().trim().equals(expectedItem)) {
+				item.click();
+				break;
+			}
+		}
+	}
+	
 	public String getSelectedItemDefaultDropdown(WebDriver driver, String locator) {
 		Select select = new Select(getWebElement(driver, locator));
 		return select.getFirstSelectedOption().getText();
@@ -451,6 +463,7 @@ public class BasePage {
 
 	
 	public boolean isPageLoadedSuccess(WebDriver driver) {
+		SleepInSecond(3);
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
@@ -625,6 +638,11 @@ public class BasePage {
 		sendkeyToElement(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxId);
 	}
 	
+	public void inputToTextAreaById(WebDriver driver, String value, String textareaId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_TEXTAREA_BY_ID, textareaId);
+		sendkeyToElement(driver, UserAbstractPageUI.DYNAMIC_TEXTAREA_BY_ID, value, textareaId);
+	}
+	
 	/**
 	 * Get Value attribute from textbox by id
 	 * @param driver
@@ -634,6 +652,11 @@ public class BasePage {
 	public String getValueAttributFromTextboxByID(WebDriver driver, String textboxId) {
 		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, textboxId);
 		return getElementAttribute(driver, UserAbstractPageUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxId);
+	}
+	
+	public String getValueAttributFromTextareaByID(WebDriver driver, String textareaId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_TEXTAREA_BY_ID, textareaId);
+		return getElementAttribute(driver, UserAbstractPageUI.DYNAMIC_TEXTAREA_BY_ID, "value", textareaId);
 	}
 	
 	/**
@@ -665,15 +688,15 @@ public class BasePage {
 		return getElementText(driver, UserProductListUI.PRODUCT_TITLE_PAGE);
 	}
 	
-	public String getSuccessMessage(WebDriver driver) {
-		waitForElementVisible(driver, UserAbstractPageUI.SUCCESS_MESSAGE);
-		return getElementText(driver, UserAbstractPageUI.SUCCESS_MESSAGE);
+	public String getUserAlertMessage(WebDriver driver) {
+		waitForElementVisible(driver, UserAbstractPageUI.USER_ALERT_MESSAGE);
+		return getElementText(driver, UserAbstractPageUI.USER_ALERT_MESSAGE);
 	}
 	
-	public void clickToCloseSuccessMessageButton(WebDriver driver) {
-		waitForElementClickable(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
-		clickToElement(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
-		waitForElementInvisible(driver, UserAbstractPageUI.CLOSE_SUCESS_MESSAGE);
+	public void clickToUserCloseAlertMessageButton(WebDriver driver) {
+		waitForElementClickable(driver, UserAbstractPageUI.USER_CLOSE_ALERT_MESSAGE);
+		clickToElement(driver, UserAbstractPageUI.USER_CLOSE_ALERT_MESSAGE);
+		waitForElementInvisible(driver, UserAbstractPageUI.USER_CLOSE_ALERT_MESSAGE);
 	}
 	
 	public void clickButtonByLabel(WebDriver driver, String buttonLabel) {
@@ -752,6 +775,16 @@ public class BasePage {
 		uncheckToDefaultCheckbox(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
 	}
 	
+	public boolean isCheckboxRadioCheckedById(WebDriver driver, String optionId) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
+		return isElementSelected(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_ID, optionId);
+	}
+	
+	public boolean isCheckboxRadioCheckedByLabel(WebDriver driver, String optionLabel) {
+		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+		return isElementSelected(driver, UserAbstractPageUI.DYNAMIC_CHECKBOX_RADIO_BUTTON_BY_LABEL, optionLabel);
+	}
+	
 	public boolean isMiniShoppingCartDisplay(WebDriver driver) {
 		waitForElementVisible(driver, UserAbstractPageUI.MINI_SHOPPING_CART);
 		return isElementDisplayed(driver, UserAbstractPageUI.MINI_SHOPPING_CART);
@@ -801,6 +834,27 @@ public class BasePage {
 	public void clickToSubLeftMenuByLabel(WebDriver driver, String label) {
 		waitForElementClickable(driver, AdminAbstractPageUI.DYNAMIC_SUB_MENU_LINK_BY_LABEL, label);
 		doubleClickToElement(driver, AdminAbstractPageUI.DYNAMIC_SUB_MENU_LINK_BY_LABEL, label);
+	}
+	
+	public void clickButtonByLabelInAdminPage(WebDriver driver, String label) {
+		waitForElementClickable(driver, AdminAbstractPageUI.DYNAMIC_BUTTON, label);
+		clickToElement(driver, AdminAbstractPageUI.DYNAMIC_BUTTON, label);
+	}
+	
+	public void clickButtonLinkByLabelInAdminPage(WebDriver driver, String label) {
+		waitForElementClickable(driver, AdminAbstractPageUI.DYNAMIC_BUTTON_LINK, label);
+		clickToElement(driver, AdminAbstractPageUI.DYNAMIC_BUTTON_LINK, label);
+	}
+	
+	public String getAdminAlertMessage(WebDriver driver) {
+		waitForElementVisible(driver, AdminAbstractPageUI.ADMIN_ALERT_MESSAGE);
+		return getElementText(driver, AdminAbstractPageUI.ADMIN_ALERT_MESSAGE);
+	}
+	
+	public void clickToAdminCloseAlertMessage(WebDriver driver) {
+		waitForElementClickable(driver, AdminAbstractPageUI.ADMIN_CLOSE_ALERT_MESSAGE);
+		clickToElement(driver, AdminAbstractPageUI.ADMIN_CLOSE_ALERT_MESSAGE);
+		waitForElementInvisible(driver, AdminAbstractPageUI.ADMIN_CLOSE_ALERT_MESSAGE);
 	}
 	
 }

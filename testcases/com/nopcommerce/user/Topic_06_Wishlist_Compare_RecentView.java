@@ -75,10 +75,10 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		productDetailPage.clickToButtonByTextAndProductName("Add to wishlist");
 		
 		log.info("WishlistCompareRecent 01 - Step 2: Verify add success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your wishlist");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your wishlist");
 		
 		log.info("WishlistCompareRecent 01 - Step 3: Click close toast message button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("WishlistCompareRecent 01 - Step 4: Click to Wishlist header link");
 		productDetailPage.clickToHeaderLinkByClass(driver, "ico-wishlist");
@@ -130,8 +130,8 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		productListPage = shoppingCartPage.clickToSubmenuInHeaderMenuByLabel(driver, "Computers", "Notebooks");
 		productDetailPage = productListPage.clickToProductTitle(driver, macbookAppleProduct);
 		productDetailPage.clickToButtonByTextAndProductName("Add to wishlist");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your wishlist");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your wishlist");
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		productDetailPage.clickToHeaderLinkByClass(driver, "ico-wishlist");
 		wishlistPage = PageGeneratorManager.getUserWishlistPage(driver);
 		verifyTrue(wishlistPage.isProductExistInTableByProductName(driver, macbookAppleProduct));
@@ -156,19 +156,19 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 		productListPage.clickToButtonInProductItemByProductName(driver, macbookAppleProduct, "Add to compare list");
 		
 		log.info("WishlistCompareRecent 04 - Step 3: Verify add success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your wishlist");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your wishlist");
 		
 		log.info("WishlistCompareRecent 04 - Step 4: Click close toast message button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("WishlistCompareRecent 04 - Step 6: Click add to compare list with asus product");
 		productListPage.clickToButtonInProductItemByProductName(driver, asusLaptopProduct, "Add to compare list");
 		
 		log.info("WishlistCompareRecent 04 - Step 7: Verify add success message display");
-		verifyEquals(productDetailPage.getSuccessMessage(driver), "The product has been added to your wishlist");
+		verifyEquals(productDetailPage.getUserAlertMessage(driver), "The product has been added to your wishlist");
 		
 		log.info("WishlistCompareRecent 04 - Step 8: Click close toast message button");
-		productDetailPage.clickToCloseSuccessMessageButton(driver);
+		productDetailPage.clickToUserCloseAlertMessageButton(driver);
 		
 		log.info("WishlistCompareRecent 04 - Step 9: Click Compare products list footer link");
 		productDetailPage.clickToFooterLink(driver, "Compare products list");
