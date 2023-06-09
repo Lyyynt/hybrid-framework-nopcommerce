@@ -61,6 +61,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_02_Data_Not_Exist() {
+		homePage.openSearchPage();
+		
 		log.info("Search 02 - Step 1: Send data that is not exist to search box");
 		searchPage.inputToSearchKeywordTextbox("Macbook Pro 2050");
 		
@@ -75,6 +77,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_03_Relative_Product_Name() {
+		homePage.openSearchPage();
+		
 		log.info("Search 03 - Step 1: Send relative product name to search box");
 		searchPage.inputToSearchKeywordTextbox("Lenovo");
 		
@@ -90,6 +94,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_04_Absolute_Product_Name() {
+		homePage.openSearchPage();
+		
 		log.info("Search 04 - Step 1: Send absolute product name to search box");
 		searchPage.inputToSearchKeywordTextbox("Thinkpad X1 Carbon");
 		
@@ -104,6 +110,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_05_Advanced_With_Parent_Categories() {
+		homePage.openSearchPage();
+		
 		log.info("Search 05 - Step 1: Send keyword search");
 		searchPage.inputToSearchKeywordTextbox("Apple MacBook Pro");
 		
@@ -126,6 +134,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_06_Advanced_With_Sub_Categories() {
+		homePage.openSearchPage();
+		
 		log.info("Search 06 - Step 1: Send keyword search");
 		searchPage.inputToSearchKeywordTextbox("Apple MacBook Pro");
 		
@@ -149,6 +159,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_07_Advanced_With_Incorrect_Manufacturer() {
+		homePage.openSearchPage();
+		
 		log.info("Search 07 - Step 1: Send keyword search");
 		searchPage.inputToSearchKeywordTextbox("Apple MacBook Pro");
 		
@@ -174,6 +186,8 @@ public class Topic_04_Advanced_Search extends BaseTest{
 	
 	@Test
 	public void Search_08_Advanced_With_Correct_Manufacturer() {
+		homePage.openSearchPage();
+		
 		log.info("Search 08 - Step 1: Send keyword search");
 		searchPage.inputToSearchKeywordTextbox("Apple MacBook Pro");
 		
@@ -203,7 +217,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		closeBrowserDriver();
 	}
 	
-	public void registerNewAccountAndLogin() {
+	private void registerNewAccountAndLogin() {
 		// Pre-condition
 		log.info("Pre-condition - Step 1: Enter the valid information");
 		homePage = PageGeneratorManager.getUserHomePage(driver);
@@ -231,5 +245,6 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		verifyTrue(homePage.isMyAccountLinkDisplayed());
 		log.info("=============================");
 	}
+	
 }
 

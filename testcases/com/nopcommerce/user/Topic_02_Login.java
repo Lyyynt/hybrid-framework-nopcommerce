@@ -63,6 +63,8 @@ public class Topic_02_Login extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
+		homePage.openLoginPage();
+	
 		log.info("Login 02 - Step 1: Click to Login link to clear data");
 		loginPage = homePage.clickToLoginLink();
 		
@@ -79,6 +81,8 @@ public class Topic_02_Login extends BaseTest {
 	
 	@Test
 	public void Login_03_Email_Not_Register() {
+		homePage.openLoginPage();
+		
 		log.info("Login 03 - Step 1: Click to Login link to clear data");
 		loginPage = homePage.clickToLoginLink();
 		
@@ -95,6 +99,8 @@ public class Topic_02_Login extends BaseTest {
 	
 	@Test
 	public void Login_04_Correct_Email_And_No_Password() {
+		homePage.openLoginPage();
+		
 		log.info("Login 04 - Step 1: Click to Login link to clear data");
 		loginPage = homePage.clickToLoginLink();
 		
@@ -110,6 +116,8 @@ public class Topic_02_Login extends BaseTest {
 	
 	@Test
 	public void Login_05_Correct_Email_And_Incorrect_Password() {
+		homePage.openLoginPage();
+		
 		log.info("Login 05 - Step 1: Click to Login link to clear data");
 		loginPage = homePage.clickToLoginLink();
 		
@@ -126,6 +134,8 @@ public class Topic_02_Login extends BaseTest {
 	
 	@Test
 	public void Login_06_Correct_Email_And_Correct_Password() {
+		homePage.openLoginPage();
+		
 		log.info("Login 06 - Step 1: Click to Login link to clear data");
 		loginPage = homePage.clickToLoginLink();
 		

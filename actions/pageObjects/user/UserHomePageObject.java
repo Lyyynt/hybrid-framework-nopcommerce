@@ -2,6 +2,7 @@ package pageObjects.user;
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
+import commons.GlobalConstants;
 import io.qameta.allure.Step;
 import nopcommerce.user.UserHomePageUI;
 
@@ -45,6 +46,21 @@ public class UserHomePageObject extends BasePage {
 		waitForElementClickable(driver, UserHomePageUI.SEARCH_BUTTON);
 		clickToElement(driver, UserHomePageUI.SEARCH_BUTTON);
 		return PageGeneratorManager.getUserProductListPage(driver);
+	}
+	
+	public void openSearchPage() {
+		openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL + "/search");
+		SleepInSecond(2);
+	}
+	
+	public void openRegisterPage() {
+		openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL + "/register");
+		SleepInSecond(2);
+	}
+	
+	public void openLoginPage() {
+		openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL + "/login");
+		SleepInSecond(2);
 	}
 
 }

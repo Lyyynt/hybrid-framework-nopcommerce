@@ -48,6 +48,8 @@ public class Topic_01_Register extends BaseTest{
 
 	@Test
 	public void Register_02_Invalid_Email() {
+		homePage.openRegisterPage();
+		
 		log.info("Register 02 - Step 1: Enter the invalid email");
 		registerPage.inputToEmailTextbox("@gmail.com");
 		
@@ -60,6 +62,8 @@ public class Topic_01_Register extends BaseTest{
 	
 	@Test
 	public void Register_03_Valid_Information() {
+		homePage.openRegisterPage();
+		
 		log.info("Register 03 - Step 1: Enter the valid information");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -79,6 +83,8 @@ public class Topic_01_Register extends BaseTest{
 	
 	@Test
 	public void Register_04_Exist_Email() {
+		homePage.openRegisterPage();
+		
 		log.info("Register 04 - Step 1: Click to register link");
 		registerPage =  homePage.clickToRegisterLink();
 		
@@ -98,6 +104,8 @@ public class Topic_01_Register extends BaseTest{
 	
 	@Test
 	public void Register_05_Password_Length_Less_6() {
+		homePage.openRegisterPage();
+		
 		log.info("Register 05 - Step 1: Enter the valid information with password length less 6 charactors");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -114,6 +122,8 @@ public class Topic_01_Register extends BaseTest{
 	
 	@Test
 	public void Register_06_Confirm_Password_Not_Match_Password() {
+		homePage.openRegisterPage();
+		
 		log.info("Register 06 - Step 1: Enter the valid information with confirm password not match with password");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
