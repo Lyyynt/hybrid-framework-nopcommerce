@@ -1,6 +1,8 @@
 package commons;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +14,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.opera.OperaDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -36,9 +41,25 @@ public class BaseTest {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
+		case "firefox_extension":
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxProfile profile = new FirefoxProfile();
+			File fileFf = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.xpi");
+			profile.addExtension(fileFf);
+			FirefoxOptions optionsFirefoxEx = new FirefoxOptions();
+			optionsFirefoxEx.setProfile(profile);
+			driver = new FirefoxDriver();
+			break;
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
+			break;
+		case "chrome_extension":
+			WebDriverManager.chromedriver().setup();
+			File fileCh = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.crx");
+			ChromeOptions optionsChromeEx = new ChromeOptions();
+			optionsChromeEx.addExtensions(fileCh);
+			driver = new ChromeDriver(optionsChromeEx);
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();
@@ -89,9 +110,25 @@ public class BaseTest {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
+		case "firefox_extension":
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxProfile profile = new FirefoxProfile();
+			File fileFf = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.xpi");
+			profile.addExtension(fileFf);
+			FirefoxOptions optionsFirefoxEx = new FirefoxOptions();
+			optionsFirefoxEx.setProfile(profile);
+			driver = new FirefoxDriver();
+			break;
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
+			break;
+		case "chrome_extension":
+			WebDriverManager.chromedriver().setup();
+			File fileCh = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.crx");
+			ChromeOptions optionsChromeEx = new ChromeOptions();
+			optionsChromeEx.addExtensions(fileCh);
+			driver = new ChromeDriver(optionsChromeEx);
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();
@@ -252,5 +289,20 @@ public class BaseTest {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	protected void showBrowserConsoleLogs(WebDriver driver) {
+		if(driver.toString().contains("chrome") || driver.toString().contains("edge")) {
+			LogEntries logs = driver.manage().logs().get("browser");
+			List<LogEntry> logList = logs.getAll();
+			for (LogEntry logging : logList) {
+				if(logging.getLevel().toString().toLowerCase().contains("error")) {
+					log.info("----------" + logging.getLevel().toString() + "----------\n" + logging.getMessage());
+				}
+			}
+		}
+		
+		
+		
 	}
 }

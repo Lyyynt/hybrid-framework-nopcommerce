@@ -11,6 +11,7 @@ public class GlobalConstants {
 	public static final String UPLOAD_FILE_PATH_FOLDER = PROJECT_PATH + File.separator + "uploadFiles" + File.separator;
 	public static final String DOWNLOAD_FILE_PATH_FOLDER = PROJECT_PATH + File.separator + "downloadFiles" + File.separator;
 	public static final String BROWSER_LOG_FILE_PATH_FOLDER = PROJECT_PATH + File.separator + "browserLogs" + File.separator;
+	public static final String BROWSER_EXTENSION_PATH_FOLDER = PROJECT_PATH + File.separator + "browserExtentions" + File.separator;
 	public static final String DRAG_DROP_HTML5 = PROJECT_PATH + File.separator + "dragDropHTML5";
 	public static final String AUTOIT_SCRIPT = PROJECT_PATH + File.separator + "autoIT";
 	public static final String REPORT_SCREENSHOT = PROJECT_PATH + File.separator + "ReportNGImage" + File.separator;
