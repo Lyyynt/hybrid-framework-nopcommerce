@@ -20,7 +20,7 @@ import pageObjects.user.UserProductDetailObject;
 import pageObjects.user.UserRegisterPageObject;
 import pageObjects.user.UserProductListPageObject;
 
-public class Topic_18_Pattern_Object extends BaseTest{
+public class Level_19_Show_Console_Log extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
 	UserLoginPageObject loginPage;
@@ -43,6 +43,7 @@ public class Topic_18_Pattern_Object extends BaseTest{
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
+//		showBrowserConsoleLogs(driver);
 		
 		firstName = "Elon";
 		lastName = "Musk";
