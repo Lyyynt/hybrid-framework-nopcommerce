@@ -1,6 +1,7 @@
 package pageObjects.user;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -44,52 +45,57 @@ public class UserProductListPageObject extends BasePage{
 		waitForElementVisible(driver, UserProductListUI.ALL_PRODUCT_PRICE);
 		SleepInSecond(3);
 		List<WebElement> productElementList = getWebElements(driver, UserProductListUI.ALL_PRODUCT_PRICE);
-		List<String> productNameList = new ArrayList<>();
+		List<Float> productNameList = new ArrayList<Float>();
 		for (WebElement productElement : productElementList) {
-			productNameList.add(productElement.getText());
+			productNameList.add(Float.parseFloat(productElement.getText().replace("$", "").trim()));
 		}
 		switch (optionLabel) {
 		case "Price: Low to High":
-			return isSortFromAToZ(productNameList);
+			return isSortFromLowToHigh(productNameList);
 		case "Price: High to Low":
-			return isSortFromZToA(productNameList);
+			return isSortFromHighToLow(productNameList);
 		default:
 			throw new Exception("You entered the invalid option");
 		}
 	}
 	
 	private boolean isSortFromAToZ(List<String> productNameList) {
-		if (productNameList.isEmpty() || productNameList.size() == 1) {
-	        return true;
-	    }
-
-	    Iterator<String> iter = productNameList.iterator();
-	    String current, previous = iter.next();
-	    while (iter.hasNext()) {
-	        current = iter.next();
-	        if (previous.compareTo(current) > 0) {
-	            return false;
-	        }
-	        previous = current;
-	    }
-	    return true;
+		List<String> productNameListAfterSorted = new ArrayList<String>();
+		for (String product : productNameList) {
+			productNameListAfterSorted.add(product);
+		}
+		Collections.sort(productNameListAfterSorted);
+		return productNameListAfterSorted.equals(productNameList);
 	}
 	
 	private boolean isSortFromZToA(List<String> productNameList) {
-		if (productNameList.isEmpty() || productNameList.size() == 1) {
-	        return true;
-	    }
-
-	    Iterator<String> iter = productNameList.iterator();
-	    String current, previous = iter.next();
-	    while (iter.hasNext()) {
-	        current = iter.next();
-	        if (previous.compareTo(current) < 0) {
-	            return false;
-	        }
-	        previous = current;
-	    }
-	    return true;
+		List<String> productNameListAfterSorted = new ArrayList<String>();
+		for (String product : productNameList) {
+			productNameListAfterSorted.add(product);
+		}
+		Collections.sort(productNameListAfterSorted);
+		Collections.reverse(productNameListAfterSorted);
+	    return productNameListAfterSorted.equals(productNameList);
+	}
+	
+	private boolean isSortFromLowToHigh(List<Float> productPriceList) {
+		List<Float> productPriceListAfterSorted = new ArrayList<Float>();
+		for (Float productPrice : productPriceList) {
+			productPriceListAfterSorted.add(productPrice);
+		}
+		Collections.sort(productPriceListAfterSorted);
+		return productPriceListAfterSorted.equals(productPriceList);
+	}
+	
+	private boolean isSortFromHighToLow(List<Float> productPriceList) {
+		List<Float> productPriceListAfterSorted = new ArrayList<Float>();
+		for (Float productPrice : productPriceList) {
+			productPriceListAfterSorted.add(productPrice);
+		}
+		Collections.sort(productPriceListAfterSorted);
+		Collections.reverse(productPriceListAfterSorted);
+		return productPriceListAfterSorted.equals(productPriceList);
+		
 	}
 
 	public int getDisplayedProductNumber() {
