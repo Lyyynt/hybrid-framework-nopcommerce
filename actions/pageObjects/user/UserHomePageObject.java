@@ -49,17 +49,17 @@ public class UserHomePageObject extends BasePage {
 	}
 	
 	public void openSearchPage() {
-		openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL + "/search");
+		openPageUrl(driver, GlobalConstants.PORTAL_DEV_URL + "search");
 		SleepInSecond(2);
 	}
 	
 	public void openRegisterPage() {
-		openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL + "/register");
+		openPageUrl(driver, GlobalConstants.PORTAL_DEV_URL + "register");
 		SleepInSecond(2);
 	}
 	
 	public void openLoginPage() {
-		openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL + "/login");
+		openPageUrl(driver, GlobalConstants.PORTAL_DEV_URL + "login");
 		SleepInSecond(2);
 	}
 

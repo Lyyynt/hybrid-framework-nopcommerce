@@ -292,6 +292,7 @@ public class BaseTest {
 	}
 	
 	protected void showBrowserConsoleLogs(WebDriver driver) {
+		System.out.println(driver.toString());
 		if(driver.toString().contains("chrome") || driver.toString().contains("edge")) {
 			LogEntries logs = driver.manage().logs().get("browser");
 			List<LogEntry> logList = logs.getAll();

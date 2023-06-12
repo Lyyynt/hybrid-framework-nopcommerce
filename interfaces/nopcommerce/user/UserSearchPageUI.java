@@ -8,7 +8,7 @@ public class UserSearchPageUI {
 	public static final String AUTO_SEARCH_SUB_CATEGORY_CHECKBOX = "xpath=//input[@id='isc']";
 	public static final String MANUFACTURER_DROPDOWN = "xpath=//div[@id='advanced-search-block']//select[@id='mid']";
 	public static final String SEARCH_IN_PRODUCT_DESCRIPTION_CHECKBOX= "xpath=//input[@id='isc']";
-	public static final String WARNING_MESSAGE = "xpath=//div[@class='search-results']xpath=//div[@class='products-wrapper']/div";
+	public static final String WARNING_MESSAGE = "xpath=//div[@class='products-wrapper']/div";
 	public static final String PRODUCT_ITEM = "xpath=//div[@class='product-item']";
 	public static final String PRODUCT_TITLE = "xpath=//h2[@class='product-title']/a[text()='****']";
 	

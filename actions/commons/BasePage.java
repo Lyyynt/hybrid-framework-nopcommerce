@@ -666,7 +666,7 @@ public class BasePage {
 	 * @param dropdownName
 	 * @author ntlinh8
 	 */
-	public void selectDropdownByName(WebDriver driver, String dropdownName, String option) {
+	public void selectDropdownByName(WebDriver driver, String option, String dropdownName) {
 		waitForElementVisible(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
 		selectItemDefaultDropdown(driver, UserAbstractPageUI.DYNAMIC_DROPDOWN_BY_NAME, option, dropdownName);
 	}

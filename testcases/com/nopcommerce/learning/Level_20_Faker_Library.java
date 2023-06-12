@@ -17,10 +17,11 @@ import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.UserMyAccountObject;
 import pageObjects.user.UserMyProductReviewObject;
 import pageObjects.user.UserProductDetailObject;
-import pageObjects.user.UserRegisterPageObject;
 import pageObjects.user.UserProductListPageObject;
+import pageObjects.user.UserRegisterPageObject;
+import utilities.DataHelper;
 
-public class Level_19_Show_Console_Log extends BaseTest{
+public class Level_20_Faker_Library extends BaseTest{
 	WebDriver driver;
 	UserHomePageObject homePage;
 	UserLoginPageObject loginPage;
@@ -33,20 +34,19 @@ public class Level_19_Show_Console_Log extends BaseTest{
 	UserProductDetailObject productDetailPage;
 	UserAddProductReviewObject addProductReviewPage;
 	UserMyProductReviewObject myProductReviewPage;
-	String projectPath = System.getProperty("user.dir");
-	String osName = System.getProperty("os.name");
 	String firstName, lastName, email, password, confirmPassword, country, city, address1, address2, portalCode, phoneNumber, faxNumber;
 	String newFirstName, newLastName, newEmail, companyName, gender, dayOfBirth, monthOfBirth, yearOfBirth, newPassword;
+	DataHelper datafaker;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-		showBrowserConsoleLogs(driver);
+		datafaker = DataHelper.getDataHelper();
 		
-		newFirstName = "Automation";
-		newLastName = "FC";
+		newFirstName = datafaker.getFirstName();
+		newLastName = datafaker.getLastName();
 		newEmail = "automation" +getRandomNumber() + "@gmail.com";
 		companyName = "AutoFC";
 		gender = "Female";
