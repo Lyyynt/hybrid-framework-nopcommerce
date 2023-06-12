@@ -13,7 +13,7 @@
   	<parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.nopcommerce.learning.Common_Register_NewAccount"/>
-      <class name="com.nopcommerce.learning.Level_20_Faker_Library"/>
+      <class name="com.nopcommerce.learning.Level_21_Manage_Data_4"/>
     </classes>
   </test> 
   

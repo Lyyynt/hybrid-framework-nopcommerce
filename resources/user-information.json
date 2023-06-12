@@ -1,0 +1,12 @@
+{
+	"firstname": "Susan",
+	"lastname": "Smith",
+	"companyname": "AutoFC",
+	"day": "10",
+	"month": "October",
+	"year": "1996",
+	"cc": {
+		"number": "4444-4444-4444-4444",
+		"billing": "123 Le Duan"
+	}
+}

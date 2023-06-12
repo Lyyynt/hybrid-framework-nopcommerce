@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+
+<listeners>
+	<listener class-name="commons.MethodListener"/>
+</listeners>
+
+<parameter name="url" value="https://demo.nopcommerce.com/"/>
+	<test name="Run on CHROME">
+	  	<parameter name="browser" value="chrome"/>
+	  	<parameter name="newFirstName" value="Susan"/>
+	  	<parameter name="newLastName" value="Smith"/>
+	  	<parameter name="companyName" value="Auto Group"/>
+	  	<parameter name="dayOfBirth" value="10"/>
+	  	<parameter name="monthOfBirth" value="October"/>
+	  	<parameter name="yearOfBirth" value="1996"/>
+	    <classes>
+	      <class name="com.nopcommerce.learning.Common_Register_NewAccount"/>
+	      <class name="com.nopcommerce.learning.Level_21_Manage_Data_2"/>
+	    </classes>
+    </test> 
+  
+</suite> 
