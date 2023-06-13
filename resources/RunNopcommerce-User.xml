@@ -3,8 +3,8 @@
 <test name="Run on Firefox">
   	<parameter name="browser" value="firefox"/>
     <classes>
-      <!-- <class name="com.nopcommerce.user.Common_Register_NewAccount"/> -->
-      <class name="com.nopcommerce.user.Topic_04_Advanced_Search"/>
+       <class name="com.nopcommerce.user.Common_Register_NewAccount"/> 
+      <!-- <class name="com.nopcommerce.user.Topic_04_Advanced_Search"/>-->
     </classes>
   </test> 
   

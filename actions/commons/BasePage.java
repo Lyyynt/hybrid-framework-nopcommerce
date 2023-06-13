@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import bankguru.AbstractUI;
 import nomcommerce.admin.AdminAbstractPageUI;
 import nopcommerce.user.UserAbstractPageUI;
 import nopcommerce.user.UserProductListUI;
@@ -856,5 +857,13 @@ public class BasePage {
 		clickToElement(driver, AdminAbstractPageUI.ADMIN_CLOSE_ALERT_MESSAGE);
 		waitForElementInvisible(driver, AdminAbstractPageUI.ADMIN_CLOSE_ALERT_MESSAGE);
 	}
+	
+	///////////// BANK GURU //////////////
+
+	public void clickToLeftMenuBankGuru(WebDriver driver, String label) {
+		waitForElementClickable(driver, AbstractUI.LEFT_MENU_BY_LABEL, label);
+		clickToElement(driver, AbstractUI.LEFT_MENU_BY_LABEL, label);
+	}
+
 	
 }
