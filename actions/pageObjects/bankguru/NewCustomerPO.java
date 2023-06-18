@@ -121,5 +121,27 @@ public class NewCustomerPO  extends BasePage{
 		return isElementDisplayed(driver, NewCustomerUI.CUSTOMER_FIELD_LABEL, fieldLabel);
 	}
 
+	public void inputDateOfBirth(String dateOfBirth) {
+		removeAttributeInDOM(driver, NewCustomerUI.CUSTOMER_DATE_OF_BIRTH_TEXTBOX, "type");
+		SleepInSecond(2);
+		waitForElementVisible(driver, NewCustomerUI.CUSTOMER_DATE_OF_BIRTH_TEXTBOX);
+		sendkeyToElement(driver, NewCustomerUI.CUSTOMER_DATE_OF_BIRTH_TEXTBOX, dateOfBirth);
+	}
+
+	public void clickToSubmitButton() {
+		waitForElementClickable(driver, NewCustomerUI.SUBMIT_BUTTON);
+		clickToElement(driver, NewCustomerUI.SUBMIT_BUTTON);
+	}
+
+	public void inputToCustomerPassword(String password) {
+		waitForElementVisible(driver, NewCustomerUI.CUSTOMER_PASSWORD_TEXTBOX);
+		sendkeyToElement(driver, NewCustomerUI.CUSTOMER_PASSWORD_TEXTBOX, password);
+	}
+
+	public boolean isCreateSuccessfully() {
+		waitForElementVisible(driver, NewCustomerUI.CREATE_SUCCESS_MESSAGE);
+		return isElementDisplayed(driver, NewCustomerUI.CREATE_SUCCESS_MESSAGE);
+	}
+
 	
 }

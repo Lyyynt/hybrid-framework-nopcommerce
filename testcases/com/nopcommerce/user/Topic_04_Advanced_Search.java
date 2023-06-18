@@ -86,7 +86,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		log.info("Search 03 - Step 3: Verify the result product is 2 and the name of product is correct");
-		verifyEquals(searchPage.getResultItemCount(), (int) 2);
+		verifyEquals(searchPage.getResultItemCount(), "2");
 		verifyTrue(searchPage.isProductNameDisplay("Lenovo IdeaCentre 600 All-in-One PC"));
 		verifyTrue(searchPage.isProductNameDisplay("Lenovo Thinkpad X1 Carbon Laptop"));
 		log.info("=============================");
@@ -103,7 +103,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		log.info("Search 04 - Step 3: Verify the result product is 1 and the name of product is correct");
-		verifyEquals(searchPage.getResultItemCount(), (int) 1);
+		verifyEquals(searchPage.getResultItemCount(), "1");
 		verifyTrue(searchPage.isProductNameDisplay("Lenovo Thinkpad X1 Carbon Laptop"));
 		log.info("=============================");
 	}
@@ -152,7 +152,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		log.info("Search 06 - Step 6: Verify the result product is 1 and the name of product is correct");
-		verifyEquals(searchPage.getResultItemCount(), (int) 1);
+		verifyEquals(searchPage.getResultItemCount(),"1" );
 		verifyTrue(searchPage.isProductNameDisplay("Apple MacBook Pro 13-inch"));
 		log.info("=============================");
 	}
@@ -207,7 +207,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 		searchPage.clickToSearchButton();
 		
 		log.info("Search 08 - Step 7: Verify the result product is 1 and the name of product is correct");
-		verifyEquals(searchPage.getResultItemCount(), (int) 1);
+		verifyEquals(searchPage.getResultItemCount(), "1");
 		verifyTrue(searchPage.isProductNameDisplay("Apple MacBook Pro 13-inch"));
 		log.info("=============================");
 	}

@@ -124,7 +124,7 @@ public class Customer_02_Edit_Customer_Information extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Edit Information 01 - Step 2: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 		
 		log.info("Edit Information 01 - Step 3: Click Edit button");
@@ -160,7 +160,7 @@ public class Customer_02_Edit_Customer_Information extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Edit Information 02 - Step 8: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstNameEdit + " " + lastNameEdit));
 		
 	}

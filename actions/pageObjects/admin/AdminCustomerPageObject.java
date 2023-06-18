@@ -36,9 +36,9 @@ public class AdminCustomerPageObject extends BasePage{
 		clickToElement(driver, AdminCustomerUI.DELETE_CUSTOMER_ROLE_BY_LABEL, optionLabel);
 	}
 
-	public int getCustomerNumber() {
+	public String getCustomerNumber() {
 		waitForElementVisible(driver, AdminCustomerUI.CUSTOMER_NUMBER);
-		return getElementSize(driver, AdminCustomerUI.CUSTOMER_NUMBER);
+		return String.valueOf(getElementSize(driver, AdminCustomerUI.CUSTOMER_NUMBER));
 	}
 	
 	public void scrollToMenuByLabel(String menuLabel) {

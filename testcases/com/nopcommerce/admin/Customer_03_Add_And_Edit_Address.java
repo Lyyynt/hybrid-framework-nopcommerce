@@ -137,7 +137,7 @@ public class Customer_03_Add_And_Edit_Address extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Customer 01 - Step 2: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 		
 		log.info("Customer 01 - Step 3: Click Edit button");

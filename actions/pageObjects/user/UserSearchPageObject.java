@@ -62,9 +62,9 @@ public class UserSearchPageObject extends BasePage {
 		return getElementText(driver, UserSearchPageUI.WARNING_MESSAGE);
 	}
 
-	public int getResultItemCount() {
+	public String getResultItemCount() {
 		waitForElementVisible(driver, UserSearchPageUI.PRODUCT_ITEM);
-		return getElementSize(driver, UserSearchPageUI.PRODUCT_ITEM);
+		return String.valueOf(getElementSize(driver, UserSearchPageUI.PRODUCT_ITEM));
 	}
 
 	public boolean isProductNameDisplay(String productName) {

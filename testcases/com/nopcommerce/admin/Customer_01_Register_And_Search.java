@@ -123,7 +123,7 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Product 02 - Step 2: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
@@ -141,7 +141,7 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Product 03 - Step 2: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
@@ -158,7 +158,7 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Product 04 - Step 2: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	
@@ -180,7 +180,7 @@ public class Customer_01_Register_And_Search extends BaseTest{
 		verifyTrue(customerPage.isPageLoadedSuccess(driver));
 		
 		log.info("Product 05 - Step 2: Verify customer display in the list");
-		verifyEquals(customerPage.getCustomerNumber(), 1);
+		verifyEquals(customerPage.getCustomerNumber(), "1");
 		verifyTrue(customerPage.isCustomerInformationDisplayWithEmailAndName("Guest", firstName + " " + lastName));
 	}
 	

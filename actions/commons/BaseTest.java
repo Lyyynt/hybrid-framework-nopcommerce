@@ -228,7 +228,7 @@ public class BaseTest {
 		return isPassed;
 	}
 
-	protected boolean verifyEquals(Object actual, Object expected) {
+	protected boolean verifyEquals(String actual, String expected) {
 		boolean isPassed = true;
 		try {
 			Assert.assertEquals(actual, expected);

@@ -5,7 +5,8 @@
 <test name="Run on CHROME">
   	<parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.bankguru.NewCustomer_03_Phone_Email"/>
+      <class name="com.bankguru.Common_Create_New_Customer"/>
+      <class name="com.bankguru.DeleteCustomer_01_CustomerID"/>
     </classes>
   </test> 
   

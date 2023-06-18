@@ -20,6 +20,10 @@ public class DataHelper {
 		return faker.address().lastName();
 	}
 	
+	public String getFullName() {
+		return getFirstName() + " " + getLastName();
+	}
+	
 	public String getEmailAddress() {
 		return faker.internet().emailAddress();
 	}
@@ -28,12 +32,16 @@ public class DataHelper {
 		return faker.address().city();
 	}
 	
+	public String getState() {
+		return faker.address().state();
+	}
+	
 	public String getCountry() {
 		return faker.address().country();
 	}
 	
 	public String getPhoneNumber() {
-		return faker.phoneNumber().phoneNumber();
+		return faker.phoneNumber().cellPhone();
 	}
 	
 	public String getPortalCode() {
@@ -47,6 +55,8 @@ public class DataHelper {
 		return faker.internet().password(8, 12, false, false);
 	}
 	
-	
+	public String getPinNumber() {
+		return String.valueOf(faker.number().numberBetween(100000, 999999));
+	}
 	
 }

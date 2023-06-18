@@ -191,6 +191,13 @@ public class BasePage {
 		element.sendKeys(textValue);
 	}
 	
+	public void sendKeyToDateTextbox(WebDriver driver, String locator, String textValue) {
+		removeAttributeInDOM(driver, locator, "type");
+		SleepInSecond(2);
+		waitForElementVisible(driver, locator);
+		sendkeyToElement(driver, locator, textValue);
+	}
+	
 	public void selectItemDefaultDropdown(WebDriver driver, String locator, String textItem) {
 		Select select = new Select(getWebElement(driver, locator));
 		select.selectByVisibleText(textItem);
@@ -442,6 +449,10 @@ public class BasePage {
 
 	public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", getWebElement(driver, locator));
+	}
+	
+	public void addAttributeInDOM(WebDriver driver, String locator, String attributeName, String attributeValue) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('" + attributeName + "', '" + attributeValue +"');", getWebElement(driver, locator));
 	}
 
 	public String getElementValidationMessage(WebDriver driver, String locator) {
@@ -864,6 +875,10 @@ public class BasePage {
 		waitForElementClickable(driver, AbstractUI.LEFT_MENU_BY_LABEL, label);
 		clickToElement(driver, AbstractUI.LEFT_MENU_BY_LABEL, label);
 	}
-
+	
+	public String getSheetByLabel(WebDriver driver, String label) {
+		waitForElementVisible(driver, AbstractUI.DYNAMIC_SHEET_BY_LABEL, label);
+		return getElementText(driver, AbstractUI.DYNAMIC_SHEET_BY_LABEL, label);
+	}
 	
 }

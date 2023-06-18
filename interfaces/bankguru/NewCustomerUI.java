@@ -16,5 +16,9 @@ public class NewCustomerUI {
 	public static final String CUSTOMER_EMAIL_TEXTBOX = "xpath=//td[text()='E-mail']/following-sibling::td/input";
 	public static final String CUSTOMER_EMAIL_ERROR_MESSAGE = "xpath=//td[text()='E-mail']/following-sibling::td/input";
 	public static final String CUSTOMER_FIELD_LABEL = "xpath=//form[@name='addcust']/parent::table//td[text()='%s']";
+	public static final String CUSTOMER_DATE_OF_BIRTH_TEXTBOX = "xpath=//td[text()='Date of Birth']/following-sibling::td/input";
+	public static final String CUSTOMER_PASSWORD_TEXTBOX = "xpath=//td[text()='Password']/following-sibling::td/input";
+	public static final String SUBMIT_BUTTON = "xpath=//input[@name='sub']";
+	public static final String CREATE_SUCCESS_MESSAGE = "xpath=//table[@id='customer']//p[text()='Customer Registered Successfully!!!']";
 	
 }
