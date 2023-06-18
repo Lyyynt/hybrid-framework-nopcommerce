@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+
+<listeners>
+	<listener class-name="commons.MethodListener"/>
+	<!-- <listener class-name="reportConfig.AllureTestListener"/> -->
+	<!--<listener class-name="org.uncommons.reportng.HTMLReporter"/> -->
+	<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/> -->
+</listeners>
+
+<parameter name="url" value="https://test.demo.nopcommerce.com/"/>
+<test name="Run on CHROME">
+  	<parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.nopcommerce.learning.Common_Register_NewAccount"/>
+      <class name="com.nopcommerce.learning.Level_22_Mutiple_Environment_2"/>
+    </classes>
+  </test> 
+  
+</suite> 

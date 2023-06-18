@@ -173,15 +173,87 @@ public class BaseTest {
 		return driver;
 	}
 	
+	protected WebDriver getBrowserDriverWithEnvironment(String browserName, String environment) {
+		switch (browserName) {
+		case "firefox":
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+			break;
+		case "firefox_extension":
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxProfile profile = new FirefoxProfile();
+			File fileFf = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.xpi");
+			profile.addExtension(fileFf);
+			FirefoxOptions optionsFirefoxEx = new FirefoxOptions();
+			optionsFirefoxEx.setProfile(profile);
+			driver = new FirefoxDriver();
+			break;
+		case "chrome":
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			break;
+		case "chrome_extension":
+			WebDriverManager.chromedriver().setup();
+			File fileCh = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.crx");
+			ChromeOptions optionsChromeEx = new ChromeOptions();
+			optionsChromeEx.addExtensions(fileCh);
+			driver = new ChromeDriver(optionsChromeEx);
+			break;
+		case "edge":
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+			break;
+		case "opera":
+			WebDriverManager.operadriver().setup();
+			driver = new OperaDriver();
+			break;
+		case "coccoc":
+			WebDriverManager.chromedriver().driverVersion("110.0.5481.77").setup();
+			ChromeOptions optionsCocCoc = new ChromeOptions();
+			optionsCocCoc.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
+			driver = new ChromeDriver(optionsCocCoc);
+			break;
+		case "brave":
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions optionsBrave = new ChromeOptions();
+			optionsBrave.setBinary("C:\\Program Files\\Brave\\Browser\\Application\\browser.exe");
+			driver = new ChromeDriver(optionsBrave);
+			break;
+		case "h_chrome":
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions optionsChrome = new ChromeOptions();
+			optionsChrome.addArguments("-headless");
+			optionsChrome.addArguments("window-size=1920x1080");
+			driver = new ChromeDriver(optionsChrome);
+			break;
+		case "h_firefox":
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions optionsFirefox = new FirefoxOptions();
+			optionsFirefox.addArguments("-headless");
+			optionsFirefox.addArguments("window-size=1920x1080");
+			driver = new FirefoxDriver(optionsFirefox);
+			break;
+		default:
+			throw new RuntimeException("Browser Name Invalid");
+		}
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(getEnvironmentUrl(environment));
+		return driver;
+	}
+	
 	private String getEnvironmentUrl(String environmentName) {
 		String url = null;
-		switch (environmentName) {
-		case "DEV":
+		EnvironmentList env = EnvironmentList.valueOf(environmentName.toUpperCase());
+		switch (env) {
+		case DEV:
 			url = GlobalConstants.PORTAL_DEV_URL;
 			break;
-		case "TEST":
+		case TEST:
 			url = GlobalConstants.PORTAL_TEST_URL;
 			break;
+		default:
+			throw new RuntimeException("Please input correct the environment name!");
 		}
 		return url;
 	}
