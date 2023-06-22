@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Selenium GRID" parallel="tests" thread-count="2">
+
+    <test name="Run on Firefox">
+        <parameter name="browser" value="firefox" />
+         <parameter name="url" value="https://demo.nopcommerce.com/" />
+        <parameter name="ipAddress" value="192.168.1.11" />
+        <parameter name="port" value="5555" />
+        <classes>
+            <class name="com.grid.Grid_03_Remote_Computer_Apply_Framwork" />
+        </classes>
+    </test>
+    
+    <test name="Run on Chrome">
+        <parameter name="browser" value="chrome" />
+         <parameter name="url" value="https://demo.nopcommerce.com/" />
+        <parameter name="ipAddress" value="192.168.1.11" />
+        <parameter name="port" value="5555" />
+        <classes>
+            <class name="com.grid.Grid_03_Remote_Computer_Apply_Framwork" />
+        </classes>
+    </test>
+
+</suite>

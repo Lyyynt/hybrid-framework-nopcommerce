@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Selenium GRID" parallel="tests" thread-count="2">
+
+    <test name="Run on Firefox">
+        <parameter name="url" value="https://demo.nopcommerce.com/" />
+        <parameter name="os" value="Windows" />
+        <parameter name="browser" value="firefox" />
+        <parameter name="browser_version" value="84.0" />
+        <classes>
+            <class name="com.grid.Grid_05_Remote_Computer_SourceLab" />
+        </classes>
+    </test>
+    
+    <test name="Run on Chrome">
+        <parameter name="url" value="https://demo.nopcommerce.com/" />
+        <parameter name="os" value="Windows" />
+        <parameter name="browser" value="Chrome" />
+        <parameter name="browser_version" value="87.0" />
+        <classes>
+            <class name="com.grid.Grid_05_Remote_Computer_SourceLab" />
+        </classes>
+    </test>
+
+</suite>
