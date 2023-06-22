@@ -47,9 +47,4 @@ public class GlobalConstants {
 	public static final String LAMBDA_USERNAME = "thuylinh2409nguyen";
 	public static final String LAMBDA_AUTOMATE_KEY = "ZxdiJKMv9lAWrlUf0XIjMk87yKtAMRVJcj1EB3Hollb3QfX6I9";
 	public static final String LAMBDA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_AUTOMATE_KEY + "@hub.lambdatest.com/wd/hub";
-
-
-
-
-
 }
