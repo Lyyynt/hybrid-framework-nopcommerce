@@ -660,7 +660,7 @@ public class Topic_07_Order extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 
 }

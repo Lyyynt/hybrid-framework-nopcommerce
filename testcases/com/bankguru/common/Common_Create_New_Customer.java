@@ -1,4 +1,4 @@
-package com.bankguru;
+package com.bankguru.common;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
@@ -57,7 +57,7 @@ public class Common_Create_New_Customer extends BaseTest{
 		newCustomerPage.inputToCustomerPassword(customerPassword);
 		newCustomerPage.clickToSubmitButton();
 		CUSTOMER_ID = newCustomerPage.getSheetByLabel(driver, "Customer ID");
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 	
 	private WebDriver driver;

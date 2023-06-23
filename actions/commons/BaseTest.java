@@ -30,6 +30,14 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import environmentFactory.Browser;
+import environmentFactory.BrowserstackFactory;
+import environmentFactory.CrossBrowserTestingFactory;
+import environmentFactory.EnvironmentList;
+import environmentFactory.GridFactory;
+import environmentFactory.LambdaFactory;
+import environmentFactory.LocalFactory;
+import environmentFactory.SourcelabFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
@@ -43,6 +51,37 @@ public class BaseTest {
 	public WebDriver getDriverInstance() {
 		return this.driver;
 	}
+	
+	protected WebDriver getBrowserDriver(String serverName, String runEnvironmentName, String browserName, String browserVersion, String osName, String osVersion, String ipAddress, String portNumber) {
+		switch (runEnvironmentName) {
+		case "local":
+			driver = new LocalFactory(browserName).createDriver();
+			break;
+		case "grid":
+			driver = new GridFactory(browserName, ipAddress, portNumber).createDriver();
+			break;
+		case "browserStack":
+			driver = new BrowserstackFactory(osName, osVersion, browserName, browserVersion).createDriver();
+			break;
+		case "sourcelab":
+			driver = new SourcelabFactory(osName, browserName, browserVersion).createDriver();
+			break;
+		case "crossBrowserTesting":
+			driver = new CrossBrowserTestingFactory(osName, browserName).createDriver();
+			break;
+		case "lambda":
+			driver = new LambdaFactory(osName, browserName).createDriver();
+			break;
+		default:
+			driver = new LocalFactory(browserName).createDriver();
+			break;
+		}
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(getEnvironmentUrl(serverName));
+		return driver;
+	}
+	
 	
 	protected WebDriver getBrowserDriver(String browserName) {
 		switch (browserName) {
@@ -317,6 +356,11 @@ public class BaseTest {
 		capability.setCapability("video", true);
 		capability.setCapability("visual", true);
 		capability.setCapability("name", "Run on " + osName + " and " + browserName + " with the lastest version");
+		HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+		ltOptions.put("username", "thuylinh2409nguyen");
+		ltOptions.put("accessKey", "ZxdiJKMv9lAWrlUf0XIjMk87yKtAMRVJcj1EB3Hollb3QfX6I9");
+		capability.setCapability("LT:Options", ltOptions);
+		
 		if(osName.contains("Windows")) {
 			capability.setCapability("screenResolution", "1920x1080");
 		}else {
@@ -402,9 +446,9 @@ public class BaseTest {
 		return driver;
 	}
 	
-	private String getEnvironmentUrl(String environmentName) {
+	private String getEnvironmentUrl(String serverName) {
 		String url = null;
-		EnvironmentList env = EnvironmentList.valueOf(environmentName.toUpperCase());
+		EnvironmentList env = EnvironmentList.valueOf(serverName.toUpperCase());
 		switch (env) {
 		case DEV:
 			url = GlobalConstants.PORTAL_DEV_URL;
@@ -474,51 +518,53 @@ public class BaseTest {
 		return isPassed;
 	}
 	
-	protected void closeBrowserDriver() {
-		String cmd = null;
-		try {
-			String osName = System.getProperty("os.name").toLowerCase();
-			log.info("OS name = " + osName);
-
-			String driverInstanceName = driver.toString().toLowerCase();
-			log.info("Driver instance name = " + driverInstanceName);
-
-			String browserDriverName = null;
-
-			if (driverInstanceName.contains("chrome")) {
-				browserDriverName = "chromedriver";
-			} else if (driverInstanceName.contains("internetexplorer")) {
-				browserDriverName = "IEDriverServer";
-			} else if (driverInstanceName.contains("firefox")) {
-				browserDriverName = "geckodriver";
-			} else if (driverInstanceName.contains("edge")) {
-				browserDriverName = "msedgedriver";
-			} else if (driverInstanceName.contains("opera")) {
-				browserDriverName = "operadriver";
-			} else {
-				browserDriverName = "safaridriver";
-			}
-
-			if (osName.contains("window")) {
-				cmd = "taskkill /F /FI \"IMAGENAME eq " + browserDriverName + "*\"";
-			} else {
-				cmd = "pkill " + browserDriverName;
-			}
-
-			if (driver != null) {
-				driver.manage().deleteAllCookies();
-				driver.quit();
-			}
-		} catch (Exception e) {
-			log.info(e.getMessage());
-		} finally {
+	protected void closeBrowserDriver(String envName) {
+		if(envName.toLowerCase().contains("local") || envName.toLowerCase().contains("grid")) {
+			String cmd = null;
 			try {
-				Process process = Runtime.getRuntime().exec(cmd);
-				process.waitFor();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				String osName = System.getProperty("os.name").toLowerCase();
+				log.info("OS name = " + osName);
+
+				String driverInstanceName = driver.toString().toLowerCase();
+				log.info("Driver instance name = " + driverInstanceName);
+
+				String browserDriverName = null;
+
+				if (driverInstanceName.contains("chrome")) {
+					browserDriverName = "chromedriver";
+				} else if (driverInstanceName.contains("internetexplorer")) {
+					browserDriverName = "IEDriverServer";
+				} else if (driverInstanceName.contains("firefox")) {
+					browserDriverName = "geckodriver";
+				} else if (driverInstanceName.contains("edge")) {
+					browserDriverName = "msedgedriver";
+				} else if (driverInstanceName.contains("opera")) {
+					browserDriverName = "operadriver";
+				} else {
+					browserDriverName = "safaridriver";
+				}
+
+				if (osName.contains("window")) {
+					cmd = "taskkill /F /FI \"IMAGENAME eq " + browserDriverName + "*\"";
+				} else {
+					cmd = "pkill " + browserDriverName;
+				}
+
+				if (driver != null) {
+					driver.manage().deleteAllCookies();
+					driver.quit();
+				}
+			} catch (Exception e) {
+				log.info(e.getMessage());
+			} finally {
+				try {
+					Process process = Runtime.getRuntime().exec(cmd);
+					process.waitFor();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

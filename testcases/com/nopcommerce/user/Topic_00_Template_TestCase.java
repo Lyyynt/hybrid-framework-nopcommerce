@@ -27,6 +27,6 @@ public class Topic_00_Template_TestCase extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

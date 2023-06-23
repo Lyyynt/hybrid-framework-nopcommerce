@@ -1,4 +1,4 @@
-package com.bankguru;
+package com.bankguru.NewCustomer;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -173,7 +173,7 @@ public class NewCustomer_03_Phone_Email extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 	
 	private WebDriver driver;

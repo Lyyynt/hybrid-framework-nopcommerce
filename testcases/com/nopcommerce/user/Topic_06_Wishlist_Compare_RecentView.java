@@ -238,7 +238,7 @@ public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 
 }

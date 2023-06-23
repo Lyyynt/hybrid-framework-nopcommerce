@@ -47,6 +47,6 @@ public class Level_17_Custom_Close_Browser extends BaseTest{
 	
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

@@ -260,6 +260,6 @@ public class Customer_03_Add_And_Edit_Address extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

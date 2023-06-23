@@ -82,7 +82,7 @@ public class Level_21_Manage_Data_4 extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 	
 	private WebDriver driver;

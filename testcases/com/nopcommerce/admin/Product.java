@@ -180,6 +180,6 @@ public class Product extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

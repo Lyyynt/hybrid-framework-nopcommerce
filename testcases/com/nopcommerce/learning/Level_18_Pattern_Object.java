@@ -111,6 +111,6 @@ public class Level_18_Pattern_Object extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

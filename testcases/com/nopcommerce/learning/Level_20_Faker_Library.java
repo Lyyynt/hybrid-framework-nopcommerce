@@ -99,6 +99,6 @@ public class Level_20_Faker_Library extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

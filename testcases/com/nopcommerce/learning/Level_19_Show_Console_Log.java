@@ -99,6 +99,6 @@ public class Level_19_Show_Console_Log extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

@@ -82,7 +82,7 @@ public class Level_22_Mutiple_Environment_2 extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 	
 	private WebDriver driver;

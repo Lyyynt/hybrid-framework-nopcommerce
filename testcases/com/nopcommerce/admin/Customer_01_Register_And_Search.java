@@ -187,6 +187,6 @@ public class Customer_01_Register_And_Search extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

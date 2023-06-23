@@ -1,10 +1,12 @@
-package com.bankguru;
+package com.bankguru.Payment;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.bankguru.common.Common_Create_New_Customer;
 
 import commons.BaseTest;
 import pageObjects.bankguru.EditCustomerPO;
@@ -118,7 +120,7 @@ public class Payment_01_Create_And_Edit extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 
 	private WebDriver driver;

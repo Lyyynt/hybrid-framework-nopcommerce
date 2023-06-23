@@ -119,6 +119,6 @@ public class Topic_05_Sort_Display_Paging extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

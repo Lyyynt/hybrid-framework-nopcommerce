@@ -214,7 +214,7 @@ public class Topic_04_Advanced_Search extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 	
 	private void registerNewAccountAndLogin() {

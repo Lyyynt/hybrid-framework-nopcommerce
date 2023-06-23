@@ -168,6 +168,6 @@ public class Customer_02_Edit_Customer_Information extends BaseTest{
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }

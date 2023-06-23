@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Selenium GRID">
-
+<parameter name="serverName" value="dev" />
+<parameter name="runEnvironmentName" value="local" />
     <test name="Run on Firefox">
         <parameter name="browser" value="firefox" />
          <parameter name="osName" value="windows" />

@@ -152,6 +152,6 @@ public class Topic_02_Login extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-		closeBrowserDriver();
+		closeBrowserDriver("local");
 	}
 }
