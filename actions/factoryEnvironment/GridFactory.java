@@ -1,4 +1,4 @@
-package environmentFactory;
+package factoryEnvironment;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
+import factoryBrowser.BrowserList;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class GridFactory {
@@ -27,10 +28,10 @@ public class GridFactory {
 	}
 
 	public WebDriver createDriver() {
-		Browser browser = Browser.valueOf(browserName.toUpperCase());
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
 		DesiredCapabilities capability = null;
 		switch (browser) {
-			case FIREFOX_UI:
+			case FIREFOX:
 				WebDriverManager.firefoxdriver().setup();
 				capability = DesiredCapabilities.firefox();
 				capability.setBrowserName("firefox");
@@ -39,7 +40,7 @@ public class GridFactory {
 				FirefoxOptions fOptions = new FirefoxOptions();
 				fOptions.merge(capability);
 				break;
-			case CHROME_UI:
+			case CHROME:
 				WebDriverManager.chromedriver().setup();
 				capability = DesiredCapabilities.chrome();
 				capability.setBrowserName("chrome");

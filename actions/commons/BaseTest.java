@@ -30,14 +30,14 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import environmentFactory.Browser;
-import environmentFactory.BrowserstackFactory;
-import environmentFactory.CrossBrowserTestingFactory;
-import environmentFactory.EnvironmentList;
-import environmentFactory.GridFactory;
-import environmentFactory.LambdaFactory;
-import environmentFactory.LocalFactory;
-import environmentFactory.SourcelabFactory;
+import factoryBrowser.BrowserList;
+import factoryEnvironment.BrowserstackFactory;
+import factoryEnvironment.CrossBrowserTestingFactory;
+import factoryEnvironment.EnvironmentList;
+import factoryEnvironment.GridFactory;
+import factoryEnvironment.LambdaFactory;
+import factoryEnvironment.LocalFactory;
+import factoryEnvironment.SourcelabFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
@@ -222,10 +222,10 @@ public class BaseTest {
 	}
 	
 	protected WebDriver getBrowserDriverGrid(String browserName, String url, String ipAddress, String portNumber) {
-		Browser browser = Browser.valueOf(browserName.toUpperCase());
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
 		DesiredCapabilities capability = null;
 		switch (browser) {
-			case FIREFOX_UI:
+			case FIREFOX:
 				WebDriverManager.firefoxdriver().setup();
 				capability = DesiredCapabilities.firefox();
 				capability.setBrowserName("firefox");
@@ -234,7 +234,7 @@ public class BaseTest {
 				FirefoxOptions fOptions = new FirefoxOptions();
 				fOptions.merge(capability);
 				break;
-			case CHROME_UI:
+			case CHROME:
 				WebDriverManager.chromedriver().setup();
 				capability = DesiredCapabilities.chrome();
 				capability.setBrowserName("chrome");
