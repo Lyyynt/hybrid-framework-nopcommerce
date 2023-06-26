@@ -3,6 +3,17 @@ package commons;
 import java.io.File;
 
 public class GlobalConstants {
+	private static GlobalConstants gConstants;
+	private GlobalConstants() {
+		
+	}
+	public static GlobalConstants getGlobalConstantsInstance() {
+		if(gConstants == null) {
+			gConstants = new GlobalConstants();
+		}
+		return gConstants;
+	}
+	
 	public static final String PORTAL_DEV_URL = "https://demo.nopcommerce.com/";
 	public static final String ADMIN_DEV_URL = "https://admin-demo.nopcommerce.com/";
 	public static final String PORTAL_TEST_URL = "https://demo.nopcommerce.com/";
