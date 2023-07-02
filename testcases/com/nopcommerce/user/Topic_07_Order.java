@@ -8,16 +8,16 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserCheckoutPageObject;
-import pageObjects.user.UserConfirmOrderDetailPageObject;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserMyAccountObject;
-import pageObjects.user.UserOrderPageObject;
-import pageObjects.user.UserProductDetailObject;
-import pageObjects.user.UserProductListPageObject;
-import pageObjects.user.UserShoppingCartPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserCheckoutPageObject;
+import pageObjects.nopcommerce.user.UserConfirmOrderDetailPageObject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserMyAccountObject;
+import pageObjects.nopcommerce.user.UserOrderPageObject;
+import pageObjects.nopcommerce.user.UserProductDetailObject;
+import pageObjects.nopcommerce.user.UserProductListPageObject;
+import pageObjects.nopcommerce.user.UserShoppingCartPageObject;
 
 public class Topic_07_Order extends BaseTest{
 	private WebDriver driver;

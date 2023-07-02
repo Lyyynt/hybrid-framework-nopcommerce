@@ -117,7 +117,7 @@ public class Payment_01_Create_And_Edit extends BaseTest {
 		verifyEquals(editCustomerPage.getSheetByLabel(driver, "Mobile No."), newCustomerPhone);
 		verifyEquals(editCustomerPage.getSheetByLabel(driver, "Email"), newCustomerEmail);
 	}
-
+	
 	@AfterClass
 	public void afterClass() {
 		closeBrowserDriver("local");

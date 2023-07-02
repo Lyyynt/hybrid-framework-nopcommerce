@@ -10,8 +10,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Level_06_Register_Generator_Manager_1 extends BaseTest{
 	// Level 1, chưa che giấu đc việc khởi tạo các page, khởi tạo nhiều chỗ, vi phạm DRY

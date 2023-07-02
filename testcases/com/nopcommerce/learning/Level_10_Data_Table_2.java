@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.GlobalConstants;
-import pageObjects.admin.AdminCustomerPageObject;
-import pageObjects.admin.AdminDashboardPageObject;
-import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.admin.AdminCustomerPageObject;
+import pageObjects.nopcommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopcommerce.admin.AdminLoginPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Level_10_Data_Table_2 extends BaseTest{
 	private WebDriver driver;
@@ -67,7 +67,7 @@ public class Level_10_Data_Table_2 extends BaseTest{
 	public void DataTable_02_Customer_Displays_In_Customer_List() {
 		System.out.println("Swith To Admin Page - Step 1: Open admin page");
 		homePage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL);
-		adminLoginPage = pageObjects.admin.PageGeneratorManager.getAdminLoginPage(driver);
+		adminLoginPage = pageObjects.nopcommerce.admin.PageGeneratorManager.getAdminLoginPage(driver);
 		
 		System.out.println("Swith To Admin Page - Step 2: Login with admin account"); 
 		adminDashboardPage = adminLoginPage.loginWithAdminAccount(adminEmail, adminPassword);
@@ -79,7 +79,7 @@ public class Level_10_Data_Table_2 extends BaseTest{
 		Assert.assertTrue(adminDashboardPage.isSelectedLeftMenuByLabel(driver, "Customers"));
 		
 		adminDashboardPage.clickToSubLeftMenuByLabel(driver, "Customers");
-		adminCustomerPage = pageObjects.admin.PageGeneratorManager.getAdminCustomerPage(driver);
+		adminCustomerPage = pageObjects.nopcommerce.admin.PageGeneratorManager.getAdminCustomerPage(driver);
 		adminCustomerPage.inputToTextboxById(driver, email, "SearchEmail");
 		SleepInSecond(2);
 		adminCustomerPage.clickToSearchButton();

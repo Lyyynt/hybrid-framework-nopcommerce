@@ -7,9 +7,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserProductListPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserProductListPageObject;
 
 
 public class Topic_05_Sort_Display_Paging extends BaseTest{

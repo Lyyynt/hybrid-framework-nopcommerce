@@ -22,14 +22,14 @@ import bankguru.AbstractUI;
 import nomcommerce.admin.AdminAbstractPageUI;
 import nopcommerce.user.UserAbstractPageUI;
 import nopcommerce.user.UserProductListUI;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserAddAddressesObject;
-import pageObjects.user.UserChangePasswordPageObject;
-import pageObjects.user.UserCustomerInformationPageObject;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserMyProductReviewObject;
-import pageObjects.user.UserProductDetailObject;
-import pageObjects.user.UserProductListPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserAddAddressesObject;
+import pageObjects.nopcommerce.user.UserChangePasswordPageObject;
+import pageObjects.nopcommerce.user.UserCustomerInformationPageObject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserMyProductReviewObject;
+import pageObjects.nopcommerce.user.UserProductDetailObject;
+import pageObjects.nopcommerce.user.UserProductListPageObject;
 
 public class BasePage {
 	private long longTimeout = 30;

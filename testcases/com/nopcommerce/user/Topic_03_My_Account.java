@@ -7,18 +7,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserAddAddressesObject;
-import pageObjects.user.UserAddProductReviewObject;
-import pageObjects.user.UserChangePasswordPageObject;
-import pageObjects.user.UserCustomerInformationPageObject;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserMyAccountObject;
-import pageObjects.user.UserMyProductReviewObject;
-import pageObjects.user.UserProductDetailObject;
-import pageObjects.user.UserRegisterPageObject;
-import pageObjects.user.UserProductListPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserAddAddressesObject;
+import pageObjects.nopcommerce.user.UserAddProductReviewObject;
+import pageObjects.nopcommerce.user.UserChangePasswordPageObject;
+import pageObjects.nopcommerce.user.UserCustomerInformationPageObject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserMyAccountObject;
+import pageObjects.nopcommerce.user.UserMyProductReviewObject;
+import pageObjects.nopcommerce.user.UserProductDetailObject;
+import pageObjects.nopcommerce.user.UserProductListPageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Topic_03_My_Account extends BaseTest{
 	WebDriver driver;

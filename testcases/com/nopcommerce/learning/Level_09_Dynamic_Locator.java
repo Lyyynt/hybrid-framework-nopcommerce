@@ -8,14 +8,14 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserChangePasswordPageObject;
-import pageObjects.user.UserCustomerInformationPageObject;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserMyAccountObject;
-import pageObjects.user.UserMyProductReviewObject;
-import pageObjects.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserChangePasswordPageObject;
+import pageObjects.nopcommerce.user.UserCustomerInformationPageObject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserMyAccountObject;
+import pageObjects.nopcommerce.user.UserMyProductReviewObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Level_09_Dynamic_Locator extends BaseTest{
 	WebDriver driver;

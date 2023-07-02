@@ -7,10 +7,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.admin.AdminDashboardPageObject;
-import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.admin.AdminProductPageObject;
-import pageObjects.admin.PageGeneratorManager;
+import pageObjects.nopcommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopcommerce.admin.AdminLoginPageObject;
+import pageObjects.nopcommerce.admin.AdminProductPageObject;
+import pageObjects.nopcommerce.admin.PageGeneratorManager;
 
 
 public class Product extends BaseTest{

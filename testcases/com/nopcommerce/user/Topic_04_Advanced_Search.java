@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserRegisterPageObject;
-import pageObjects.user.UserSearchPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.user.UserSearchPageObject;
 
 
 public class Topic_04_Advanced_Search extends BaseTest{

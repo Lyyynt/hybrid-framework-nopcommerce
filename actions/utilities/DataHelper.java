@@ -13,11 +13,11 @@ public class DataHelper {
 	}
 	
 	public String getFirstName() {
-		return faker.address().firstName();
+		return faker.address().firstName().replace("'", "");
 	}
 	
 	public String getLastName() {
-		return faker.address().lastName();
+		return faker.address().lastName().replace("'", "");
 	}
 	
 	public String getFullName() {

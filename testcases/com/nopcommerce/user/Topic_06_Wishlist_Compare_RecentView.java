@@ -8,15 +8,15 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserCompareProduct;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserProductDetailObject;
-import pageObjects.user.UserProductListPageObject;
-import pageObjects.user.UserRecentlyViewedProductPageObject;
-import pageObjects.user.UserShoppingCartPageObject;
-import pageObjects.user.UserWishlistPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserCompareProduct;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserProductDetailObject;
+import pageObjects.nopcommerce.user.UserProductListPageObject;
+import pageObjects.nopcommerce.user.UserRecentlyViewedProductPageObject;
+import pageObjects.nopcommerce.user.UserShoppingCartPageObject;
+import pageObjects.nopcommerce.user.UserWishlistPageObject;
 
 public class Topic_06_Wishlist_Compare_RecentView extends BaseTest{
 	WebDriver driver;

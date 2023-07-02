@@ -7,10 +7,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.admin.AdminDashboardPageObject;
-import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.admin.AdminCustomerPageObject;
-import pageObjects.admin.PageGeneratorManager;
+import pageObjects.nopcommerce.admin.AdminCustomerPageObject;
+import pageObjects.nopcommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopcommerce.admin.AdminLoginPageObject;
+import pageObjects.nopcommerce.admin.PageGeneratorManager;
 
 
 public class Customer_03_Add_And_Edit_Address extends BaseTest{

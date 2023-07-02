@@ -9,9 +9,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Common_Register_NewAccount extends BaseTest{
 	private WebDriver driver;

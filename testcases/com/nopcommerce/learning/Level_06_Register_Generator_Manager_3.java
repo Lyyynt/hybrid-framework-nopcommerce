@@ -8,9 +8,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Level_06_Register_Generator_Manager_3 extends BaseTest{
 	// Leve 3: về mặt test case ko khác gì level 2, tuy nhiên trong từng hàm thay vì khởi tạo page bởi câu lệnh new Object

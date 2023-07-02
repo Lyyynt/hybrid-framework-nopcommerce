@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.GlobalConstants;
-import pageObjects.admin.AdminDashboardPageObject;
-import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.PageGeneratorManager;
-import pageObjects.user.UserHomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.UserRegisterPageObject;
+import pageObjects.nopcommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopcommerce.admin.AdminLoginPageObject;
+import pageObjects.nopcommerce.user.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageObject;
 
 public class Level_08_Switch_Role extends BaseTest{
 	private WebDriver driver;
@@ -83,7 +83,7 @@ public class Level_08_Switch_Role extends BaseTest{
 	public void TC_03_Switch_Admin_Page_With_Admin_Role() {
 		System.out.println("Swith To Admin Page - Step 1: Open admin page");
 		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_DEV_URL);
-		adminLoginPage = pageObjects.admin.PageGeneratorManager.getAdminLoginPage(driver);
+		adminLoginPage = pageObjects.nopcommerce.admin.PageGeneratorManager.getAdminLoginPage(driver);
 		
 		System.out.println("Swith To Admin Page - Step 2: Login with admin account"); 
 		adminDashboardPage = adminLoginPage.loginWithAdminAccount(adminEmail, adminPassword);
