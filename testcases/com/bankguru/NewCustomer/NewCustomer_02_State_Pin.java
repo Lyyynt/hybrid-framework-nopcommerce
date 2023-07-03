@@ -80,7 +80,7 @@ public class NewCustomer_02_State_Pin extends BaseTest{
 		newCustomerPage.clickToLeftMenuBankGuru(driver, "New Customer");
 		
 		log.info(String.format("New Customer 13 - Step 1: Enter special character value in state field: {}", "!@#"));
-		newCustomerPage.inputToCustomerState("!@#");
+		newCustomerPage.inputToCustomerState("State!@#");
 		
 		log.info("New Customer 13 - Step 2: Press Tab and move to next field");
 		newCustomerPage.pressTabToMoveThePinField();

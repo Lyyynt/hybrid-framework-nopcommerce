@@ -8,6 +8,4 @@ public class RegisterPO extends CommonPO {
 	public RegisterPO(WebDriver driver){
 		this.driver = driver;
 	}
-
-	
 }

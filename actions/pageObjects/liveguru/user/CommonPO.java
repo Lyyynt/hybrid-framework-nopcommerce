@@ -24,4 +24,24 @@ public class CommonPO extends BasePage{
 		sendkeyToElement(driver, CommonUI.DYNAMIC_TEXTBOX_BY_LABEL, value, textboxLabel);
 	}
 	
+	public String getErrorMessageByFieldLabel(WebDriver driver, String fieldLabel) {
+		waitForElementVisible(driver, CommonUI.DYNAMIC_ERROR_MESSAGE_BY_LABEL, fieldLabel);
+		return getElementText(driver, CommonUI.DYNAMIC_ERROR_MESSAGE_BY_LABEL, fieldLabel);
+	}
+	
+	public String getSuccessMessage(WebDriver driver) {
+		waitForElementVisible(driver, CommonUI.SUCCESS_MESSAGE);
+		return getElementText(driver, CommonUI.SUCCESS_MESSAGE);
+	}
+
+	public String getWelcomeMessage(WebDriver driver) {
+		waitForElementVisible(driver, CommonUI.WELCOME_MESSAGE);
+		return getElementText(driver, CommonUI.WELCOME_MESSAGE);
+	}
+	
+	public String getErrorMessage(WebDriver driver) {
+		waitForElementVisible(driver, CommonUI.ERROR_MESSAGE);
+		return getElementText(driver, CommonUI.ERROR_MESSAGE);
+	}
+	
 }
