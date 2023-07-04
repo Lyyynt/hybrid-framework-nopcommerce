@@ -44,4 +44,23 @@ public class CommonPO extends BasePage{
 		return getElementText(driver, CommonUI.ERROR_MESSAGE);
 	}
 	
+	public void clickToSkipLinkByLabel(WebDriver driver, String menuLabel) {
+		waitForElementClickable(driver, CommonUI.DYNAMIC_SKIP_LINK_BY_LABEL, menuLabel);
+		clickToElement(driver, CommonUI.DYNAMIC_SKIP_LINK_BY_LABEL, menuLabel);
+	}
+	
+	public void clickToHeaderNavigationByLabel(WebDriver driver, String menuLabel) {
+		waitForElementClickable(driver, CommonUI.DYNAMIC_SKIP_LINK_BY_LABEL, menuLabel);
+		clickToElement(driver, CommonUI.DYNAMIC_SKIP_LINK_BY_LABEL, menuLabel);
+	}
+
+	public void clickToAccountBottomOptionInSkipLink(WebDriver driver, String optionLabel) {
+		waitForElementClickable(driver, CommonUI.DYNAMIC_OPTION_BY_LABEL, optionLabel);
+		clickToElement(driver, CommonUI.DYNAMIC_OPTION_BY_LABEL, optionLabel);
+	}
+	
+	public boolean isLogOutMessageUndisplayed(WebDriver driver) {
+		waitForElementInvisible(driver, CommonUI.LOGOUT_MESSAGE);
+		return isElementUndisplayed(driver, CommonUI.LOGOUT_MESSAGE);
+	}
 }

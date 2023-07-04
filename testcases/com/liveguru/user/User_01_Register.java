@@ -19,7 +19,6 @@ public class User_01_Register extends BaseTest {
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String url) {
-		this.url = url;
 		driver = getBrowserDriver(browserName, url);
 		homePage = PageGeneratorManager.getHomePage(driver);
 		
@@ -98,36 +97,42 @@ public class User_01_Register extends BaseTest {
 	
 	@Test
 	public void User_TC04_Register_With_Exist_Email() {
-		log.info("User 04 - Step 1: Open the homepage");
-		myAccountPage.openPageUrl(driver, url);
+		log.info("User 04 - Step 1: Click to Account header menu");
+		myAccountPage.clickToSkipLinkByLabel(driver, "Account");
 		
-		log.info("User 04 - Step 2: Click to My Account footer link");
+		log.info("User 04 - Step 2: Logout the page");
+		myAccountPage.clickToAccountBottomOptionInSkipLink(driver, "Log Out");
+		
+		log.info("User 04 - Step 3: Wait for log out successful");
+		verifyTrue(myAccountPage.isLogOutMessageUndisplayed(driver));
+		
+		log.info("User 04 - Step 4: Click to My Account footer link");
 		homePage.clickToFooterLinkByLabel(driver, "My Account");
 		loginPage = PageGeneratorManager.getLoginPage(driver);
 		
-		log.info("User 04 - Step 3: Click to Create an Account button");
+		log.info("User 04 - Step 5: Click to Create an Account button");
 		loginPage.clickToButtonByLabel(driver, "Create an Account");
 		registerPage = PageGeneratorManager.getRegisterPage(driver);
 		
-		log.info("User 04 - Step 4: Input to First Name textbox");
+		log.info("User 04 - Step 6: Input to First Name textbox");
 		registerPage.inputToTextboxWithValue(driver, "First Name", firstName);
 		
-		log.info("User 04 - Step 5: Input to Last Name textbox");
+		log.info("User 04 - Step 7: Input to Last Name textbox");
 		registerPage.inputToTextboxWithValue(driver, "Last Name", lastName);
 		
-		log.info("User 04 - Step 6: Input to Email Address textbox");
+		log.info("User 04 - Step 8: Input to Email Address textbox");
 		registerPage.inputToTextboxWithValue(driver, "Email Address", email);
 		
-		log.info("User 04 - Step 7: Input to Password textbox");
+		log.info("User 04 - Step 9: Input to Password textbox");
 		registerPage.inputToTextboxWithValue(driver, "Password", password);
 		
-		log.info("User 04 - Step 8: Input to Confirm Password textbox");
+		log.info("User 04 - Step 10: Input to Confirm Password textbox");
 		registerPage.inputToTextboxWithValue(driver, "Confirm Password", confirmPassword);
 		
-		log.info("User 04 - Step 9: Click to Register button");
+		log.info("User 04 - Step 11: Click to Register button");
 		registerPage.clickToButtonByLabel(driver, "Register");
 		
-		log.info("User 04 - Step 10: Register not successful with message");
+		log.info("User 04 - Step 12: Register not successful with message");
 		verifyEquals(registerPage.getErrorMessage(driver), "There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.");
 		
 	}
@@ -143,6 +148,5 @@ public class User_01_Register extends BaseTest {
 	private LoginPO loginPage;
 	private MyAccountPO myAccountPage;
 	public static String firstName, lastName, fullName, email, password, confirmPassword;
-	private String url;
 	private DataHelper dataHelper;
 }

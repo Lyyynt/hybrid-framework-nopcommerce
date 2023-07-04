@@ -16,4 +16,6 @@ public class MyAccountPO extends CommonPO {
 		return getElementText(driver, MyAccountUI.DYNAMIC_INFORMATION_TEXT_BY_LABEL, label);
 	}
 
+
+
 }
