@@ -87,4 +87,15 @@ public class ProductListPO extends CommonPO {
 		return isElementDisplayed(driver, ProductListUI.PRODUCT_LIST_WITH_LIST);
 	}
 
+	public ShoppingCartPO addProductToShoppingCartByProductName(String productName) {
+		waitForElementClickable(driver, ProductListUI.DYNAMIC_ADD_TO_CART_BUTTON_BY_PRODUCT_NAME, productName);
+		clickToElement(driver, ProductListUI.DYNAMIC_ADD_TO_CART_BUTTON_BY_PRODUCT_NAME, productName);
+		return PageGeneratorManager.getShoppingCartPage(driver);
+	}
+
+	public int getPriceByProductName(String productName) {
+		waitForElementVisible(driver, ProductListUI.DYNAMIC_PRICE_BY_PRODUCT_NAME, productName);
+		return Integer.valueOf(getElementText(driver, ProductListUI.DYNAMIC_PRICE_BY_PRODUCT_NAME, productName).trim().replace(".00", "").replace("$", ""));
+	}
+
 }
