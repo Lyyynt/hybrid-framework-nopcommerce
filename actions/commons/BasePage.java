@@ -424,11 +424,11 @@ public class BasePage {
 	}
 
 	public void clickToElementByJS(WebDriver driver, String locator) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, locator));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click()", getWebElement(driver, locator));
 	}
 	
 	public void clickToElementByJS(WebDriver driver, String locator, String... dynamicValues) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, getDynamicXpath(locator, dynamicValues)));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click()", getWebElement(driver, getDynamicXpath(locator, dynamicValues)));
 	}
 
 	public void scrollToElementOnTop(WebDriver driver, String locator) {
@@ -458,7 +458,11 @@ public class BasePage {
 	public String getElementValidationMessage(WebDriver driver, String locator) {
 		return (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].validationMessage;", getWebElement(driver, locator));
 	}
-
+	
+	public String getElementAttributeByJS(WebDriver driver, String locator, String attributeName) {
+		return (String) ((JavascriptExecutor) driver).executeScript("return arguments[0]." + attributeName, getWebElement(driver, locator));
+	}
+	
 	public boolean isImageLoaded(WebDriver driver, String locator) {
 		boolean status = (boolean) ((JavascriptExecutor) driver).executeScript(
 				"return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0",

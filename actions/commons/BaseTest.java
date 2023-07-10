@@ -41,9 +41,8 @@ import factoryEnvironment.SourcelabFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	
-//	WebDriver driver;
+	WebDriver driver;
 	protected final Log log;
 	
 	protected BaseTest() {
@@ -51,37 +50,37 @@ public class BaseTest {
 	}
 	
 	public WebDriver getDriverInstance() {
-		return this.driver.get();
+		return this.driver;
 	}
 	
 	protected WebDriver getBrowserDriver(String serverName, String runEnvironmentName, String browserName, String browserVersion, String osName, String osVersion, String ipAddress, String portNumber) {
 		switch (runEnvironmentName) {
 		case "local":
-			driver.set(new LocalFactory(browserName).createDriver());
+			driver = new LocalFactory(browserName).createDriver();
 			break;
 		case "grid":
-			driver.set(new GridFactory(browserName, ipAddress, portNumber).createDriver());
+			driver = new GridFactory(browserName, ipAddress, portNumber).createDriver();
 			break;
 		case "browserStack":
-			driver.set(new BrowserstackFactory(osName, osVersion, browserName, browserVersion).createDriver());
+			driver = new BrowserstackFactory(osName, osVersion, browserName, browserVersion).createDriver();
 			break;
 		case "sourcelab":
-			driver.set(new SourcelabFactory(osName, browserName, browserVersion).createDriver());
+			driver = new SourcelabFactory(osName, browserName, browserVersion).createDriver();
 			break;
 		case "crossBrowserTesting":
-			driver.set(new CrossBrowserTestingFactory(osName, browserName).createDriver());
+			driver = new CrossBrowserTestingFactory(osName, browserName).createDriver();
 			break;
 		case "lambda":
-			driver.set(new LambdaFactory(osName, browserName).createDriver());
+			driver = new LambdaFactory(osName, browserName).createDriver();
 			break;
 		default:
-			driver.set(new LocalFactory(browserName).createDriver());
+			driver = new LocalFactory(browserName).createDriver();
 			break;
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(getEnvironmentUrl(serverName));
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(getEnvironmentUrl(serverName));
+		return driver;
 	}
 	
 	
@@ -89,7 +88,7 @@ public class BaseTest {
 		switch (browserName) {
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
-			driver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
 			break;
 		case "firefox_extension":
 			WebDriverManager.firefoxdriver().setup();
@@ -98,67 +97,67 @@ public class BaseTest {
 			profile.addExtension(fileFf);
 			FirefoxOptions optionsFirefoxEx = new FirefoxOptions();
 			optionsFirefoxEx.setProfile(profile);
-			driver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
 			break;
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver.set(new ChromeDriver());
+			driver = new ChromeDriver();
 			break;
 		case "chrome_extension":
 			WebDriverManager.chromedriver().setup();
 			File fileCh = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.crx");
 			ChromeOptions optionsChromeEx = new ChromeOptions();
 			optionsChromeEx.addExtensions(fileCh);
-			driver.set(new ChromeDriver(optionsChromeEx));
+			driver = new ChromeDriver(optionsChromeEx);
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();
-			driver.set(new EdgeDriver());
+			driver = new EdgeDriver();
 			break;
 		case "opera":
 			WebDriverManager.operadriver().setup();
-			driver.set(new OperaDriver());
+			driver = new OperaDriver();
 			break;
 		case "coccoc":
 			WebDriverManager.chromedriver().driverVersion("110.0.5481.77").setup();
 			ChromeOptions optionsCocCoc = new ChromeOptions();
 			optionsCocCoc.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			driver.set(new ChromeDriver(optionsCocCoc));
+			driver = new ChromeDriver(optionsCocCoc);
 			break;
 		case "brave":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions optionsBrave = new ChromeOptions();
 			optionsBrave.setBinary("C:\\Program Files\\Brave\\Browser\\Application\\browser.exe");
-			driver.set(new ChromeDriver(optionsBrave));
+			driver = new ChromeDriver(optionsBrave);
 			break;
 		case "h_chrome":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions optionsChrome = new ChromeOptions();
 			optionsChrome.addArguments("-headless");
 			optionsChrome.addArguments("window-size=1920x1080");
-			driver.set(new ChromeDriver(optionsChrome));
+			driver = new ChromeDriver(optionsChrome);
 			break;
 		case "h_firefox":
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions optionsFirefox = new FirefoxOptions();
 			optionsFirefox.addArguments("-headless");
 			optionsFirefox.addArguments("window-size=1920x1080");
-			driver.set(new FirefoxDriver(optionsFirefox));
+			driver = new FirefoxDriver(optionsFirefox);
 			break;
 		default:
 			throw new RuntimeException("Browser Name Invalid");
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(GlobalConstants.PORTAL_DEV_URL);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(GlobalConstants.PORTAL_DEV_URL);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriver(String browserName, String url) {
 		switch (browserName) {
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
-			driver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
 			break;
 		case "firefox_extension":
 			WebDriverManager.firefoxdriver().setup();
@@ -167,60 +166,60 @@ public class BaseTest {
 			profile.addExtension(fileFf);
 			FirefoxOptions optionsFirefoxEx = new FirefoxOptions();
 			optionsFirefoxEx.setProfile(profile);
-			driver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
 			break;
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver.set(new ChromeDriver());
+			driver = new ChromeDriver();
 			break;
 		case "chrome_extension":
 			WebDriverManager.chromedriver().setup();
 			File fileCh = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.crx");
 			ChromeOptions optionsChromeEx = new ChromeOptions();
 			optionsChromeEx.addExtensions(fileCh);
-			driver.set(new ChromeDriver(optionsChromeEx));
+			driver = new ChromeDriver(optionsChromeEx);
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();
-			driver.set(new EdgeDriver());
+			driver = new EdgeDriver();
 			break;
 		case "opera":
 			WebDriverManager.operadriver().setup();
-			driver.set(new OperaDriver());
+			driver = new OperaDriver();
 			break;
 		case "coccoc":
 			WebDriverManager.chromedriver().driverVersion("110.0.5481.77").setup();
 			ChromeOptions optionsCocCoc = new ChromeOptions();
 			optionsCocCoc.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			driver.set(new ChromeDriver(optionsCocCoc));
+			driver = new ChromeDriver(optionsCocCoc);
 			break;
 		case "brave":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions optionsBrave = new ChromeOptions();
 			optionsBrave.setBinary("C:\\Program Files\\Brave\\Browser\\Application\\browser.exe");
-			driver.set(new ChromeDriver(optionsBrave));
+			driver = new ChromeDriver(optionsBrave);
 			break;
 		case "h_chrome":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions optionsChrome = new ChromeOptions();
 			optionsChrome.addArguments("-headless");
 			optionsChrome.addArguments("window-size=1920x1080");
-			driver.set(new ChromeDriver(optionsChrome));
+			driver = new ChromeDriver(optionsChrome);
 			break;
 		case "h_firefox":
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions optionsFirefox = new FirefoxOptions();
 			optionsFirefox.addArguments("-headless");
 			optionsFirefox.addArguments("window-size=1920x1080");
-			driver.set(new FirefoxDriver(optionsFirefox));
+			driver = new FirefoxDriver(optionsFirefox);
 			break;
 		default:
 			throw new RuntimeException("Browser Name Invalid");
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(url);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriverGrid(String browserName, String url, String ipAddress, String portNumber) {
@@ -273,14 +272,14 @@ public class BaseTest {
 		}
 
 		try {
-			driver.set(new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, portNumber)), capability));
+			driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/wd/hub", ipAddress, portNumber)), capability);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(url);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriverWithStackBrowser(String url, String osName, String osVersion, String browserName, String browserVersion) {
@@ -293,14 +292,14 @@ public class BaseTest {
 		capability.setCapability("resolution", "1920x1080");
 		capability.setCapability("name", "Run on " + osName + " and " + browserName + " with version " + browserVersion);
 		try {
-			driver.set(new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), capability));
+			driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL), capability);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(url);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriverWithSourceLab(String url, String osName, String browserName, String browserVersion) {
@@ -317,14 +316,14 @@ public class BaseTest {
 		}
 		capability.setCapability("sauce:options", sauceOptions);
 		try {
-			driver.set(new RemoteWebDriver(new URL(GlobalConstants.SOURCELAB_URL), capability));
+			driver = new RemoteWebDriver(new URL(GlobalConstants.SOURCELAB_URL), capability);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(url);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriverWithCrossBrowserTesting(String url, String osName, String browserName) {
@@ -340,14 +339,14 @@ public class BaseTest {
 		}
 		capability.setCapability("bitbar_apiKey", GlobalConstants.CROSS_AUTOMATE_KEY);
 		try {
-			driver.set(new RemoteWebDriver(new URL(GlobalConstants.CROSS_URL), capability));
+			driver = new RemoteWebDriver(new URL(GlobalConstants.CROSS_URL), capability);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(url);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriverWithLambdaTest(String url, String osName, String browserName) {
@@ -369,21 +368,21 @@ public class BaseTest {
 			capability.setCapability("screenResolution", "2560x1600");
 		}
 		try {
-			driver.set(new RemoteWebDriver(new URL(GlobalConstants.LAMBDA_URL), capability));
+			driver = new RemoteWebDriver(new URL(GlobalConstants.LAMBDA_URL), capability);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(url);
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
 	}
 	
 	protected WebDriver getBrowserDriverWithEnvironment(String browserName, String environment) {
 		switch (browserName) {
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
-			driver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
 			break;
 		case "firefox_extension":
 			WebDriverManager.firefoxdriver().setup();
@@ -392,60 +391,60 @@ public class BaseTest {
 			profile.addExtension(fileFf);
 			FirefoxOptions optionsFirefoxEx = new FirefoxOptions();
 			optionsFirefoxEx.setProfile(profile);
-			driver.set(new FirefoxDriver());
+			driver = new FirefoxDriver();
 			break;
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver.set(new ChromeDriver());
+			driver = new ChromeDriver();
 			break;
 		case "chrome_extension":
 			WebDriverManager.chromedriver().setup();
 			File fileCh = new File(GlobalConstants.BROWSER_EXTENSION_PATH_FOLDER + "\\google_translate.crx");
 			ChromeOptions optionsChromeEx = new ChromeOptions();
 			optionsChromeEx.addExtensions(fileCh);
-			driver.set(new ChromeDriver(optionsChromeEx));
+			driver = new ChromeDriver(optionsChromeEx);
 			break;
 		case "edge":
 			WebDriverManager.edgedriver().setup();
-			driver.set(new EdgeDriver());
+			driver = new EdgeDriver();
 			break;
 		case "opera":
 			WebDriverManager.operadriver().setup();
-			driver.set(new OperaDriver());
+			driver = new OperaDriver();
 			break;
 		case "coccoc":
 			WebDriverManager.chromedriver().driverVersion("110.0.5481.77").setup();
 			ChromeOptions optionsCocCoc = new ChromeOptions();
 			optionsCocCoc.setBinary("C:\\Program Files\\CocCoc\\Browser\\Application\\browser.exe");
-			driver.set(new ChromeDriver(optionsCocCoc));
+			driver = new ChromeDriver(optionsCocCoc);
 			break;
 		case "brave":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions optionsBrave = new ChromeOptions();
 			optionsBrave.setBinary("C:\\Program Files\\Brave\\Browser\\Application\\browser.exe");
-			driver.set(new ChromeDriver(optionsBrave));
+			driver = new ChromeDriver(optionsBrave);
 			break;
 		case "h_chrome":
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions optionsChrome = new ChromeOptions();
 			optionsChrome.addArguments("-headless");
 			optionsChrome.addArguments("window-size=1920x1080");
-			driver.set(new ChromeDriver(optionsChrome));
+			driver = new ChromeDriver(optionsChrome);
 			break;
 		case "h_firefox":
 			WebDriverManager.firefoxdriver().setup();
 			FirefoxOptions optionsFirefox = new FirefoxOptions();
 			optionsFirefox.addArguments("-headless");
 			optionsFirefox.addArguments("window-size=1920x1080");
-			driver.set(new FirefoxDriver(optionsFirefox));
+			driver = new FirefoxDriver(optionsFirefox);
 			break;
 		default:
 			throw new RuntimeException("Browser Name Invalid");
 		}
-		driver.get().manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get().manage().window().maximize();
-		driver.get().get(getEnvironmentUrl(environment));
-		return driver.get();
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(getEnvironmentUrl(environment));
+		return driver;
 	}
 	
 	private String getEnvironmentUrl(String serverName) {
@@ -553,8 +552,8 @@ public class BaseTest {
 				}
 
 				if (driver != null) {
-					driver.get().manage().deleteAllCookies();
-					driver.get().quit();
+					driver.manage().deleteAllCookies();
+					driver.quit();
 				}
 			} catch (Exception e) {
 				log.info(e.getMessage());

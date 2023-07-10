@@ -50,8 +50,8 @@ public class CommonPO extends BasePage{
 	}
 	
 	public void clickToHeaderNavigationByLabel(WebDriver driver, String menuLabel) {
-		waitForElementClickable(driver, CommonUI.DYNAMIC_SKIP_LINK_BY_LABEL, menuLabel);
-		clickToElement(driver, CommonUI.DYNAMIC_SKIP_LINK_BY_LABEL, menuLabel);
+		waitForElementClickable(driver, CommonUI.DYNAMIC_HEADER_NAV_BY_LABEL, menuLabel);
+		clickToElement(driver, CommonUI.DYNAMIC_HEADER_NAV_BY_LABEL, menuLabel);
 	}
 
 	public void clickToAccountBottomOptionInSkipLink(WebDriver driver, String optionLabel) {
