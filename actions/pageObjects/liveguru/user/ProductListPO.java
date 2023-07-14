@@ -98,4 +98,10 @@ public class ProductListPO extends CommonPO {
 		return Integer.valueOf(getElementText(driver, ProductListUI.DYNAMIC_PRICE_BY_PRODUCT_NAME, productName).trim().replace(".00", "").replace("$", ""));
 	}
 
+	public ProductDetailPO openProductDetailByProductName(String productName) {
+		waitForElementVisible(driver, ProductListUI.DYNAMIC_PRODUCT_NAME_BY_LABEL, productName);
+		clickToElement(driver, ProductListUI.DYNAMIC_PRODUCT_NAME_BY_LABEL, productName);
+		return PageGeneratorManager.getProductDetailPage(driver);
+	}
+
 }

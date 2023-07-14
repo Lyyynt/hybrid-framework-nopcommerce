@@ -63,4 +63,13 @@ public class CommonPO extends BasePage{
 		waitForElementInvisible(driver, CommonUI.LOGOUT_MESSAGE);
 		return isElementUndisplayed(driver, CommonUI.LOGOUT_MESSAGE);
 	}
+	
+	public void clickButtonInMiniCart(WebDriver driver, String buttonLabel) {
+		waitForElementClickable(driver, CommonUI.DYNAMIC_BUTTON_IN_MINICART, buttonLabel);
+		clickToElement(driver, CommonUI.DYNAMIC_BUTTON_IN_MINICART, buttonLabel);
+	}
+
+	protected int convertToPriceNumber(String stringValue) {
+		return Integer.valueOf(stringValue.trim().replace("$", "").replace(".00", "").replace("-", "").replace(",", ""));
+	}
 }

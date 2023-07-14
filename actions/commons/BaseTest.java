@@ -519,6 +519,20 @@ public class BaseTest {
 		return isPassed;
 	}
 	
+	protected boolean verifyEquals(Object actual, Object expected) {
+		boolean isPassed = true;
+		try {
+			Assert.assertEquals(actual, expected);
+			log.info(" -------------------------- PASSED -------------------------- ");
+		} catch (Throwable e) {
+			isPassed = false;
+			log.info(" -------------------------- FAILED -------------------------- ");
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return isPassed;
+	}
+	
 	protected void closeBrowserDriver(String envName) {
 		if(envName.toLowerCase().contains("local") || envName.toLowerCase().contains("grid")) {
 			String cmd = null;

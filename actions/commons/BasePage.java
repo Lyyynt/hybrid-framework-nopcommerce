@@ -553,10 +553,21 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.presenceOfElementLocated(getByLocator(locator)));
 	}
 	
+	public void waitForElementPresence(WebDriver driver, String locator, String... dynamicValues) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
+		explicitWait.until(ExpectedConditions.presenceOfElementLocated(getByLocator(getDynamicXpath(locator, dynamicValues))));
+	}
+	
 	public void waitForAllElementPresence(WebDriver driver, String locator) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(locator)));
 	}
+	
+	public void waitForAllElementPresence(WebDriver driver, String locator, String... dynamicValues) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
+		explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(getDynamicXpath(locator, dynamicValues))));
+	}
+	
 	public void uploadMultipleFiles(WebDriver driver, String locator, String... fileNames) {
 		String filePath = GlobalConstants.UPLOAD_FILE_PATH_FOLDER;
 		String fullFilePaths = "";

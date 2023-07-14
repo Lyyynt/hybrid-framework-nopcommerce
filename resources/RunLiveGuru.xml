@@ -5,7 +5,6 @@
 <test name="Run on Firefox">
   	<parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.liveguru.user.User_01_Register"/>
       <class name="com.liveguru.user.User_04_ShoppingCart"/>
     </classes>
   </test> 

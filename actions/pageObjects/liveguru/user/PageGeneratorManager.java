@@ -21,4 +21,7 @@ public class PageGeneratorManager {
 	public static ShoppingCartPO getShoppingCartPage(WebDriver driver){
 		return new ShoppingCartPO(driver);
 	}
+	public static ProductDetailPO getProductDetailPage(WebDriver driver){
+		return new ProductDetailPO(driver);
+	}
 }

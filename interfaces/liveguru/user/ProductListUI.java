@@ -4,6 +4,7 @@ public class ProductListUI {
 	private static final String PRODUCT_LIST_AREA = "//div[@class='category-products']/div[@class='toolbar']";
 	public static final String DYNAMIC_DROPDOWN_BY_TITLE = "xpath=" + PRODUCT_LIST_AREA + "//select[@title='%s']";
 	public static final String ASCENDING_DIRECTION_ICON = "xpath=" + PRODUCT_LIST_AREA + "//a[@class!='list']";
+	public static final String DYNAMIC_PRODUCT_NAME_BY_LABEL = "xpath=//a[text()='%s']";
 	public static final String DYNAMIC_ADD_TO_CART_BUTTON_BY_PRODUCT_NAME = "xpath=//a[text()='%s']/ancestor::div[@class='product-info']//div[@class='actions']/button";
 	public static final String DYNAMIC_PRICE_BY_PRODUCT_NAME = "xpath=//a[text()='%s']/../..//*[@class='regular-price' or @class='special-price']/span[@class='price']";
 	public static final String ALL_PRODUCT_NAME = "xpath=//div[@class='category-products']//h2[@class='product-name']/a";
