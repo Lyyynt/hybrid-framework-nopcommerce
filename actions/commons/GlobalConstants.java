@@ -31,6 +31,7 @@ public class GlobalConstants {
 	public static final String AUTOIT_SCRIPT = PROJECT_PATH + File.separator + "autoIT";
 	public static final String REPORT_SCREENSHOT = PROJECT_PATH + File.separator + "ReportNGImage" + File.separator;
 	public static final String EXTENT_PATH = PROJECT_PATH + File.separator + "ExtentReport" + File.separator;
+	public static final String RESOURCE_PATH = PROJECT_PATH + File.separator + "resources" + File.separator;
 	
 	public static final String DB_DEV_URL = "32.18.195.23:9860";
 	public static final String DB_DEV_USER = "ntlinh";
